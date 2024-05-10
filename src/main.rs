@@ -1,29 +1,55 @@
 use std::io;
 use rand::Rng;
+use std::cmp::Ordering;
 
 fn main() {
     println!("Guess the number Game!");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("The secret number is: {secret_number}");
+    // println!("The secret number is: {secret_number}");
 
-    println!("Please guess the number: ");
+    loop {
+        // it should be noted that the program would work regardless of the indentation inside the loop block
+        // i f*cked around and found out myself
+        println!("Please guess the number: ");
 
-    let mut guess = String::new();
+        let mut guess = String::new();
 
-    io::stdin()
-        // the &mut guess is a reference to the guess variable, more on that later (according to this book i am reading) 
-        // References are a complex feature, and one of Rust’s major advantages is how safe and easy it is to use references
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        io::stdin()
+            // the &mut guess is a reference to the guess variable, more on that later (according to this book i am reading) 
+            // References are a complex feature, and one of Rust’s major advantages is how safe and easy it is to use references
+            .read_line(&mut guess)
+            .expect("Failed to read line");
 
-    println!("You Guess: {guess}");
+        // creating a new variable with a variable that already exists shadows the former
+        // this feature is often used when you want to convert one type to another type
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            // the _ in the Err type is a catchall that catches all error
+            // in this example, we’re saying we want to match all Err values, no matter 
+            // what information they have inside them
+            Err(_) => continue,
+        };
 
+        println!("You Guess: {guess}");
 
+        // the match expression is made up of arms
+        // the code to run if the value given to the match fits the arm
+        // in the code snippet below the arsm are Ordering::Less, Ordering::Greater, Ordering::Equal
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            },
+        }
+    }
 }
 
 // Important take aways from the code snippet above
+
 // - the main function (fn main) is always the first code that runs in every executeable program
 // - use the use statement to bring crates (name for packages in rust) into the scope of the program you 
 // wish to use them in
