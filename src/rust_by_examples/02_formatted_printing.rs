@@ -62,4 +62,10 @@ fn main() {
     let pi = 3.141592;
     // this is quite intuitive coming from the same functionality in python
     println!("PI = {pi:.2}");
+
+    // probably not the best place to place this information
+    // but macros are not called like functions but are expanded into source code that get
+    // compiled with the rest of the codes, this is a very important distinction between functions
+    // and macros
+    
 }
