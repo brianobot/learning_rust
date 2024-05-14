@@ -29,6 +29,6 @@ fn fib(n: i32) -> i32 {
     } else if n == 1 {
         1
     } else {
-        fib(n-1) + fib(n-2)
+        fib(n-1) + fib(n-2) // this is recursion going on here
     }
 }
