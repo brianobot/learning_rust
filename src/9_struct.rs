@@ -1,6 +1,7 @@
 // the struct keyword is an expression and not a statement
 // this means that we do not have to end it with a semi-colon
 #[derive(Debug)]
+// structs are similar to data classes in python
 struct User {
     // the values in a struct are called its field
     // we can not have partial field mutablity in struct, 
