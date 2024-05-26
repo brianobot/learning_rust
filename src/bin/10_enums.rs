@@ -66,7 +66,7 @@ fn main() {
     // the Option enum from the standard library
     // the option enums encodes the very common scenario where a value could be something or nothing
 
-    enum Option<T> {
+    enum _Option<T> {
         None,
         Some(T),
     } 

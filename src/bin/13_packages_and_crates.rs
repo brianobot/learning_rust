@@ -21,6 +21,5 @@ fn main() {
 
     // a package can contain as many binary crates as you wish but at most only one library crates
     // a package can have multiple binary creates by placing them in the src/bin directory of the package
-
-    
+    // each file will be a seperate binary crate
 }
