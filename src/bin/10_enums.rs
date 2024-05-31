@@ -80,4 +80,16 @@ fn main() {
     // as the normal i32 data type, so in other to use a variant of Option that is of the type
     // Option<i32> we have to convert that to a i32 type first
 
+    // Enums can also used as c like enums by explicitly providing the discriminators
+    #[derive(Debug)]
+    enum Color {
+        Red = 0x12345431,
+        Blue = 0x2345531,
+        Green = 0x12375431,
+    }
+
+    println!("Roses are {:?}", Color::Red);
+    println!("Violets are {:?}", Color::Blue);
+    println!("Leaves are {:?}", Color::Green);
+
 }

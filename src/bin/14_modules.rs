@@ -16,6 +16,7 @@ mod house {
 
 fn main() {
     // modules are a way to organise our codes in a project
+    // they also help us control scope and privacy !!!!
     // Module Cheat Sheet
     // - start from the crate root to compile a crate
     // - modules can be declared in the crate root
