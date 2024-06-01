@@ -163,7 +163,32 @@ fn main() {
     // but each character takes 2 bytes each which amount to 24 bytes, now this code below would fail
 
     // let first = &hello[0];
+    // so rather than user the [] with a specific number as the index, rust encourages the use of a range to
+    // get the slice of string
 
+    let hello = "Здравствуйте";
+
+    let s = &hello[0..4];
+
+    println!("S = {s}");
+
+    // if the boundary of the slice is inbetween a character, rust would panic, 
+    // some characters take up more than 1 byte remember!!
+    // let f = &hello[0..1];
+
+    // iterating over a string
+    // first method is iteracting over each character
+
+    for i in hello.chars() {
+        println!("c = {i}");
+    }
+
+    // second method is iterating over each byte
+    for i in hello.bytes() {
+        println!("byte = {i}");
+    }
+
+    // But be sure to remember that valid Unicode scalar values may be made up of more than 1 byte.
 
 
 }
