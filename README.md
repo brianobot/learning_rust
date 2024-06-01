@@ -1,4 +1,4 @@
-# Rust Learning Repository
+# 🦀 Rust Learning Repository
 
 Welcome to my Rust Learning Repository! This repository contains code snippets and exercises that I used while following the official Rust manual. It's a comprehensive resource for anyone looking to learn Rust, from beginners to more advanced users.
 
