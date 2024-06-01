@@ -1,0 +1,970 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '11_match'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=11_match",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "11_match",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '11_match'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=11_match",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "11_match",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '6_ownership_intro'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=6_ownership_intro",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "6_ownership_intro",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '6_ownership_intro'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=6_ownership_intro",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "6_ownership_intro",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '7_references_and_borrowing'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=7_references_and_borrowing",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "7_references_and_borrowing",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '7_references_and_borrowing'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=7_references_and_borrowing",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "7_references_and_borrowing",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '9_struct'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=9_struct",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9_struct",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '9_struct'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=9_struct",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9_struct",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'linked_list'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=linked_list",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "linked_list",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'linked_list'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=linked_list",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "linked_list",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'example_1'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=example_1",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "example_1",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'example_1'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=example_1",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "example_1",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '8_slices'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=8_slices",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "8_slices",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '8_slices'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=8_slices",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "8_slices",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '3_functions'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=3_functions",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "3_functions",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '3_functions'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=3_functions",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "3_functions",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '10b_more_enums'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=10b_more_enums",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "10b_more_enums",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '10b_more_enums'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=10b_more_enums",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "10b_more_enums",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'raii'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=raii",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "raii",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'raii'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=raii",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "raii",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '4_comments'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=4_comments",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "4_comments",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '4_comments'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=4_comments",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "4_comments",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '9c_more_on_struct'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=9c_more_on_struct",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9c_more_on_struct",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '9c_more_on_struct'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=9c_more_on_struct",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9c_more_on_struct",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '16_common_collection'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=16_common_collection",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "16_common_collection",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '16_common_collection'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=16_common_collection",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "16_common_collection",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '0_main'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=0_main",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "0_main",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '0_main'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=0_main",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "0_main",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '6b_ownership_contd'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=6b_ownership_contd",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "6b_ownership_contd",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '6b_ownership_contd'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=6b_ownership_contd",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "6b_ownership_contd",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '2_data_types'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=2_data_types",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "2_data_types",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '2_data_types'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=2_data_types",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "2_data_types",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '5_control_flows'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=5_control_flows",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "5_control_flows",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '5_control_flows'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=5_control_flows",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "5_control_flows",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '13_packages_and_crates'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=13_packages_and_crates",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "13_packages_and_crates",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '13_packages_and_crates'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=13_packages_and_crates",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "13_packages_and_crates",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '15_use_declaration'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=15_use_declaration",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "15_use_declaration",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '15_use_declaration'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=15_use_declaration",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "15_use_declaration",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '17_hashmaps'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=17_hashmaps",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "17_hashmaps",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '17_hashmaps'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=17_hashmaps",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "17_hashmaps",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '10_enums'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=10_enums",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "10_enums",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '10_enums'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=10_enums",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "10_enums",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '14b_more_on_modules'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=14b_more_on_modules",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "14b_more_on_modules",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '14b_more_on_modules'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=14b_more_on_modules",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "14b_more_on_modules",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '1_variables'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=1_variables",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "1_variables",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '1_variables'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=1_variables",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "1_variables",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '12_if_let'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=12_if_let",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "12_if_let",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '12_if_let'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=12_if_let",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "12_if_let",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '14_modules'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=14_modules",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "14_modules",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '14_modules'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=14_modules",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "14_modules",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '9b_more_struct_examples'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=9b_more_struct_examples",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9b_more_struct_examples",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '9b_more_struct_examples'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=9b_more_struct_examples",
+                    "--package=guessing_game"
+                ],
+                "filter": {
+                    "name": "9b_more_struct_examples",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

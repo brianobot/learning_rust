@@ -45,6 +45,23 @@ fn main() {
 
     println!("Scores = {:?}", scores);
     // interesting facts also, there is no order in the keys stored in the hashmaps, just like in python
-    
+
+    // updating the value of a key in an hashmap
+    // inserting the same key into an hashmap twice effectively inserts and update the key on the second insertion
+
+    scores.insert("Newbie".to_string(), 9);
+    scores.insert("Newbie".to_string(), 8);
+    scores.insert("Newbie".to_string(), 5);
+    scores.insert("Newbie".to_string(), 4);
+    scores.insert("Newbie".to_string(), 3);
+    scores.insert("Newbie".to_string(), 7);
+
+    println!("Updated Scores: {:?}", scores);
+
+    // check for a key or insert a value if the key does not exists
+    scores.entry("Stranger".to_string()).or_insert(5);
+    println!("Scores Now = {:?}", scores);
+
+    println!("FINAL SCORES = {:?}", scores)  ;
 
 }

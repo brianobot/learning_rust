@@ -6,3 +6,7 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8.5"
+
+[[bin]]
+name = "Learnging"
+path = "src/8_suggested_programs/statistics.rs"
