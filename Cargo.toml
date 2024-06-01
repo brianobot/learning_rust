@@ -9,4 +9,4 @@ rand = "0.8.5"
 
 [[bin]]
 name = "Learnging"
-path = "src/8_suggested_programs/statistics.rs"
+path = "src/8_suggested_programs/pigin_english_converter.rs"
