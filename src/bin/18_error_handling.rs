@@ -1,20 +1,28 @@
 
 fn main() {
-    let mut names: Vec<&str> = vec!["Alpha"];
+    // rust has two groups of errors
+    // recoverable and unrecoverable errors
 
-    let john = "John";
-    let paul = "Paul";
-    let peter = "Peter";
-    let default = "Omega";
+    // rust uses Result for recoverable errors and panic! macro the unrecoverables ones which must stop the program
 
-    names.push(john);
-    names.push(paul);
-    names.push(peter);
+    // panic! macro
+    // two ways to invoke the panic macro
+    // execute a piece of code that leads to a bug like accessing outside the bounds of an array
+    // directly invoke panic by calling the panic macro
 
-    println!("Names = {:?}", names);
+    // by default panic will show an error message, unwind, clean up the stack and quit
+    // if however you do not want rust to handle the unwinding on panic, you can instruct
+    // the compile to just panic and abort the program, this leaves the unwinding for the OS
+    // [profile]
+    // panic = "abort"
+    // use this code snippet above in your Cargo.Toml file to activate this no unwinding process
 
-    let first_name = names.get(1000).unwrap_or(&default);
-    
-    println!("First Name = {first_name}");
+    // panic!("crash and burn");
+
+    let v = vec![1, 2, 3];
+
+    v[99];
+
+
     
 }

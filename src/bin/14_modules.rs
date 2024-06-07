@@ -31,4 +31,11 @@ fn main() {
     // access the module functions
     println!("House one light: {}", house::bedroom_1::is_light_on());
     println!("House two light: {}", house::bedroom_2::is_light_on());
+
+    // it is important to note that 
+    // macro path, and function path works alike
+
+    // the pub keyword allows for attributes of a module to accessible from outside the module
+    // 
+
 }
