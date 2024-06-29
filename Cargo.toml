@@ -9,4 +9,4 @@ rand = "0.8.5"
 
 [[bin]]
 name = "Learnging"
-path = "src/8_suggested_programs/company_dept.rs"
+path = "src/more_example_programs/bubble_sort.rs"

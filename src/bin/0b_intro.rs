@@ -1,5 +1,5 @@
 fn main() {
-    println!("Hello, World! The Second Hello World in the learning repo");
+    println!("Hello, World! The Second Hello World in the learning repo 🦀");
     // why do we need to do ./bin_name to execute a binary in unix-like os
 
     /*

@@ -24,7 +24,7 @@ fn main() {
         "System international",
     ];
 
-    for (i, abbr) in abbrs.into_iter().enumerate() {
+    for (i, abbr) in abbrs.enumerate() {
         let result = ask_question_and_get_reply(&abbr);
 
         if result == fullforms[i] {
