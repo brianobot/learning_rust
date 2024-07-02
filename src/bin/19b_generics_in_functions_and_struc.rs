@@ -93,5 +93,8 @@ fn main() {
         Err(E),
     }
 
+    // it should be noted that when using generic in programs, there is no performance cost
+    // as during compilation, the compiler replaces the 
+
 
 }
