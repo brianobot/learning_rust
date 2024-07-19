@@ -62,9 +62,20 @@ fn main() {
 
     type Operations =  VeryVeryVerboseEnumOfThingsToDoWithNumbers;
     // we can now refer to the enum using the type aliased name
+    // types must have UpperCamelCase names, and they can be used on an existing type
 
     let x = Operations::Add;
     let y = Operations::Substract;
+
+    type NanoSeconds = f32;
+
+    let mut timeout: NanoSeconds;
+
+    timeout = 12.10;
+
+    timeout -= 1 as f32;
+
+    println!("Timeout = {timeout}");
 
     println!("x = {:?}", x);
     println!("y = {:?}", y);
