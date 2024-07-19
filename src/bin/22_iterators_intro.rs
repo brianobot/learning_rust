@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 fn main() {
     let vec_1 = vec![1, 2, 3, 4];
     let vec_iter = vec_1.iter();
@@ -106,7 +108,52 @@ fn main() {
     let numbers : Vec<i8> = (1..20).filter(|x| x % 2 == 0).collect();
     println!("Even Numbers = {:?}", numbers);
     
+    let steps = vec![1, 2, 3, 4, 5];
+    let pairs: Vec<_> = steps.iter().enumerate().collect();
+    println!("Pairs = {:?}", pairs);
 
+    // in addition to the iterators adapters the Iterator traits provide methods to
+    // directly apply actions to the item in the data source sequence
 
+    // for_each
+    steps.iter().for_each(|x: &i32|  {
+        println!("Result = {x}");
+    });
+
+    // count
+    let count = steps.iter().count();
+    println!("Steps Count = {count}");
+
+    // len 
+    let len = steps.iter().len();
+    println!("Len of Steps = {len}");
+
+    struct Book {
+        title: String,
+        author: String,
+        year: i32,
+    }
+
+    fn collection() -> Vec<Book> {
+        vec![
+            Book { title: String::from("How to make money"), author: String::from("Ian Rives"), year: 2000 },
+            Book { title: String::from("How to make a name"), author: String::from("Ian Rives"), year: 1920 },
+            Book { title: String::from("How to make it"), author: String::from("Ian Rives"), year: 2012 },
+            Book { title: String::from("How to make Family"), author: String::from("Ian Rives"), year: 1980 },
+            Book { title: String::from("How to make Good Name"), author: String::from("Ian Rives"), year: 1999 },
+            Book { title: String::from("How to make Love"), author: String::from("Ian Rives"), year: 2023 },
+            Book { title: String::from("How to make Joy"), author: String::from("Ian Rives"), year: 2020 },
+            Book { title: String::from("How to make Cars"), author: String::from("Ian Rives"), year: 2015 },
+        ]
+    }
+
+    let books = collection();
+
+    let max_years = books.iter().map(|book: &Book| {
+        println!("Book year = {}", book.year);
+        book.year
+    }).max();
+
+    println!("Years = {:?}", max_years);
 
 }
