@@ -156,4 +156,31 @@ fn main() {
 
     println!("Years = {:?}", max_years);
 
-}
+    // it should be noted that the default behavior of the for in loop syntax
+    // is to convert collection to an iterator using the into_iter method, which
+    // consumes the item in the collection so after the iteration, the collection is no longer
+    // available
+
+    let some_collection = vec![1, 2, 3,  4, 5];
+    let into_iter = some_collection.into_iter();
+    
+    for item in into_iter {
+        println!("Item = {item}");
+    }
+    
+    let some_collection = vec![1, 2, 3,  4, 5];
+    let iter = some_collection.iter();
+
+    for item in iter {
+        println!("Item = {item}");
+    }
+
+    let mut some_collection = vec![1, 2, 3,  4, 5];
+    let iter_mut = some_collection.iter_mut();
+
+    for item in iter_mut {
+        println!("Item = {item}");
+    }
+
+
+} 

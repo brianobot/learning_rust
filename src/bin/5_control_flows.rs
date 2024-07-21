@@ -1,3 +1,4 @@
+
 fn main() {
     // if statement is as expected and as it functions in other programming languages
     // the if blocks are themselves expressions as you see the do not end in a semicolon
@@ -132,6 +133,37 @@ fn main() {
     for element in (1..=10).rev() {
         println!("Count Down: {element}");
     }
-    println!("Lift Off...")
+    println!("Lift Off...");
+
+    loop {
+        println!("Some information..");
+        break;
+    }
+
+    let mut outer_count = 0;
+    // loops can be label too with the 'label syntax
+    'outer: loop {
+        outer_count += 1;
+        println!("Running outter loop");
+        let mut inner_count = 0;
+        'inner: loop {
+            inner_count += 1;
+            println!("Running inner loop");
+
+            if inner_count > 54 {
+                println!("Ended Inner Loop");
+                break 'inner;
+            }
+
+            if outer_count > 54 {
+                println!("About to end outer loop");
+                break 'outer;   
+            }
+        }
+    }
+
+    let number = 10;
+    assert_eq!(number, 10);
+    assert_eq!(number, 12);
 
 }
