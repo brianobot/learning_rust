@@ -8,4 +8,4 @@ Rust is a systems programming language that aims to provide memory safety withou
 
 ## Contributing
 
-I welcome contributions from the community! If you have any improvements or additional exercises you'd like to share, please feel free to fork this repository and submit a pull request.
+I welcome contributions from anyone! If you have any improvements or additional exercises you'd like to share, please feel free to fork this repository and submit a pull request.

@@ -5,6 +5,9 @@ fn main() {
     // arrays must contain homogenous datatype
     // arrays are fixed length, once created can be mutated if defined with mut
     // but the size can not be changed
+
+    // rust arrays are different from c arrays, they are stored on the stack
+    // and there is no pointer arithmetic needed for accessing the array items
     let mut numbers: [i32; 5] = [1, 2, 3, 4, 5];
     let fruits = [String::from("apple"), String::from("orange"), String::from("paw-paw")];
     let vegetables: [&str; 3] = ["carrot", "cucumber", "tomatoe"];
