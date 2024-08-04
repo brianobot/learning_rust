@@ -47,6 +47,44 @@ fn main() {
     let intro = Word::from("Hi!, My Name is Brian");
     println!("This is my Intro: {intro}");
 
+
+    println!("==========================================");
+
+    #[derive(Debug)]
+    enum Planet {
+        Mecury,
+        Venus,
+        Earth,
+        Mars,
+        Jupiter,
+        Saturn,
+        Neptune,
+        Uranus,
+        Unknown,
+    }
+
+    let lines = "BEGIN Transaction XK342
+UPDATE 234:LS/32231 {\"price\": 31.00} -> {\"price\": 40.00}
+DELETE 342:LO/22111";
+
+    let mut planet: Planet = Planet::Earth;
+
+    for line in lines.lines() {
+        let value: Vec<&str> = line.splitn(2, " ").collect();
+        if value.len() == 1 {
+            planet =  Planet::Unknown;
+        }
+
+        match planet {
+            Planet::Unknown => break,
+            _ => continue,
+        }
+    }
+
+    println!("planet = {:?}", planet);
+
+
+
 }   
 
 

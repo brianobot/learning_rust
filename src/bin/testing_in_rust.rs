@@ -1,14 +1,23 @@
-use std::rc::Rc;
-use std::sync::{ Arc, Mutex};
+// tests are just regular functions with the #[test] attributes
+// in the body of the test functions, we use certain macros to assert the state
+// we are testing
 
-fn main() {
-    let a = 10;
+fn sum(_a: i8, _b: i8) -> i8 {
+    4
+}
 
-    let b = Box::new(20);
+fn guess_year() -> i32 {
+    2024
+}
 
-    let c = Rc::new(Box::new(30));
+#[test]
+fn test_sum_function() {
+    let result = sum(1, 2);
+    assert_eq!(result, 4);
+}
 
-    let d = Arc::new(Mutex::new(40));
-
-    println!("a = {}, b = {}, c = {}, d = {:?}", a, b, c, d);
+#[test]
+fn test_guess_year_function() {
+    let year = guess_year();
+    assert_eq!(year, 2024);
 }

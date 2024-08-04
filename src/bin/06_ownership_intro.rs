@@ -50,5 +50,10 @@ fn main() {
     // - Each value has a variable that is called it owner
     // - the can only be one owner at a time
     // - when the owner goes out of scope, the value will be dropped
+
+    // special case for arrays
+    // if the elements of an array implement the copy trait, then the array also implements the copy trait
+    // when we pass types that implement the copy trait to a function, they are no moved, but copied,
+    // and the others still keep ownership of them
     
 }

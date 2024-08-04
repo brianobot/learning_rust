@@ -7,6 +7,10 @@ fn main() {
 
     // rust does not care where the functions are defined
     // provided there are in the scope of the place they are called from.
+
+    // Rust regular functions can not take a variable number of arguments
+    // Rust macros can, which is why the println! is implemented as a macro
+
     another_function();
     function_with_arg(5);
 
@@ -47,6 +51,12 @@ fn function_with_arg(x: u32) {
 // to return a value from a function, you must specify the type of the return value and the last
 // expression the function block would be returned, you can force an early return by using the word return
 // but in most rust programs, the implicit expression return is employed
+
+// Since passing arrays as function argument is quite limiting
+// since the array type (element type and length) would limit the arrays
+// the function can be applied to, we can instead pass slices to functions
+// that expect sequence , and the arrays and vectors would be treated alike
+
 
 fn with_return_value() -> u32 {
     5

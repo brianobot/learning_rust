@@ -9,6 +9,12 @@ fn main() {
     // rust arrays are different from c arrays, they are stored on the stack
     // and there is no pointer arithmetic needed for accessing the array items
     let mut numbers: [i32; 5] = [1, 2, 3, 4, 5];
+    
+    let _other_numbers = [2u8, 3, 4, 5, 2];
+    // i declared the first element to be a u8 and rust knows that an array is homogenous
+    // so it makes the other elements u8 too, this could have also be achieved using a type annotation
+    let _other_other_numbers: [u32; 5] = [1, 2, 3, 4, 5];
+
     let fruits = [String::from("apple"), String::from("orange"), String::from("paw-paw")];
     let vegetables: [&str; 3] = ["carrot", "cucumber", "tomatoe"];
     let human = ("Alice", 30, false);
@@ -34,4 +40,8 @@ fn main() {
     println!("Numbers array = {:?}", numbers);
     println!("Zeros = {:?}", zeros);
     println!("Data = {:?}", data);
+
+    // vectors created with ::new or vec! are the same
+    // and unless something is put into a vector, it is not allocated
+    // which means a vector withour element does not consume memory
 }

@@ -12,4 +12,12 @@ fn main() {
     //      Some(T),
     //      None,
     //}
+
+    // Result represent a state of potential error
+    // functions that return a Result would usually take ownership of the data
+    // they are operating on, this is because they need to return the type
+    // in the Ok variant of the Result type as Result<T, E>
+
+    
+
 }

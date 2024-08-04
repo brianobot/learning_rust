@@ -2,10 +2,15 @@ use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
 
+// the main function is only special in some context, mostly the context of a binary project
+// more on this later
 fn main() {
     println!("Guess the number Game!");
+    // the first argument to the print macros is a double quoted string 
+    // with may contain placeholders for variables to be included in the string to be printed
+    // println!(n) would not work even if n is a string variable
 
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
 
     // println!("The secret number is: {secret_number}");
 
