@@ -151,4 +151,11 @@ fn build_user(username: String, email: String, ) -> User {
         sign_in_count: 1,
         active: true,
     }
+
+    // NOTE:
+    // by default member fields in structs are private
+    // which means that even if the structs are marked as public, 
+    // their fields are still hidden unless explicityl marked as public
+    // they can still be accessed from other codes within the same crate as the struct
+    // but to outside access they are hidden by default
 }
