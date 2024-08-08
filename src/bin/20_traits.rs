@@ -1,10 +1,43 @@
 #![allow(dead_code)]
 
+use std::fmt;
+use std::fmt::Display;
+
+enum FileState {
+    Open,
+    Closed,
+}
+
+struct File {
+    name: String,
+    data: Vec<u8>,
+    state: FileState,
+}
+
+trait Read {
+    fn read(&self) -> Vec<u8>;
+}
+
+impl Read for File {
+    fn read(&self) -> Vec<u8> {
+        self.data.to_owned()
+    }
+}
+
+// to implement the Debug trait 
+// the trait must implement the fmt method
+
+impl Display for File {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}.{}.{}.{}", self.0, self.1, self.2, self.3)
+    }
+}
+
 fn main() {
     /* Traits in Rust are a way to define shared behavior across multiple struct or enum types. They're similar to  interfaces in other languages. A trait is defined with the keyword 'trait' followed by its name and a set of method signatures within curly braces.
     */
 
-    // the trait only defines the methods needed (the interface)
+    /// the trait only defines the methods needed (the interface)
     trait LivingThing {
         fn breathe(&self);
         fn die(&self);
@@ -78,6 +111,13 @@ fn main() {
 
     let _a_living_thing = return_living_thing();
 
+    let file = File {
+        name: String::from("Some File.zip"),
+        data: vec![1, 2, 3, 4, 5],
+        state: FileState::Open,
+    };
 
+    let data = file.read();
+    println!("Data = {:?}", data);
 
 }
