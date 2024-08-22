@@ -9,4 +9,4 @@ rand = "0.8.5"
 
 [[bin]]
 name = "Learnging"
-path = "src/main.rs"
+path = "src/error_handling_process/result_type.rs"
