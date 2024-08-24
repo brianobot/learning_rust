@@ -187,5 +187,17 @@ fn main() {
         println!("Item = {item}");
     }
 
+    // iterators have an nth method which returns the nth element in the sequence of the iterator
+    let numbers = [1, 2, 3, 4, 5];
+    let numbers_iter = numbers.iter();
+
+    for num in numbers_iter {
+        println!("NUM: {}", num);
+    }
+
+    let zeroth_element = numbers.iter().nth(0);
+    let oneth_element = numbers.iter().nth(1);
+    println!("Zeroth Element: {}", *zeroth_element.unwrap_or(&0));
+    println!("Oneth  Element: {}", *oneth_element.unwrap_or(&0));
 
 } 
