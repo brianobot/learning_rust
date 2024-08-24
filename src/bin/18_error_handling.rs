@@ -19,9 +19,14 @@ fn main() {
 
     // panic!("crash and burn");
 
-    let v = vec![1, 2, 3];
+    let _v = vec![1, 2, 3];
 
-    v[99];
+    // v[99];
+
+    // the expect method is a friendly version of the unwrap method
+    // it takes a error message that is shown when the program panics
+    // let _some_value = [1, 2, 3].iter().nth(100).unwrap();
+    let _some_value = [1, 2, 3].iter().nth(100).expect("100th Element not found!");
 
 
     
