@@ -1,4 +1,4 @@
-use std::{mem};
+use std::mem;
 
 fn main() {
     // slices have the type signature &[T]

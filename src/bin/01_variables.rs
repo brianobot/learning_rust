@@ -131,8 +131,11 @@ fn main() {
     println!("Some char = {}", some_char);
 
     let mut x = 20;
+    x += 10;
     println!("X = {x}");
+
     let ass_val = x = 10;
+    println!("X = {}", x );
     println!("Assigment value = {:?}", ass_val);
     
 }
