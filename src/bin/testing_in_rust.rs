@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 // tests are just regular functions with the #[test] attributes
 // in the body of the test functions, we use certain macros to assert the state
 // we are testing
@@ -20,4 +22,8 @@ fn test_sum_function() {
 fn test_guess_year_function() {
     let year = guess_year();
     assert_eq!(year, 2024);
+}
+
+fn main() {
+    // does nothing
 }

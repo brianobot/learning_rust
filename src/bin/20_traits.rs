@@ -3,6 +3,7 @@
 use std::fmt;
 use std::fmt::Display;
 
+#[derive(Debug)]
 enum FileState {
     Open,
     Closed,
@@ -29,7 +30,7 @@ impl Read for File {
 
 impl Display for File {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}.{}.{}.{}", self.0, self.1, self.2, self.3)
+        write!(f, "{}.{:?}.{:?}", self.name, self.data, self.state)
     }
 }
 

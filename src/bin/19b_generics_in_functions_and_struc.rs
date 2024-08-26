@@ -57,11 +57,13 @@ fn main() {
     let would_work = first::Point { x: 5, y: 3};
     // let wont_work = Point { x: 4.3, y: 2}; 
     println!("Would work = {:?}", would_work);
+    println!("x: {}, y: {}", would_work.x, would_work.y);
         
     mod second {
         // now to define a struct with fields that can be same types but can also be different
         // define different types for those fields
 
+        #[allow(dead_code)]
         #[derive(Debug)]
         pub struct Point<T, U> {
             pub x: T,
@@ -81,13 +83,15 @@ fn main() {
     println!("Both Float = {:?}", both_float);
     println!("Integer and float = {:?}", integer_and_float);
 
-    // generics in enum definition
 
+    // generics in enum definition
+    #[allow(dead_code)]
     enum Option<T> {
         Some(T),
         None,
     }
 
+    #[allow(dead_code)]
     enum Result<T, E> {
         Ok(T),
         Err(E),
