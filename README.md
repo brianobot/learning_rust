@@ -19,6 +19,9 @@ cargo new package_name --bin
 
 Since both generate a binary project
 
+In the Cargo.toml file we can specify multiple [[bin]] table to show the different binaries we want 
+to generate from the project
+
 ## Contributing
 
 I welcome contributions from anyone! If you have any improvements or additional exercises you'd like to share, please feel free to fork this repository and submit a pull request.

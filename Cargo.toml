@@ -8,5 +8,9 @@ edition = "2021"
 rand = "0.8.5"
 
 [[bin]]
-name = "Learnging"
+name = "Result_type"
 path = "src/error_handling_process/result_type.rs"
+
+[[bin]]
+name = "2c_Const"
+path = "src/bin/2c_const.rs"
