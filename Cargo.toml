@@ -14,3 +14,11 @@ path = "src/error_handling_process/result_type.rs"
 [[bin]]
 name = "2c_Const"
 path = "src/bin/2c_const.rs"
+
+[[bin]]
+name = "Conditional_compilation"
+path = "src/bin/conditional_compilation.rs"
+
+[[bin]]
+name = "Attributes"
+path = "src/bin/attributes.rs"
