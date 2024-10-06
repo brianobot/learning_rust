@@ -10,7 +10,7 @@ struct File {
 // methods in rust are implemented in an impl block and not in the actual struct block
 
 impl File {
-    fn new(name: String) -> File {
+    fn new(name: String) -> Self {
         File {
             name,
             data: vec![],
