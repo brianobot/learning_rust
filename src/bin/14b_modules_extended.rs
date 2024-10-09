@@ -77,3 +77,8 @@ fn main() {
 
     test_module_2::shout();
 }
+
+// Common Pitfalls
+// - the module tree must be built manually
+// - visiblity != reachability
+// - visiblity != availability
