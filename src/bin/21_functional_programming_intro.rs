@@ -90,3 +90,5 @@ fn main() {
 
 // the compiler infers the type of the parameters for the closures on it first usage and further usage must
 // comply with the inferred type needed
+
+// the curly braces are optional for one line closures
