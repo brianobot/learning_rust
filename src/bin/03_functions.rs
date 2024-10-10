@@ -1,5 +1,5 @@
 fn main() {
-    // the fn allows for the creation of new functions
+    // the fn allows for the creation of new named functions
     // the main function is the starting point for every rust program
 
     // rust uses snake case for function names just like python
