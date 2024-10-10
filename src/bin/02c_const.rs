@@ -22,7 +22,6 @@ const P: usize = {
 
 static X: usize = N;
 // static is a runtime value and it can be mutable
-
 fn main() {
     let array: [i32; N] = [1, 2, 3];
     println!("array: {:?}", array);
@@ -31,3 +30,12 @@ fn main() {
     println!("N: {N}");
     println!("P: {P}");
 }
+
+
+// constants live for the entire lifetime of the program
+// they have no fixed address in memory since they are inlined into the program binary
+// statics are global varaible type facilities and they live for the lifetime of the program to
+// it is better to use constant than static, since constant does not have a memory address
+// the convention for consts and static is to use the SCREAMING_SNAKE_CASE
+// usuaully const and statics are place at the top of the code file after module imports
+
