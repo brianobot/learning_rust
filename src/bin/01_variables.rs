@@ -9,7 +9,7 @@ struct Personality;
 
 fn main() {
     // VARIABLES
-    let x = 5;
+    let x = 5; // assignment, more properly called variable binding
 
     println!("The value of x is {x}");
     // this causes the compiler to produce an error,
