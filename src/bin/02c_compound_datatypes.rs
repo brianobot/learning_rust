@@ -44,4 +44,8 @@ fn main() {
     // vectors created with ::new or vec! are the same
     // and unless something is put into a vector, it is not allocated
     // which means a vector withour element does not consume memory
+
+    // we can annotate a vector and tell rust to infer the type of the items in the Vector
+    let some_data: Vec<_> = vec![1, 2, 3, 4, 5, 6];
+    println!("Some data = {:?}", some_data);
 }
