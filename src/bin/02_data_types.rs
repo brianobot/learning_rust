@@ -4,6 +4,22 @@ fn main() {
     // for cases where many types are possible like in the conversion of string to number 
     // as seen in the game with .parse, the type must be annotated
 
+    // unit type
+    // represent one datatype that contains nothing, there is only one value
+    // for the unit type, it is default return value from assignment expression and functions without
+    // an explicit return value, it does not implement the Display trait and so must be printed as a debug value
+    // when used in a format string for printing
+    let x = ();
+    println!("X = {x:?}");
+
+    let some_value = {
+        let a = 10;
+        let b = 10i8;
+        println!("A = {a}, B = {b}");
+    };
+
+    println!("Some Value = {:?}", some_value);
+
     let _guess: u32 = "42".parse().expect("Not a number!");
     // note while developing, if you do not use a variable and you want it alive in
     // the code, start it with an undersore and the warning would be ignore when compiling
