@@ -12,12 +12,6 @@ fn main() {
     let x = ();
     println!("X = {x:?}");
 
-    let some_value = {
-        let a = 10;
-        let b = 10i8;
-        println!("A = {a}, B = {b}");
-    };
-
     println!("Some Value = {:?}", some_value);
 
     let _guess: u32 = "42".parse().expect("Not a number!");
@@ -74,8 +68,15 @@ fn main() {
 
     // Character type
     // there are quoted with single quote
+    // char is always 4 bytes in size ( 32 bits )
     let _c = 'c';
     let _z: char = 'Z';
+
+    // QUESTION? How much data can a char data type store
+    // ANSWER: only character with one codepoint
+
+    let mystr = '✅';
+    // also the char datatype can not be empty
 
     let _heart_eyed_cat = '😻';
 

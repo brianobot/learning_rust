@@ -1,5 +1,12 @@
 #![allow(dead_code)]
 
+// iterators is something you can call the next method on repeatedly and it gives us a sequence of things
+// technically this means iterators implement the Iterator trait which in turns implement the 
+// next method
+
+// a range like 0..10 is mathematically represented as "[0, 10)", 
+// inclusive on the left and exclusive on the right
+
 fn main() {
     let vec_1 = vec![1, 2, 3, 4];
     let vec_iter = vec_1.iter();
@@ -116,6 +123,34 @@ fn main() {
     let steps = vec![1, 2, 3, 4, 5];
     let pairs: Vec<_> = steps.iter().enumerate().collect();
     println!("Pairs = {:?}", pairs);
+
+    // the collect consumer can receive the type to collect to using the turbo fish syntax
+    let sum = (0..10).collect::<Vec<i32>>();
+    println!("SUm = {sum:?}");
+
+    // another consumer is the find consumer, which takes in a closure and return the first element that 
+    // mtaches the closure logic
+
+    let mut first_ten_numbers = 0..11;
+
+    let first_odd_num = first_ten_numbers.find(|x| x % 2 != 0).unwrap();
+    let first_even_num = first_ten_numbers.find(|x| x % 2 == 0).unwrap();
+    println!("First ODD Number = {first_odd_num}");
+    println!("First Even Number = {first_even_num}");
+
+    // the fold is an interesting consumer and it quite confusing but here goes nothing
+    // the structure of the fold call is as follows
+    // .fold(base, |accumulator, x| <logic to accumulate accumulator>)
+
+    let sum = (0..10).fold(0, |sum, x| sum + x);
+    // there is beauty in high and low places - Brian
+
+    let multiple = (1..11).fold(1, |mul, x| mul * x);
+
+
+    println!("Fold in Sum Call = {sum}");
+    println!("Fold in Mul Call = {multiple}");
+
 
     // in addition to the iterators adapters the Iterator traits provide methods to
     // directly apply actions to the item in the data source sequence
