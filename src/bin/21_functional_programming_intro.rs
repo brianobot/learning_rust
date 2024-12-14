@@ -57,7 +57,7 @@ fn main() {
         user_pref2, giveaway2
     );
 
-    fn add_one_v1(x: i32) -> i32 { x + 1}
+    fn add_one_v1(x: i32) -> i32 { x + 1 }
     let add_one_v2 = |x: i32| -> i32 { x + 1};
     let add_one_v3 = |x| { x + 1};
     let add_one_v4 = |x| x + 1;

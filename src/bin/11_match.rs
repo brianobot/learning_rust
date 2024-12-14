@@ -59,6 +59,60 @@ fn main() {
         _ => reroll(),
     }
 
+    // this is a reference somewhere in this codebase, but i think it fitting to duplicate it here for context
+    // belows are some of the ways to use patterns in rust code
+    // - in match expression as seen above
+    // - conditional matching with if let
+
+    let some_value = Some(3);
+    if let Some(i) = some_value {
+        println!("FOund I: {}", i);
+    }
+
+    // if let can have an optional else if, and else branchs to handle cases that caught by the if block
+    // the downside to using if let pattern is that the compiler does not check for exhaustiveness of the branches
+    // and the can be potential logic bugs for cases that are not accounted for completely
+
+    // - similar to the if let conditional pattern above, we have a while let conditional loop
+    let mut stack = Vec::<i8>::new();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+
+    while let Some(value) = stack.pop() {
+        println!("📦 Found: {}", value);
+    }
+
+    // for loops use patterns too
+    // for x in 0..=10 {}
+    // the x in the for statement is a pattern and can be more complex than that
+
+    for (index, value) in (0..=10).enumerate() {
+        println!(" - {index}: {value}");
+    }
+
+    // the let statement we used, to assigned variables are made to use patterns
+    // formally the syntax of the let statement is as follows
+    // let PATTERN = EXPRESSION
+
+    let range: (i8, i8, i8) = (1, 2, 3);
+    println!("Range = {:?}", range);
+
+    // and FUnction parameters are patterns tooo
+    // fn some_result(x: i32) -> i32 { x }
+
+    // the x in the function parameter is a pattern and can be more complex
+
+    fn some_result(&(x, y): &(i32, i32)) {
+        println!("x: {x}");
+        println!("y: {y}");
+    }
+
+    some_result(&(23, 45));
+
     // notice how the function definition come after the function call but the code still works
     fn add_fancy_hat() {
         println!("Adding fancy hat");

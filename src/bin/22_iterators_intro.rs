@@ -114,6 +114,9 @@ fn main() {
 
     let numbers : Vec<i8> = (1..20).filter(|x| x % 2 == 0).collect();
 
+    let first_five = (0..100).take(5).collect::<Vec<_>>();
+    println!("First Five = {:?}", first_five);
+
     // the collect method converts any iterator into a collection and typically
     // need to specify the type of the collection we want to generate with the collect
     // the collect method can be used directly to convert one collection to another type
