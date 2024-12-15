@@ -12,6 +12,7 @@ fn main() {
     let x = ();
     println!("X = {x:?}");
 
+    let some_value = 123u16;
     println!("Some Value = {:?}", some_value);
 
     let _guess: u32 = "42".parse().expect("Not a number!");
