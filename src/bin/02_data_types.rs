@@ -76,7 +76,7 @@ fn main() {
     // QUESTION? How much data can a char data type store
     // ANSWER: only character with one codepoint
 
-    let mystr = '✅';
+    let _mystr = '✅';
     // also the char datatype can not be empty
 
     let _heart_eyed_cat = '😻';

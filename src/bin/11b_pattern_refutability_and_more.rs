@@ -65,4 +65,22 @@ fn main() {
     //     println!("I: {}", i);
     // }
 
+    // @ sigil binding in pattern expression
+    // the @ sigil is particular important when working with range values
+    let age = 23u32;
+
+    match age {
+        n @ 0..=5 => println!("{n} Stil an Infant"),
+        n @ 6..=11 => println!("{n} Now  a Child"),
+        n @ 12..=19 => println!("{n} Now a Teenager"),
+        n @ 20.. => println!("{n}! Proper Adult and all"),
+    }
+
+    let number = Some(7);
+
+    // if let can also be used in the same way as below to match an Enum
+    if let Some(a) = number {
+        println!("A = {a}");
+    }
+
 }

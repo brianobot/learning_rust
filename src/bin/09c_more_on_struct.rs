@@ -50,7 +50,7 @@ fn main() {
     // - Unit Structs (without fields)
 
     let name = String::from("Brian");
-    let age = 23;
+    let age = 24; // updated this to reflect my current age,
 
     let brian = Person { name, age };
 
