@@ -44,8 +44,10 @@ fn main() {
     println!("Person last name: {}", person.last_name);
 
     // self can be used to refer to the current module
-    // super can be used to refer to the parent module
+    // super can be used to refer to the parent scope
     let greeting  = person.greet();
     println!("Greeting: {}", greeting);
+
+    println!("Current Module: {:?}", module_path!());
 
 }
