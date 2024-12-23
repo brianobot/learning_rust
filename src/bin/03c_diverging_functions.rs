@@ -1,3 +1,5 @@
+#![allow(unreachable_code)]
+
 fn main() {
     // diverging functions are functions that never return, 
     // there are annoated with an exclamation for their return type, this is an empty type
@@ -8,7 +10,6 @@ fn main() {
     // that has exactly one type
 
     println!("This part of the code would never be reached!");
-
     let _x = panic!("Other Universe");
 }
 

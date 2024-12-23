@@ -1,4 +1,5 @@
-use rand::Error;
+#![allow(unused_imports)]
+use rand::Error; // i do not need this, i just needed an excuse to use the attribute above
 
 #[allow(dead_code)]
 

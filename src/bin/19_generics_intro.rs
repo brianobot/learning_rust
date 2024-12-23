@@ -2,8 +2,23 @@ fn main() {
     // generics allows us to use a generic type in place of a concrete type
     // to return conde duplication based on concrete types
 
+    // the simplest and most use of generic is for type parameters
+    #[allow(dead_code)]
+    fn foo<T>(arg: T)  -> T {
+        arg
+    }
+
+    // in the case above, we defined the generic in the angle brackets and then proceed to use it
+    // in the annotation of the function parameter type and return value
+
+    let _result_i32 = foo(1);
+    let _result_u8 = foo(12u8);
+    let _result_string = foo(String::from("Brian"));
+    // the same function has been reused for different datatype, greatly simplying the codebase
+
     /*
-    Using generics, we can write code that can be used with multiple data types without having to rewrite the same code for each data type, making life easier and coding less error-prone.
+    Using generics, we can write code that can be used with multiple data types without 
+    having to rewrite the same code for each data type, making life easier and coding less error-prone.
      */
 
     let number_list = vec![1, 20, 3, 4, 5, 6];
