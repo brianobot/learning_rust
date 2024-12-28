@@ -11,6 +11,7 @@ struct User {
     active: bool,
 }
 
+
 // methods can be attached to a struct
 // this is called an implemetation block and a struct can have more that 1
 impl User {

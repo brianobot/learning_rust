@@ -24,6 +24,20 @@ impl Default for Titan {
     }
 }
 
+impl Titan {
+    fn new() -> Self {
+        Titan::Brian
+    }
+
+    fn upgrade(&mut self) {
+        *self = match self {
+            Titan::Brian => Titan::Elon,
+            Titan::Elon => Titan::Einstein,
+            Titan::Einstein => Titan::Brian,
+        }
+    }
+}
+
 impl S {
     fn new() -> Self {
         S { ..Default::default() }
@@ -46,5 +60,10 @@ fn main() {
     println!("Default Str = {}", default_str);
     println!("Default Titan = {:?}", default_titan);
     println!("Default Option = {:?}", default_option);
+
+    let mut titan = Titan::new();
+    titan.upgrade();
+
+    println!("Titan = {:?}", titan);
 
 }
