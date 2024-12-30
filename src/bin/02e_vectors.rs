@@ -1,3 +1,5 @@
+use std::vec;
+
 fn main() {
     let mut data = vec![0; 5]; // Create a vector of 5 elements, all initialized to 0
     println!("{:?}", data);
@@ -125,13 +127,17 @@ fn main() {
         println!("Value = {:?}", value.unwrap());
     }
 
-    // sorting an array can be done with .sort and reverse method
+    // sorting an array can be done with .sort, .reverse and the sort_by methods
     let mut data = vec![45, 23, 4, 5, 23, 54, 23, 5, 2, 42, 31, 4, 3, 43, 5, 3, 3, 4, 3, 4, 35];
     data.sort();
     println!("Sorted data = {:?}", data);
 
     data.reverse();
     println!("Reversed data = {:?}", data);
+
+    let mut names = vec!["John", "Doe", "Jane", "Doe", "Alice", "Bob"];
+    names.sort_by(|a, b| a.len().cmp(&b.len()));
+    println!("Sorted names = {:?}", names);
 
 
 }
