@@ -7,8 +7,9 @@ use std::cmp::Ordering;
 fn main() {
     println!("Guess the number Game!");
     // the first argument to the print macros is a double quoted string 
-    // with may contain placeholders for variables to be included in the string to be printed
-    // println!(n) would not work even if n is a string variable
+    // which may contain placeholders for variables to be included in the string to be printed
+    // println!(n) would not work even if n is a string variable, it has to be interpolated with a double quote
+    // and a curly braces to capture the variable/value to be printed
 
     let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
 
