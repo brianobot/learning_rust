@@ -44,5 +44,85 @@ fn main() {
     let element_vector = vec![1, 2];
     println!("element vector capacity: {}", element_vector.capacity());
 
+    // vector associated functins and methods
+    // new: creates a new vector
+
+    let _new_vector = Vec::<i32>::new();
+
+    // we can create higher dimensional vectors
+    let mut square_board: Vec<Vec<i32>> = Vec::new();
+
+    for i in 1..=3 {
+        let row = vec![i; 3];
+        square_board.push(row);
+    }
+
+    println!("Square board = {:?}", square_board);
+
+    // can initialize a vector from an array
+    let mut array = [1, 2, 3, 4, 5].to_vec();
+    println!("Array to vector = {:?}", array);
+
+    // the default behaviour when iterating over a vector is to consume the elements
+    // for item in array {
+    //     println!("Item = {}", item);
+    // }
+
+    // into_iter() consumes a vector and returns an iterator
+    // after whihc the initial vector is no longer usable
+    let array_vector_iter = array.iter();
+    for item in array_vector_iter {
+        println!("Item as reference = {}", item);
+    }
+
+    let array_vector_iter_mut = array.iter_mut();
+    for item in array_vector_iter_mut {
+        *item += 1;
+        println!("Item as mutable reference = {}", item);
+    }
+
+    let array_vector_into_iter = array.into_iter();
+    for item in array_vector_into_iter {
+        println!("Item consumed = {}", item);
+    }
+
+    // we can emulate the behaviour of storing different types in a vector
+    // by storying an enum that can hold different types
+
+    #[derive(Debug)]
+    enum FieldType {
+        SmallIntegerField(i8),
+        IntergerField(i32),
+        BigIntergerField(i128),
+        StringField(String),
+        FloatField(f32),
+    }
+
+    impl FieldType {
+        fn get_value(&self) -> Option<String> {
+            match self {
+                FieldType::SmallIntegerField(value) => Some(value.to_string()),
+                FieldType::IntergerField(value) => Some(value.to_string()),
+                FieldType::BigIntergerField(value) => Some(value.to_string()),
+                FieldType::StringField(value) => Some(value.to_string()),
+                FieldType::FloatField(value) => Some(value.to_string()),
+            }
+        }
+    }
+
+    let mut columns: Vec<FieldType> = Vec::new();
+    
+    columns.push(FieldType::IntergerField(10));
+    columns.push(FieldType::SmallIntegerField(10));
+    columns.push(FieldType::BigIntergerField(10000000));
+    columns.push(FieldType::StringField("Hello".to_string()));
+    columns.push(FieldType::FloatField(3.14));
+
+    println!("Columns = {:?}", columns);
+
+    for column in columns {
+        let value = column.get_value();
+        println!("Value = {:?}", value.unwrap());
+    }
 
 }
