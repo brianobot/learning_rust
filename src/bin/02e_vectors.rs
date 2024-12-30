@@ -111,7 +111,7 @@ fn main() {
     }
 
     let mut columns: Vec<FieldType> = Vec::new();
-    
+
     columns.push(FieldType::IntergerField(10));
     columns.push(FieldType::SmallIntegerField(10));
     columns.push(FieldType::BigIntergerField(10000000));
@@ -124,5 +124,14 @@ fn main() {
         let value = column.get_value();
         println!("Value = {:?}", value.unwrap());
     }
+
+    // sorting an array can be done with .sort and reverse method
+    let mut data = vec![45, 23, 4, 5, 23, 54, 23, 5, 2, 42, 31, 4, 3, 43, 5, 3, 3, 4, 3, 4, 35];
+    data.sort();
+    println!("Sorted data = {:?}", data);
+
+    data.reverse();
+    println!("Reversed data = {:?}", data);
+
 
 }
