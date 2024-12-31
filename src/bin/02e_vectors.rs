@@ -139,5 +139,17 @@ fn main() {
     names.sort_by(|a, b| a.len().cmp(&b.len()));
     println!("Sorted names = {:?}", names);
 
+    // we can get a slice from a vector with the as_slice method
+    // ranges can not be obtained with indexing a vector like can be done with string
+    let data = vec![1, 2, 3, 4, 5];
+    let data_slice = data.as_slice();
+    println!("Data slice = {:?}", data_slice);
+
+    // slices can be converted to vectors with the .to_vec() method
+    let some_slice = &[1, 2, 3, 4, 5];
+    let some_vector = some_slice.to_vec();
+
+    println!("Some vector = {:?}", some_vector);
+
 
 }
