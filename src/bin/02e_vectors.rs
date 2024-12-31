@@ -157,5 +157,20 @@ fn main() {
     let first_5_nums = (1..=5).collect::<Vec<_>>();
     println!("Sixth number = {:?}", first_5_nums.get(6));
 
+    let first_100_even_numbers: Vec<_> = (1..202).filter(|x| x % 2 == 0).collect();
+    println!("First 100 numbers = {:?}, len: {}", first_100_even_numbers, first_100_even_numbers.len());
+
+    // an example to convert an vector of &str types to a vector String types
+    let names = vec!["james", "paul", "okon", "obot", "abasifreke"]
+        .iter_mut()
+        .map(|x| {
+            x.to_string().to_uppercase()
+        }
+    )
+        .collect::<Vec<_>>();
+    
+    println!("Names = {:?}", names);
+
+
 
 }
