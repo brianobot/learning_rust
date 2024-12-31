@@ -164,13 +164,35 @@ fn main() {
     let names = vec!["james", "paul", "okon", "obot", "abasifreke"]
         .iter_mut()
         .map(|x| {
-            x.to_string().to_uppercase()
-        }
-    )
+            x.to_string()
+        })
         .collect::<Vec<_>>();
     
     println!("Names = {:?}", names);
 
+    // NOTE: the default iterator for a vector is consuming, to get a reference to the elements
 
+    // intializing a vector with a certain type
+    let cars = vec!["Toyota"; 10];
+    println!("Cars = {:?}", cars);
+
+    // we can append all elements from a vector to another vector and empty the appended vector onto the
+    // base vetor
+    let mut top_vector = vec![6, 7, 8];
+    let mut base_vector = vec![1, 2, 3, 4, 5];
+
+    base_vector.append(&mut top_vector);
+    println!("Base vector = {:?}", base_vector);
+    println!("Top vector = {:?}", top_vector);
+
+    // we can insert elemetns into a vector at a certain index
+    let mut data = vec![1, 2, 3, 4, 5];
+    data.insert(2, 10);
+    println!("Data = {:?}", data);
+
+    // we can remove item from an index with the remove method
+    let mut data = vec![1, 2, 3, 4, 5];
+    let removed_item = data.remove(2);
+    println!("Removed item = {}", removed_item);
 
 }
