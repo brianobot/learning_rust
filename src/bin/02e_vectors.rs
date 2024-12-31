@@ -150,6 +150,12 @@ fn main() {
     let some_vector = some_slice.to_vec();
 
     println!("Some vector = {:?}", some_vector);
+    
+    // always remember that  safer way to get an element from a vector is with the use
+    // of the .get() method, which returns value wrapped in Some if it exist or None if it does not exist
+
+    let first_5_nums = (1..=5).collect::<Vec<_>>();
+    println!("Sixth number = {:?}", first_5_nums.get(6));
 
 
 }
