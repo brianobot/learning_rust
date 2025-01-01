@@ -195,4 +195,10 @@ fn main() {
     let removed_item = data.remove(2);
     println!("Removed item = {}", removed_item);
 
+    let mut first_100_numbers = (1..=100).collect::<Vec<_>>();
+    // retain operates on the vector in place, this means the vector must be editable
+    // as in the case for insert and remove method shown above
+    first_100_numbers.retain(|x| x % 2 == 0);
+    println!("First even numbers = {:?}", first_100_numbers);
+
 }
