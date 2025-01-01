@@ -13,3 +13,4 @@
 // the build script is a rust file that would be compiled invoked prior to the compilation of anything else in the package
 // the build script can be used to generate code, or to run a command to generate code, or to run a command to generate code.
 
+fn main() {}
