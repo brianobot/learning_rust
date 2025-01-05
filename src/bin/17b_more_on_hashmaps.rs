@@ -12,7 +12,37 @@ fn main() {
         "Excellent".to_string()
     );
 
+    // when an insertion is done in rust hashmap, the old value is returned in the insertion if the key already exist
+    // in the hashmap and the new key is used to update the key
+    let review = book_reviews.insert(
+        "The Alchemist".to_string(), 
+        "Good".to_string()
+    );
+    println!("First Alchemist Review: {:?}", review);
+
+    let second_review = book_reviews.insert(
+        "The Alchemist".to_string(), 
+        "Excellent".to_string()
+    );
+    println!("Second Alchemist Review: {:?}", second_review);
+    println!("_________________________");
+    
     println!("Book Reviews: {:#?}", book_reviews);
+
+    //  key-value pairs can be removed from the hashmap using the remove method
+    let removed_review = book_reviews.remove("The Alchemist");
+    println!("🔐🔐🔐 Removed Review: {:?}", removed_review);
+
+    // to update the value of a key in an hashmap, just call the insert method again
+    book_reviews.insert(
+        "The Da Vinci Code".to_string(), 
+        "Poor".to_string()
+    );
+
+    book_reviews.insert(
+        "The Da Vinci Code".to_string(), 
+        "Excellent".to_string()
+    );
 
     // even though the hashmap collection stores Owned string, it can still be queried using &str
     let first_book = book_reviews.get("Harry Potter And the Half Blood Prince");
