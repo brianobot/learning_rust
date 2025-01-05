@@ -238,4 +238,19 @@ fn main() {
     println!("Zeroth Element: {}", *zeroth_element.unwrap_or(&0));
     println!("Oneth  Element: {}", *oneth_element.unwrap_or(&0));
 
+    // when given two iterators we can chain them together to form a new longer iterator
+    // this chain iterator might not always be collectable into a single collection type, since
+    // the items in each iterator might be of different types, so the chain works best when you want to maybe iterate 
+    // of the longer list 
+    let first_iter = 0..=100;
+    let second_iter = 101..=200;
+
+    let chained = first_iter.chain(second_iter);
+    // the for each method is similar to the map method on the iterator but it does not change each item in the
+    // iterator but simply runs an action for each item as the name suggests
+    // for each is equivalent to the for loop, and might be faster in some cases
+    // NOTE: we can not use break and continue in closure as we can use in the normal for loop syntax
+    chained.for_each(|x| println!("Item from chain = {x}"));
+
+
 } 
