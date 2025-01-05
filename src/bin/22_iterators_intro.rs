@@ -252,5 +252,11 @@ fn main() {
     // NOTE: we can not use break and continue in closure as we can use in the normal for loop syntax
     chained.for_each(|x| println!("Item from chain = {x}"));
 
+    // we can also zip pairs from two iterators into a tuples
+    let first_iter = 0..=10;
+    let second_iter = 11..=20;
+
+    let pairs = first_iter.zip(second_iter).collect::<Vec<_>>();
+    println!("Pairs: {:#?}", pairs);
 
 } 
