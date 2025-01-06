@@ -1,6 +1,7 @@
 use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
+use std::sync::Mutex;
 
 fn main() {
     // a thread is a way to manage an independent flow or execution of part of a program
@@ -116,5 +117,30 @@ fn main() {
         println!("Received: {received}");
     }
 
+    // passing message is not the only way to handle concurrency in rust
+    // we can communicate by sharing memory between threads, 
+    // channels is a single ownership model, where each thread explicitly owns or gives away
+    // a piece of data when transmitting it, in the shared memory approach,
+
+    // the can be achieved with mutex (Mutual Exclusion), where only one thread is allowed to access some data at aany given time
+    // to access the data in a mutex,the thread must first signal that it wants access by asking to acquire the mutex' lock
+    // the lock is a data structure that is part of the mutex that keeps tracj of who currentlys has exclusive acces to the data.
+
+    let m = Mutex::new(5);
+
+    {
+        let mut num  = m.lock().unwrap();
+        // calling lock on the mutex would block the thread until it is the thread's turn to have the lock
+        // so lock would essentially wait until the lock available for use, lock methods returns a result
+        // which can contain an error in the case that the previous holder panicked, after the lock is acquired, 
+        // the returned wrapped value can be treated as a reference to the value contained in the mutex
+
+        // more technically, the call to lock returns a MutexGuard smart pointer that implements a Deref to the value wrapped as
+        // the inner data, the MutexGuard implements a drop implementation that releases the lock automatically when the Mutexguard
+        // goes out of scope as in our case when the scope is ended
+        *num = 6;
+    }
+
+    println!("m = {m:?}");
 }
 
