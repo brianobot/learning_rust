@@ -141,7 +141,7 @@ fn main() {
     println!("First ODD Number = {first_odd_num}");
     println!("First Even Number = {first_even_num}");
 
-    // the fold is an interesting consumer and it quite confusing but here goes nothing
+    // the fold is an interesting consumer and it can be a little confusing but here goes nothing
     // the structure of the fold call is as follows
     // .fold(base, |accumulator, x| <logic to accumulate accumulator>)
 
@@ -258,5 +258,25 @@ fn main() {
 
     let pairs = first_iter.zip(second_iter).collect::<Vec<_>>();
     println!("Pairs: {:#?}", pairs);
+
+    // we can use the skip method to skip certain items in an iterator too
+    // the skip methods return an iterator which skips the number of items at the start of the 
+    // base iterator it was applied on
+    let some_iter = 0..5;
+    println!("Did not skip this items: {:?}", some_iter.skip(1).collect::<Vec<_>>());
+
+    // we can also use the take method on iterator, it is similar to skip
+    // it instead of discarding the number it items from the start, it only uses those item
+    // just like skip, this also returns an iterator, it is a adapter  method, 
+    let first_three_items = (0..1000).take(3);
+    println!("First Three Items = {:?}", first_three_items);
+
+    // peek into the next item without advancing the iterator state
+    let numbers = 0..=10;
+    let mut peekable = numbers.peekable();
+    let first_number = peekable.next();
+    let peek_second_number = peekable.peek();
+    println!("First Number = {:?}", first_number.unwrap());
+    println!("Peek Second Number = {:?}", peek_second_number.unwrap());
 
 } 
