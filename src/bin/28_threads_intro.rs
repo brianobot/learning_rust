@@ -9,12 +9,25 @@ fn main() {
     // create in the underlying operating system, to create a thread, we use the spawn method and
     // pass it a closure which would be executed in the thread
 
+    // a spawned thread without a captured handle is a detached thread, since there is no way to know
+    // when it has completed or failed
     thread::spawn(|| {
         for i in 0..100 {
             println!("Hi number {i} from spawned thread 1");
             thread::sleep(Duration::from_millis(1));
         }
     });
+    
+    // there is no parent error propagation between spawned thread and the spawining thread
+    // the spawned may outlive the spawning thread unless the spawning thread is the main thread
+
+    // a new thread can be configured before it is spawned, it name and stack size can be set
+    let another_handle = thread::Builder::new().name("thread1".to_string()).spawn(move || {
+        println!("Hello, world!");
+    });
+
+    let _res = another_handle.unwrap();
+    println!("Response from Built Thread: {:?}", _res);
 
     thread::spawn(|| {
         for i in 0..100 {
@@ -142,5 +155,12 @@ fn main() {
     }
 
     println!("m = {m:?}");
+
+    // we can get the thread type through two ways
+    let handle = thread::spawn(|| {});
+    println!("A Thread = {:?}", handle.thread());
+
+    let current_thread = thread::current();
+    println!("Current thread = {:?}", current_thread);
 }
 
