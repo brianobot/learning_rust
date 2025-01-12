@@ -67,5 +67,22 @@ fn main() {
 
     // note to use match case or if let to handle the result, as unwrapping it would cause a panic when 
     // the lock is not acquired
+    println!("M: {:?}", m);
+    // dbg!(m); // QUESTION: why can i not use the debugger here for the m mutex?
+
+    // the data in the mutex can only be accessed through the guard which is gotten from lock() and try_lock()
+    // which guarantees that the data is only ever accessed when the mutex is locked
+
+    // a mutex is considered poisoned if some thread, panic while holding it data, after this by default
+    // all other threads are unable to access it value since it might have been tainted
+
+
+    println!("About to Acquire guard 1");
+    let _guard1 = m.lock().unwrap();
+    println!("Acquired guard 1");
+    println!("About to Acquire gaurd 2");
+    let _guard2 = m.lock().unwrap(); // this would hold up the program since the mutex is currently
+    // locked by the first guard
+    println!("Acquired guard 2"); 
 
 } 
