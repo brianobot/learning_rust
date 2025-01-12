@@ -52,8 +52,20 @@ fn main() {
     }
 
     *m.lock().unwrap() = 0;
-
     // we did not have to drop the guard, since it was not saved in the first place
     println!("M: {:?}", m);
 
-}
+    // instead of blocking the current thread with the lock method, we can use the try_lock method,
+    // which immediately gives back control to the control thread whethere or not the lock was acquired, d
+    // it returns a result
+    let has_acquired_locked = m.try_lock();
+
+    match has_acquired_locked {
+        Ok(_guard) => println!("Acquired Lock!"),
+        Err(_msg) => println!("Failed to acquire lock!"),
+    };
+
+    // note to use match case or if let to handle the result, as unwrapping it would cause a panic when 
+    // the lock is not acquired
+
+} 
