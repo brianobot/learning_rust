@@ -61,4 +61,12 @@ fn main() {
 
     let lines = file_data_as_string.lines().collect::<Vec<&str>>();
     println!("Lines = {lines:?}");
+
+    // writing stuffs to a file
+    fs::write("./src/test_file.rs", b"fn main() { println!(\"Hello World\"); }").unwrap();
+
+    // read a file as bytes and the convert the bytes to ascii chars
+    let hello_bytes = fs::read("./hello.txt");
+    let hello_string = hello_bytes.unwrap().iter().map(|x| char::from(*x)).collect::<String>();
+    println!("hello string: {:?}", hello_string);
 }
