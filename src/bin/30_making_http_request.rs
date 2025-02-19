@@ -27,4 +27,13 @@ fn main() {
     // in this case it would be a raw html body sent back from the request
     let body = http_result.send().unwrap().bytes();
     println!("Body = {:?}", body.unwrap());
+
+    let post_response = http_client
+        .post("http://localhost:3000/send_data")
+        .body("body")
+        .send()
+        .unwrap()
+        .bytes();
+    
+    println!("✅ Post Response = {:?}", post_response);
 }
