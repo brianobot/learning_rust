@@ -1,3 +1,4 @@
+use std::ops::AddAssign;
 use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
@@ -80,9 +81,17 @@ fn main() {
     println!("About to Acquire guard 1");
     let _guard1 = m.lock().unwrap();
     println!("Acquired guard 1");
-    println!("About to Acquire gaurd 2");
-    let _guard2 = m.lock().unwrap(); // this would hold up the program since the mutex is currently
+    // println!("About to Acquire gaurd 2");
+    // let _guard2 = m.lock().unwrap(); // this would hold up the program since the mutex is currently
     // locked by the first guard
-    println!("Acquired guard 2"); 
+    // println!("Acquired guard 2"); 
+
+    let mutex = Mutex::new(0);
+
+    let guard = mutex.lock();
+    let mut data = guard.unwrap();
+    data.add_assign(5); // this is equivalent of data += 5
+
+    println!("Data: {:?}", data);
 
 } 

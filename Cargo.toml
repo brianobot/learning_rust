@@ -6,12 +6,18 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.39"
+features = "0.10.0"
 rand = "0.8.5"
+reqwest = { version = "0.12.12", features = ["blocking"] }
 
 
 [[bin]]
 name = "Result_type"
-path = "src/error_handling_process/result_type.rs"
+path = "src/error_handling_process/0_result_type.rs"
+
+[[bin]]
+name = "Result_type_part_2"
+path = "src/error_handling_process/1_error_handling_with_try_catch_and_map_error.rs"
 
 [[bin]]
 name = "2c_Const"
