@@ -8,7 +8,7 @@
 
 // reqwest can be used in a synchronous and asynchronous pattern
 use reqwest;
-use reqwest::blocking::{Client, ClientBuilder};
+use reqwest::blocking::Client;
 
 fn main() {
     let http_client = Client::new();
