@@ -27,6 +27,11 @@ fn main() {
     println!("{}", longest);
 }
 
-fn get_longest(a: &str, b: &str) -> &str {
+// by default the gives an issues that says `missing lifetime specifier`
+// to fix this, a generic lifetime must be added to the function signature to help
+// the compiler understand the expected lifetime for each of the references used in the function
+fn get_longest<'a>(a: &'a str, b: &'a str) -> &'a str {
+    // this basically means the lifetime 'a is expected to be equal to the 
+    // SHORTEST lifetime for the input parameter
     if a.len() > b.len() { a } else { b }
 }
