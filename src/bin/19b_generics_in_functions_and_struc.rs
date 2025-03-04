@@ -100,5 +100,22 @@ fn main() {
     // it should be noted that when using generic in programs, there is no performance cost
     // as during compilation, the compiler replaces the 
 
+    // the same way we can use the impl T as a short for types for defining trait in function
+    // signature example below
 
+    #[allow(dead_code)]
+    trait T {}
+
+    #[allow(dead_code)]
+    struct A {}
+
+    impl T for A {}
+
+    fn _zoo1<D: T>(_a: D) {} // this is equivalent to the functino below
+    fn _zoo2(_a: impl T) {}
+
+    // we can also use the impl T in the return signature for functions
+    fn _boo1(_a: impl T) -> impl T {
+        A {}
+    }
 }
