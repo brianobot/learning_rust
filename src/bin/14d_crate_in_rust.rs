@@ -17,3 +17,5 @@ pub fn public_function() -> u8 {
 fn _private_function() -> u8 {
     13
 }
+
+fn main() {}

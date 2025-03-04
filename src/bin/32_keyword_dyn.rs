@@ -68,13 +68,13 @@ pub fn boo2(s: impl Hei) { // this is a shortcut for the first signature style
 // so if we needed to access an array of different types that implemented a particular
 // trait, this wouldn't work within the context of a single function
 
-pub fn zoo(s: &[dyn Hei]) { // the idea here is to get a slice of types that implements the Hei trait
+pub fn zoo(_s: /*  &[dyn Hei] */ impl Hei) { // the idea here is to get a slice of types that implements the Hei trait
     // we do not care about their concrete types, just that they implement Hei, now
     // since this can be different types, generating a single type instance for each type needed
     // would not cut it, since within the slice, the first item might be a different type from the rest
-    for h in s {
-        h.hei();
-    }  
+    // for h in s {
+    //     h.hei();
+    // }  
 }
 
 // to fix the issue about, we have to put the dyn <Trait> behind some kind of pointer time
@@ -102,7 +102,9 @@ pub fn zoo_fixed(s: &[&dyn Hei]) {
 // fats pointers are references that act like pointers but hold additional information about the
 // thing they are pointing to 
 
-trait Animal {
+
+#[allow(unused)]
+pub trait Animal {
     fn noise(&self);
 }
 
@@ -124,7 +126,7 @@ impl Animal for Antelope {
 
 pub fn get_dog(_a: u8) -> impl Animal {
     Dog {}
-}q
+}
 
 pub fn get_antelope(_a: u8) -> impl Animal {
     Antelope {}

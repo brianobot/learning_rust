@@ -18,15 +18,3 @@ path = "src/error_handling_process/0_result_type.rs"
 [[bin]]
 name = "Result_type_part_2"
 path = "src/error_handling_process/1_error_handling_with_try_catch_and_map_error.rs"
-
-[[bin]]
-name = "2c_Const"
-path = "src/bin/2c_const.rs"
-
-[[bin]]
-name = "Conditional_compilation"
-path = "src/bin/conditional_compilation.rs"
-
-[[bin]]
-name = "Attributes"
-path = "src/bin/attributes.rs"

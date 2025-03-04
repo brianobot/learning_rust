@@ -1,4 +1,4 @@
-#![allow(dead_code)]
+// #![allow(dead_code)]
 
 // consts are very powerful in rust
 const N: usize = 1 + 2;
@@ -21,6 +21,7 @@ const P: usize = {
 };
 
 static X: usize = N;
+
 // static is a runtime value and it can be mutable
 fn main() {
     let array: [i32; N] = [1, 2, 3];
@@ -29,6 +30,8 @@ fn main() {
     println!("M: {M}");
     println!("N: {N}");
     println!("P: {P}");
+
+    println!("X: {X}");
 }
 
 
