@@ -74,5 +74,66 @@ pub fn zoo(s: &[dyn Hei]) { // the idea here is to get a slice of types that imp
     // would not cut it, since within the slice, the first item might be a different type from the rest
     for h in s {
         h.hei();
+    }  
+}
+
+// to fix the issue about, we have to put the dyn <Trait> behind some kind of pointer time
+// since all pointer types are sized, we can ensure dynamic dispatch without monomorphization
+pub fn zoo_fixed(s: &[&dyn Hei]) {
+    for h in s {
+        h.hei();
+    }
+}
+
+// trait objects are objects that only has the property that it represent a trait
+// a trait object is a reference to something that implements a particular trait
+// the following are trait objects
+// - &dyn Hei
+// - Box<dyn Hei>
+// 
+// it is essentially type erasure
+
+
+// unlike static dispatch where the compiler can tell the data type passed in the place of the generic 
+// in the functions calls and actually swap them out for their concrete type during compilation, 
+// the input for trait objects are not knowable at compile time and are only known at compile time
+
+// now the trait object &dyn <Trait> is a fat/wide pointer because it holds two pointers
+// fats pointers are references that act like pointers but hold additional information about the
+// thing they are pointing to 
+
+trait Animal {
+    fn noise(&self);
+}
+
+struct Dog {}
+
+struct Antelope {}
+
+impl Animal for Dog {
+    fn noise(&self) {
+        println!("bark!");
+    }
+}
+
+impl Animal for Antelope {
+    fn noise(&self) {
+        println!("Nigh");
+    }
+}
+
+pub fn get_dog(_a: u8) -> impl Animal {
+    Dog {}
+}q
+
+pub fn get_antelope(_a: u8) -> impl Animal {
+    Antelope {}
+}
+
+pub fn get_random_animal(a: u8) -> Box<dyn Animal> {
+    if a > 5 {
+        Box::new(get_dog(a))
+    } else {
+        Box::new(get_antelope(a))
     }
 }
