@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-
 fn main() {
     // to add condition compilation to your project
     // annotate the source code with cfg attributes, 
