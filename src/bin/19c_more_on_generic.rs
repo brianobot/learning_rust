@@ -1,5 +1,7 @@
 #![allow(unused)]
 
+use std::fmt::Debug;
+
 
 #[derive(Debug)]
 struct Point<T: Clone, U: Clone> { // the generic type is defined here, Notice the use of <> to denote definition
@@ -29,11 +31,11 @@ impl<T: Clone, U: Clone> Point<T, U> { // the type on the impl keyword is needed
     }
 }
 
-trait Pointable<T: Clone, U: Clone> {
+trait Pointable<T: Clone, U: Clone>: Debug {
     fn get_distance(&self) -> &T;
 }
 
-impl<T: Clone, U: Clone> Pointable<T, U> for Point<T, U> {
+impl<T: Clone + Debug, U: Clone + Debug> Pointable<T, U> for Point<T, U> {
     fn get_distance(&self) -> &T {
         &self.x
     }
@@ -61,13 +63,16 @@ fn main() {
 
     let another_distance = calculate_distance_2(&second_point);
     println!("Second point distance: {another_distance}");
+
+    let new_point = return_point(10, 20);
+    println!("New POint = {new_point:?}")
     
 }
 
 
 // we can use trait as method/function parameters
 fn calculate_distance<T: Clone, U: Clone>(point: &impl Pointable<T, U>) -> &T {
-    point.get_distance()
+    point.get_distance() 
 }
 
 fn calculate_distance_2<T, U, P>(point: &P) -> &T 
@@ -77,3 +82,8 @@ fn calculate_distance_2<T, U, P>(point: &P) -> &T
     {
         point.get_distance()
     }
+
+// we can also use a trait as function return type
+fn return_point<T: Clone + Debug, U: Clone + Debug>(x: T, y: U) -> impl Pointable<T, U> {
+    Point { x, y }
+}
