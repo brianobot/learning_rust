@@ -1,4 +1,4 @@
-#[allow(unused)]
+#![allow(unused)]
 
 
 #[derive(Debug)]
@@ -29,6 +29,17 @@ impl<T: Clone, U: Clone> Point<T, U> { // the type on the impl keyword is needed
     }
 }
 
+trait Pointable<T: Clone, U: Clone> {
+    fn get_distance(&self) -> &T;
+}
+
+impl<T: Clone, U: Clone> Pointable<T, U> for Point<T, U> {
+    fn get_distance(&self) -> &T {
+        &self.x
+    }
+}
+
+
 fn main() {
     let int_point = Point { x: 5, y: 7 };
     let float_point = Point { x: 2.3, y: 3.56 };
@@ -45,4 +56,13 @@ fn main() {
     println!("Second Point: {:?}", second_point);
     println!("Third Point: {:?}", third_point);
 
+    let distance = calculate_distance(&first_point);
+    println!("First point distance = {distance}");
+    
+}
+
+
+// we can use trait as method/function parameters
+fn calculate_distance<T: Clone, U: Clone>(point: &impl Pointable<T, U>) -> &T {
+    point.get_distance()
 }
