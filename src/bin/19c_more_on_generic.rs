@@ -58,6 +58,9 @@ fn main() {
 
     let distance = calculate_distance(&first_point);
     println!("First point distance = {distance}");
+
+    let another_distance = calculate_distance_2(&second_point);
+    println!("Second point distance: {another_distance}");
     
 }
 
@@ -66,3 +69,11 @@ fn main() {
 fn calculate_distance<T: Clone, U: Clone>(point: &impl Pointable<T, U>) -> &T {
     point.get_distance()
 }
+
+fn calculate_distance_2<T, U, P>(point: &P) -> &T 
+    where T: Clone,
+          U: Clone,
+          P: Pointable<T, U> 
+    {
+        point.get_distance()
+    }
