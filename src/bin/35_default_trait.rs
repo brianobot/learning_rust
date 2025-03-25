@@ -17,6 +17,7 @@ Some Notes
 */
 
 
+
 fn main() {
     let some_option: SomeOption = Default::default();
     println!("{:?}", some_option);
