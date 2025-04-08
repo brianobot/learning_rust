@@ -82,6 +82,7 @@ fn main() {
     stack.push(4);
     stack.push(5);
 
+    // this allows a block to be repeated while the pattern matches
     while let Some(value) = stack.pop() {
         println!("📦 Found: {}", value);
     }
