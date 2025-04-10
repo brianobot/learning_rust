@@ -40,7 +40,8 @@ fn main() {
     // as_mut converts &mut Option<T> to Option<&mut T>
     let mut text = Some(123);
     let as_mut = text.as_mut();
-
+  
+    // basically says only run the block if the pattern is matched 
     if let Some(x) = as_mut {
         *x = 12;
         println!("X = {}", x);

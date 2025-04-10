@@ -63,6 +63,153 @@ this can be done with the &<variable_name> syntax, creating reference is called 
 - references must always be valid (the borrow checker uses lifetimes to ensure references are always valid)
   - this ensures that the references lifetime does not outlive the lifetime of the value
 
+
+### Rust Design Patterns
+
+1. Builder's Pattern: The power here is that we can construct objects in an infinite amount of ways
+   without much restriction. This is extremely useful when constructing complex objects that require step by step construction
+   ```rust
+   #[derive(Debug, Clone)]
+    struct BurgerBuilder {
+        components: Vec<BurgerComponent>
+      }
+
+      #[derive(Debug, Clone)]
+      enum BurgerComponent {
+      BottomBun,
+      Patty,
+      Tomatoe,
+      Cheese,
+      Lettuce,
+      TopBun,
+      }
+
+      impl BurgerBuilder {
+        fn new() -> Self {
+          BurgerBuilder {
+            components: vec![BurgerComponent::BottomBun],
+          }
+        }
+
+        fn add_component(mut self, component: BurgerComponent) -> BurgerBuilder {
+          self.components.push(component);
+          self
+        }
+      }
+
+
+    fn main() {
+        let burger = BurgerBuilder::new()
+        .add_component(BurgerComponent::Tomatoe)
+        .add_component(BurgerComponent::Lettuce)
+        .add_component(BurgerComponent::TopBun);
+
+        println!("Burger: {:?}", burger);
+    }
+   ```
+
+2. Factory Pattern:
+   ```rust
+   trait Toy {
+        fn log(self);
+    }
+
+    struct Robot;
+    struct Car;
+
+    impl Toy for Robot {
+        fn log(self) {
+            println!("The is a toy robot");
+        }
+    }
+
+
+    impl Toy for Car {
+        fn log(self) {
+            println!("The is a toy car");
+        }
+    }
+
+    enum ToyType {
+        Robot,
+        Car,
+    }
+
+
+    struct Factory;
+
+    impl Factory {
+        fn build_toy(toy_type: ToyType) -> Box<dyn Toy> {
+            match toy_type {
+                ToyType::Robot => Box::new(Robot),
+                ToyType::Car => Box::new(Car),
+            }
+        }
+    }
+
+
+    fn main() {
+        let toy_car = Factory::build_toy(ToyType::Car);
+        let toy_robot = Factory::build_toy(ToyType::Robot);
+    }   
+   ```
+
+3. RAII (Resource Acquisition is Initialization)
+  ```rust
+  use std::sync::{Arc, Mutex};
+
+    fn main() {
+        let chest = Mutex::<u32>::new(0);
+
+        {
+            let key = chest.lock();
+            let mut data  = key.unwrap();
+            *data += 1;
+        }
+ 
+        println!("{chest:?}");
+    }
+  ```
+
+4. Type
+   ```rust
+    struct File<State> {
+        state: State,
+    }
+
+    struct Open;
+    struct Closed;
+
+
+    impl File<Closed> {
+        fn open(self) -> File<Open> {
+            println!("Opening the file");
+            File { state: Open }
+        }
+    }
+
+    impl File<Open> {
+        fn read(&self) {
+            println!("Reading the file");
+        }
+
+        fn write(&self) {
+            println!("writing to the file");
+        }
+
+        fn close(self) -> File<Closed> {
+            println!("Closing the file");
+            File { state: Closed }
+        }
+    }
+
+
+    fn main() {
+        let closed_file = File { state: Closed };
+        let open_file = closed_file.open();
+    }
+   ```
+
 ## Contributing
 
 I welcome contributions from anyone! If you have any improvements or additional exercises you'd like to share, please feel free to fork this repository and submit a pull request.
