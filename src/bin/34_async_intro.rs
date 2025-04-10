@@ -4,7 +4,7 @@
 // An Async Runtime manages async tasks by working with the programmner who explicity yield control
 // by using the await keyword
 
-// In order for async to work, the tokio crate must be installed in the current project 
+// In order for async to work, the tokio crate must be installed in the current project
 // cargo add tokio --features=full
 
 async fn say_hello() {
@@ -13,7 +13,7 @@ async fn say_hello() {
 
 #[tokio::main] // this makes my main function an async function which is otherwise not permitted in rust
 async fn main() {
-    say_hello().await; // an async function does nothing unless it is awaited with the await 
+    say_hello().await; // an async function does nothing unless it is awaited with the await
 }
 
 // async is an annotation on functions and some other items such as traits
@@ -23,7 +23,7 @@ async fn main() {
 // with the OS
 
 // The #[tokio::main] annotation initializes the Tokio runtime and starts an async task for running the code in main.
-// Later  in this guide we'll explain in more detail what that annotation is doing and how to use async code without it 
+// Later  in this guide we'll explain in more detail what that annotation is doing and how to use async code without it
 // (which will give you more flexibility).
 
 // the basic unit of async currency is future, a future is a regular rust objects that implements the Future trait
@@ -40,11 +40,10 @@ async fn main() {
 // they call the await
 
 // within the async function code is executed in the usual sequential fashion, you can call synchronous function from
-// async functions 
+// async functions
 
 // futures in rust are an inert object, in order for them to do work they must be riven forward by an external force
 // usually an async runtime
 
 // async can onl be used inside an async context
 // you can imagine the run time as a global varaible that is only accessible within in async function
-

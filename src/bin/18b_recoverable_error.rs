@@ -16,7 +16,7 @@ fn main() {
                 Err(e) => panic!("Problem creating the file: {:?}", e),
             },
             _ => panic!("problem with opening file error: {:?}", error),
-        }
+        },
     };
     // very verbose init
 
@@ -32,7 +32,4 @@ fn main() {
     // the expect method is used more in production by more RUSTACEANS
 
     // error propagation
-
-
-
 }

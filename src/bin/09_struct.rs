@@ -4,13 +4,12 @@
 // structs are similar to data classes in python
 struct User {
     // the values in a struct are called its field
-    // we can not have partial field mutablity in struct, 
+    // we can not have partial field mutablity in struct,
     username: String, // notice that our struct fields get String data, which means the own the value
     email: String, // it is possible to use &str as fields in struct, but means the use of lifetimes, we will see it later
     sign_in_count: u64,
     active: bool,
 }
-
 
 // methods can be attached to a struct
 // this is called an implemetation block and a struct can have more that 1
@@ -51,17 +50,15 @@ struct Color(i32, i32, i32);
 // tuple structs are similar to tuples, in that they can destructured just like regular tuples
 // and you can use a dot notation followed by the index of the field
 struct _Point(f64, f64, f64); // i used the userscore infront, because rust would not allow me to compile
-// if i am not using the value defined, this way it ignores that error when compiling
-
+                              // if i am not using the value defined, this way it ignores that error when compiling
 
 // you can also defined unit like struct without any fields
 // so this are terminated with semi-colon unlike normal struct expressions
 #[derive(Debug)]
 struct AlwaysTrue;
 
-
 fn main() {
-    // A struct, or structure, is a custom data type that lets you package together and name multiple related values that make 
+    // A struct, or structure, is a custom data type that lets you package together and name multiple related values that make
     // up a meaningful group, this is similar to an OOP object's data attributes
 
     // the syntax for the struct  is similar to the dictionary in python ecosystem
@@ -92,15 +89,11 @@ fn main() {
 
     user_2.username = String::from("new_username");
     // while compiling this code the first time
-    // i noticed that rust does not allow for field access directly in {} in the println macro, 
+    // i noticed that rust does not allow for field access directly in {} in the println macro,
     // but it does allow for those field access to be ised as positional argument instead
     println!("User2 Username: {}", user_2.username);
 
-
-    let user3 = build_user(
-        "ThirdUser".to_string(), 
-        "safe@gmail.com".to_string()
-    );
+    let user3 = build_user("ThirdUser".to_string(), "safe@gmail.com".to_string());
     println!("User3 Username: {}", user3.username);
 
     // we can also create a new struct from the fields of an exisiting struct like so
@@ -118,13 +111,13 @@ fn main() {
 
     println!("User4 Username: {}", user4.username);
     println!("User4 Greetings: {}", user4.greet());
-    println!("User4 Has same username as User2 {}", user4.has_same_username(&user_2));
+    println!(
+        "User4 Has same username as User2 {}",
+        user4.has_same_username(&user_2)
+    );
 
     // let use the associated function here
-    let _user5 = User::create_user(
-        String::from("email"),
-        String::from("username"),
-    );
+    let _user5 = User::create_user(String::from("email"), String::from("username"));
 
     println!("User5: {:#?}", _user5);
 
@@ -139,8 +132,7 @@ fn main() {
     println!("Valid: {:?}", valid);
 }
 
-
-fn build_user(username: String, email: String, ) -> User {
+fn build_user(username: String, email: String) -> User {
     User {
         // the order of the struct fields do not matter, provided they are all accounted for
         // and because our argument have the same name as the field names in our struct
@@ -155,7 +147,7 @@ fn build_user(username: String, email: String, ) -> User {
 
     // NOTE:
     // by default member fields in structs are private
-    // which means that even if the structs are marked as public, 
+    // which means that even if the structs are marked as public,
     // their fields are still hidden unless explicityl marked as public
     // they can still be accessed from other codes within the same crate as the struct
     // but to outside access they are hidden by default

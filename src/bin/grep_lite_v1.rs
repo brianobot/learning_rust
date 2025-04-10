@@ -1,4 +1,3 @@
-
 fn main() {
     let _search_term = "oo";
 
@@ -10,7 +9,7 @@ fn main() {
         It is the same with books. 
         What do we seek 
         through millions of pages?";
-    
+
     let mut tags: Vec<usize> = Vec::new();
     let mut _ctx: Vec<Vec<(usize, String)>> = Vec::new();
 

@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 use std::convert::From;
 
-
 #[derive(Debug)]
 struct Number {
     value: i32,
@@ -26,7 +25,7 @@ impl From<i8> for Number {
 
 fn main() {
     // the From trait provide implementations for data types to create itself from other types
-    
+
     let num = Number::from(32);
     let another_num = Number::from(32i8);
 

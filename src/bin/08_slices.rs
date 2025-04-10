@@ -30,7 +30,7 @@ fn main() {
 
     // string literals &str
     let s = "Hello world"; // the create an immutable string literals whose value is stored in the compiled binary
-    // this is possible because it content is known at compile time
+                           // this is possible because it content is known at compile time
     println!("the value of s = {s}");
 
     // in a nutshell
@@ -43,14 +43,13 @@ fn main() {
     // &str == string slice
     // &String == reference to a String
 
-    // other slices 
+    // other slices
     let a = [1, 2, 3, 4, 5, 6];
 
     let slice = &a[..4];
 
     println!("Slice = {:?}", slice);
 }
-
 
 fn _first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
@@ -85,5 +84,4 @@ fn _second_word(s: &String) -> &str {
     }
 
     &s[start_index..end_index]
-
 }

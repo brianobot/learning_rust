@@ -3,14 +3,14 @@
 // syntax for attributes
 // #[]
 
-#[allow(dead_code)] // this is an attribute
+#[allow(dead_code)]
+// this is an attribute
 
 //inner attributes apply to the container there are applied to
 // #![allow(dead_code)]
 
 // outer attributes apply to the element following their declaration
 // #[allow(dead_code)]
-
 #[derive(Debug, Clone)] // this is another attribute
 struct Person {
     name: String,
@@ -18,7 +18,10 @@ struct Person {
 }
 
 fn main() {
-    let paul = Person { name: String::from("Paul"), age: 34 };
+    let paul = Person {
+        name: String::from("Paul"),
+        age: 34,
+    };
     println!("");
     println!("person: {:?}", paul);
     println!("");

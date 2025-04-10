@@ -35,7 +35,10 @@ fn main() {
     let another_empty_vector = Vec::<i32>::new();
 
     println!("Empty vector capacity = {:?}", empty_vector.capacity());
-    println!("Another empty vector capacity = {:?}", another_empty_vector.capacity());
+    println!(
+        "Another empty vector capacity = {:?}",
+        another_empty_vector.capacity()
+    );
 
     // creating a vector with a certain capacity
     let mut some_names = Vec::<String>::with_capacity(10);
@@ -128,7 +131,9 @@ fn main() {
     }
 
     // sorting an array can be done with .sort, .reverse and the sort_by methods
-    let mut data = vec![45, 23, 4, 5, 23, 54, 23, 5, 2, 42, 31, 4, 3, 43, 5, 3, 3, 4, 3, 4, 35];
+    let mut data = vec![
+        45, 23, 4, 5, 23, 54, 23, 5, 2, 42, 31, 4, 3, 43, 5, 3, 3, 4, 3, 4, 35,
+    ];
     data.sort();
     println!("Sorted data = {:?}", data);
 
@@ -150,7 +155,7 @@ fn main() {
     let some_vector = some_slice.to_vec();
 
     println!("Some vector = {:?}", some_vector);
-    
+
     // always remember that  safer way to get an element from a vector is with the use
     // of the .get() method, which returns value wrapped in Some if it exist or None if it does not exist
 
@@ -158,16 +163,18 @@ fn main() {
     println!("Sixth number = {:?}", first_5_nums.get(6));
 
     let first_100_even_numbers: Vec<_> = (1..202).filter(|x| x % 2 == 0).collect();
-    println!("First 100 numbers = {:?}, len: {}", first_100_even_numbers, first_100_even_numbers.len());
+    println!(
+        "First 100 numbers = {:?}, len: {}",
+        first_100_even_numbers,
+        first_100_even_numbers.len()
+    );
 
     // an example to convert an vector of &str types to a vector String types
     let names = vec!["james", "paul", "okon", "obot", "abasifreke"]
         .iter_mut()
-        .map(|x| {
-            x.to_string()
-        })
+        .map(|x| x.to_string())
         .collect::<Vec<_>>();
-    
+
     println!("Names = {:?}", names);
 
     // NOTE: the default iterator for a vector is consuming, to get a reference to the elements
@@ -200,5 +207,4 @@ fn main() {
     // as in the case for insert and remove method shown above
     first_100_numbers.retain(|x| x % 2 == 0);
     println!("First even numbers = {:?}", first_100_numbers);
-
 }

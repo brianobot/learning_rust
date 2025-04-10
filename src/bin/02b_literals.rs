@@ -5,7 +5,7 @@ fn main() {
     // char
     // unit types () can be written as literals
 
-    // integer addition 
+    // integer addition
     println!("1 + 2 = {}", 1u32 + 2);
 
     // integer subtraction

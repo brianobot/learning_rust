@@ -1,8 +1,8 @@
 #![allow(dead_code)]
 
+use std::cell::Cell;
 use std::fmt;
 use std::fmt::Display;
-use std::cell::Cell;
 
 enum Character {
     Mage,
@@ -20,11 +20,8 @@ impl Display for Character {
     }
 }
 
-
 #[derive(Debug)]
 struct VehicleTuple(String, String, u32);
-
-
 
 struct Player {
     name: String,
@@ -44,7 +41,6 @@ struct SecurePlayer<'a> {
     level: u32,
     hp: u32,
 }
-
 
 fn main() {
     let one = Character::Archer;

@@ -6,7 +6,7 @@ fn main() {
     #[derive(Debug)]
     enum IPAddrKind {
         // the syntax uses to defined variants resemble the struct
-        V4, 
+        V4,
         V6,
     }
 
@@ -24,7 +24,7 @@ fn main() {
     route(four);
     route(six);
     // the value of an enum contain information about which variant it is
-    // 
+    //
 
     enum _IPAddrKindV2 {
         V4(String),
@@ -69,9 +69,9 @@ fn main() {
     enum _Option<T> {
         None,
         Some(T),
-    } 
+    }
 
-    // the option enum and its variants are included in the prelude so you do not have to import them before using them 
+    // the option enum and its variants are included in the prelude so you do not have to import them before using them
     // in your code, the code about uses T which is what is called a generic datatype
     // and it goes to say that what ever the value of T is is the data type of the Option instance
 
@@ -91,5 +91,4 @@ fn main() {
     println!("Roses are {:?}", Color::Red);
     println!("Violets are {:?}", Color::Blue);
     println!("Leaves are {:?}", Color::Green);
-
 }

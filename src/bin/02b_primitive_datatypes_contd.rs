@@ -1,10 +1,10 @@
 fn main() {
     // the most primitive datatype in rust is the str
     // and it is known as string slice
-    
+
     let x: i32 = 42;
     let crab: String = String::from("🦀");
-    
+
     println!("Number of 🦀 = {x} {crab}");
 
     // maximum value of i32 = 2 ^ 31 - 1

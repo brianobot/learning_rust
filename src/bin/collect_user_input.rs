@@ -1,7 +1,6 @@
 use std::io;
 use std::io::Write;
 
-
 // mimicing the input function available in python here
 fn input(prompt: &str) -> io::Result<String> {
     print!("{}", prompt);

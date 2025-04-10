@@ -27,7 +27,10 @@ fn main() {
     // remember slice can point to a section of an array
     let last_hundred_zeros = &zeros[400..];
     println!("Last hundred zeros = {:?}", last_hundred_zeros);
-    println!("Count for the last hundred zeros = {}", last_hundred_zeros.len());
+    println!(
+        "Count for the last hundred zeros = {}",
+        last_hundred_zeros.len()
+    );
 
     // slice can be empty
     // when defining empty arrays, the type annotation must be provided since it can not be inferred from the definition
@@ -40,14 +43,11 @@ fn main() {
     // and can be matched as showned below
     let fifth_element = empty_array.get(5);
     let value = match fifth_element {
-        Some(value) => { value }, 
+        Some(value) => value,
         // since the value of value in the Some variant was a reference to an i32
-        None => { &0 },
+        None => &0,
         // i have to borrow here to ensure the return value here matches that case of the Some variant
     };
 
     println!("Value = {}", value);
-
-
-
 }

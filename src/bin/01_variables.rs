@@ -29,7 +29,7 @@ fn main() {
     // CONSTANTS are not allowed to be made mutable, they are always immutable
     // with constant the type MUST BE annotated
     // it is convention to use all upper case and understand for constants in rust
-    // since the value is evaluated at compile, writing it as an expression makes it 
+    // since the value is evaluated at compile, writing it as an expression makes it
     // easier to understand instead of putting the final result there
 
     // constants are valid for the entire time the program run in the scope in which there
@@ -60,7 +60,7 @@ fn main() {
         Substract,
     }
 
-    type Operations =  VeryVeryVerboseEnumOfThingsToDoWithNumbers;
+    type Operations = VeryVeryVerboseEnumOfThingsToDoWithNumbers;
     // we can now refer to the enum using the type aliased name
     // types must have UpperCamelCase names, and they can be used on an existing type
 
@@ -106,11 +106,11 @@ fn main() {
         an_integer += 10;
 
         println!("Some variable after mutation = {}", some_variable);
-        
+
         let mut some_variable = 1;
 
         some_variable += 10;
-        
+
         println!("Some variable new = {}", some_variable);
     }
 
@@ -122,7 +122,7 @@ fn main() {
     let some_integer = some_float as i32;
     let some_u32 = some_integer as u32;
     let some_i8 = some_u32 as i8;
-    let some_u8  = some_i8 as u8;
+    let some_u8 = some_i8 as u8;
     let some_char = some_u8 as char;
 
     println!("Some integer = {some_integer}");
@@ -135,7 +135,6 @@ fn main() {
     println!("X = {x}");
 
     let ass_val = x = 10;
-    println!("X = {}", x );
+    println!("X = {}", x);
     println!("Assigment value = {:?}", ass_val);
-    
 }

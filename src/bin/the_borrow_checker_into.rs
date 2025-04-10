@@ -22,12 +22,12 @@ fn main() {
     // lifetime is the period of time when accessing a value is valid behaviour
 
     // borrowing means to access a value, but not take charge of it clean up process
-    // in these concepts the borrower is not obligated to directly return the value as 
+    // in these concepts the borrower is not obligated to directly return the value as
     // the term suggests, you can think of it as borrowring access to a value
 
     // Example to demonstrate the concept of the borrow checker
     #![allow(unused_variables, dead_code)]
-    
+
     #[derive(Debug, Clone)]
     struct Message {
         to: u64,
@@ -61,7 +61,9 @@ fn main() {
         fn new(id: u64) -> Self {
             CubeSat {
                 id,
-                mailbox: MailBox { messages: Vec::new() },
+                mailbox: MailBox {
+                    messages: Vec::new(),
+                },
             }
         }
 
@@ -73,7 +75,9 @@ fn main() {
     impl GroundStation {
         fn new() -> Self {
             GroundStation {
-                mailbox: MailBox { messages: Vec::new() },
+                mailbox: MailBox {
+                    messages: Vec::new(),
+                },
                 radio_freq: 99.23,
             }
         }
@@ -98,7 +102,7 @@ fn main() {
     }
 
     fn check_status(sat_id: CubeSat) -> CubeSat {
-        // here achieve the process through a side effect and return 
+        // here achieve the process through a side effect and return
         // the move value to the caller of the function
         println!("{:?}: {:?}", sat_id, StatusMessage::Ok);
         sat_id
@@ -133,7 +137,10 @@ fn main() {
 
     let base = GroundStation::new();
 
-    let msg_1 = Message{ to: 1, content: String::from("May Day!") };
+    let msg_1 = Message {
+        to: 1,
+        content: String::from("May Day!"),
+    };
     let msg_1_sent = base.send(&mut sat_a, msg_1);
 
     println!("{:?}", sat_a);
@@ -152,7 +159,10 @@ fn main() {
 
     for sat_id in sat_ids {
         let mut sat = base.connect(sat_id);
-        let msg = Message{ to: 1, content: String::from("May Day!") };
+        let msg = Message {
+            to: 1,
+            content: String::from("May Day!"),
+        };
 
         let msg_sent = base.send(&mut sat, msg);
         let msg_recv = sat.recv();
@@ -163,12 +173,12 @@ fn main() {
     // to implement Copy on a type, the fields of the type must also implement copy
     // like mentioned above, the primitve types like integer implement cop by default
 
-    // Copy is implicit 
+    // Copy is implicit
     // Clone is explicit
 
     // Rc - Reference Counted type
-    use std::rc::Rc;
     use std::cell::RefCell;
+    use std::rc::Rc;
 
     let base_new = Rc::new(GroundStation::new());
 
@@ -179,13 +189,11 @@ fn main() {
     // when the count drops to 0, the original type is freed from memory
 
     // rc does not permit mutation, to allow for mutation
-    // it must be wrapped in the RefCell type 
+    // it must be wrapped in the RefCell type
 
     let base = Rc::new(RefCell::new(GroundStation::new()));
 
     println!("Base = {:?}", base);
- 
-    // Rc is not threadsafe, replace Rc<T> with Arc<T> and Rc<RefCell<T>> with Arc<Mutex<T>> 
 
-
+    // Rc is not threadsafe, replace Rc<T> with Arc<T> and Rc<RefCell<T>> with Arc<Mutex<T>>
 }

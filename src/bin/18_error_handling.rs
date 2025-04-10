@@ -1,4 +1,3 @@
-
 fn main() {
     // rust has two groups of errors
     // recoverable and unrecoverable errors
@@ -27,7 +26,4 @@ fn main() {
     // it takes a error message that is shown when the program panics
     // let _some_value = [1, 2, 3].iter().nth(100).unwrap();
     let _some_value = [1, 2, 3].iter().nth(100).expect("100th Element not found!");
-
-
-    
 }

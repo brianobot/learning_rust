@@ -2,7 +2,7 @@
 // modules do not get compiled individually, only crates do
 
 // a crate can be compiled into a binary or a library
-// by default crate are compiled into binary 
+// by default crate are compiled into binary
 
 // a crate can be compiled as library with
 // rustc --crate-type=lib <file_name>.rs

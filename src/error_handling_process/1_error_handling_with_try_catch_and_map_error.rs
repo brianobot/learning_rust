@@ -7,16 +7,14 @@ fn add() -> Result<(), ()> {
     Ok(())
 }
 
-
 fn calculate() -> Result<(), ()> {
-    let value = add()?; // at this point, 
-    // if the add function (expression) is an error, the function ends here and is returned
-    // notice how the return value here matches the expected function signature
+    let value = add()?; // at this point,
+                        // if the add function (expression) is an error, the function ends here and is returned
+                        // notice how the return value here matches the expected function signature
     Ok(value)
 }
 
 fn main() {
     let value = calculate().unwrap();
     println!("Value = {:?}", value);
-
 }

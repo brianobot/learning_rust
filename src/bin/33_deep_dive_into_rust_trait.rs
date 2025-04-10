@@ -7,11 +7,9 @@ trait Printable {
     fn print(&self);
 }
 
-
 #[derive(Debug)]
 #[allow(unused)]
 struct Paper {}
-
 
 // trait implementation
 impl Printable for Paper {
@@ -19,7 +17,6 @@ impl Printable for Paper {
         println!("{:?}", self);
     }
 }
-
 
 impl Printable for i32 {
     fn print(&self) {
@@ -35,8 +32,6 @@ trait PrintableWithLabel: Printable {
         self.print();
     }
 }
-
-
 
 impl PrintableWithLabel for i32 {}
 
@@ -54,8 +49,6 @@ fn print_static<T: Printable>(value: T) {
 fn print_dynamic(value: &dyn Printable) {
     value.print();
 }
-
-
 
 //  print_static uses a generic parameter T, which must implement the Printable trait. When this function is called, the compiler generates separate code for each type that is passed to it (static dispatch).
 // print_dynamic uses a trait object (&dyn Printable) as a parameter. This enables dynamic dispatch, allowing the function to process any type implementing the Printable trait.

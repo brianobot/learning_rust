@@ -15,11 +15,11 @@ fn inspect(color: Color) {
         Color::HSL(_, _, _) => println!("HSL Color provided"),
     }
 }
- 
+
 fn main() {
     let black = Color::Hex(String::from("000000"));
     let white = Color::RGB(20, 20, 20);
-    
+
     dbg!(black.clone(), white.clone());
 
     inspect(black);
@@ -47,7 +47,6 @@ fn main() {
     let intro = Word::from("Hi!, My Name is Brian");
     println!("This is my Intro: {intro}");
 
-
     println!("==========================================");
 
     #[derive(Debug)]
@@ -72,7 +71,7 @@ DELETE 342:LO/22111";
     for line in lines.lines() {
         let value: Vec<&str> = line.splitn(2, " ").collect();
         if value.len() == 1 {
-            planet =  Planet::Unknown;
+            planet = Planet::Unknown;
         }
 
         match planet {
@@ -82,9 +81,4 @@ DELETE 342:LO/22111";
     }
 
     println!("planet = {:?}", planet);
-
-
-
-}   
-
-
+}

@@ -7,7 +7,6 @@ fn main() {
     println!("Duration: {:?}", Instant::now() - start);
 }
 
-
 fn run() {
     for i in 0..1_000_000_000i128 {
         let _a = (i * 1_000_000) as f64 / 1.3243;

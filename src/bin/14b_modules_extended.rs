@@ -15,16 +15,17 @@
 
 mod test_module; // this is called a normal module as it point a file/directory that contains the module codes
 
-mod test_module_2 { // this is an inline module as it code are inline after the module declaration
+mod test_module_2 {
+    // this is an inline module as it code are inline after the module declaration
     pub fn shout() {
         println!("Shoutttinnngggg!!!");
     }
 }
 
-// here the compiler looks for a file called test_module.rs or test_module/mod.rs 
+// here the compiler looks for a file called test_module.rs or test_module/mod.rs
 // in the current direcory
 
-// notice how we needed to make the function in the test_module pub (public) for it 
+// notice how we needed to make the function in the test_module pub (public) for it
 // to be accessible outside the module, all module contents are by default private
 // out side of a module
 
@@ -69,7 +70,6 @@ pub mod answer {
 }
 
 pub use answer::ANSWER;
-
 
 fn main() {
     test_module::print_module();

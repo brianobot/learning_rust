@@ -6,9 +6,8 @@ operators that can be overloaded are available in the std::ops module
 
 + is a syntactic sugar for the add method
 1u32 + 2u32 === 1u32.add(2u32)
-*/ 
+*/
 #![allow(unused)]
-
 
 use std::ops::{Add, Sub};
 
@@ -20,7 +19,10 @@ struct Person {
 
 impl Person {
     fn new(first_name: String, last_name: String) -> Self {
-        Person { first_name, last_name }
+        Person {
+            first_name,
+            last_name,
+        }
     }
 }
 
@@ -53,7 +55,7 @@ struct Divorce {
 // supporting Marriage - Person == Divorce
 impl Sub<Person> for Marriage {
     type Output = Divorce;
-    
+
     fn sub(self, rhs: Person) -> Self::Output {
         Divorce {
             marriage: self.clone(),
@@ -64,16 +66,13 @@ impl Sub<Person> for Marriage {
 
 impl Add<i32> for Marriage {
     type Output = Marriage;
-    
+
     // it's important to note that the trait definition doesn't
     // have to match the trait method argument names, but the types must match
     fn add(self, other: i32) -> Self::Output {
         self
     }
-
-    
 }
-
 
 fn main() {
     let peter = Person::new("Peter".to_string(), "Okon".to_string());

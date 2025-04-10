@@ -1,10 +1,10 @@
 #![allow(dead_code)]
 
 // iterators is something you can call the next method on repeatedly and it gives us a sequence of things
-// technically this means iterators implement the Iterator trait which in turns implement the 
+// technically this means iterators implement the Iterator trait which in turns implement the
 // next method
 
-// a range like 0..10 is mathematically represented as "[0, 10)", 
+// a range like 0..10 is mathematically represented as "[0, 10)",
 // inclusive on the left and exclusive on the right
 
 fn main() {
@@ -25,7 +25,7 @@ fn main() {
 
         fn next(&mut self) -> Option<Self::Item> {
             let new_next = self.curr + self.next;
-            
+
             self.curr = self.next;
             self.next = new_next;
 
@@ -35,10 +35,7 @@ fn main() {
 
     // notice how i made the reference to fib a mutable reference
     // this is so because in the trait implmentation next, the struct is being mutated
-    let mut fib: Fibonnaci = Fibonnaci { 
-        curr: 1, 
-        next: 1,
-    };
+    let mut fib: Fibonnaci = Fibonnaci { curr: 1, next: 1 };
     println!("I = {:?}", &fib.curr);
     for _ in 0..10 {
         println!("I = {:?}", &fib.next());
@@ -67,11 +64,11 @@ fn main() {
 
     // it is important to always declare iterators as mutable since a consuming
     // changes their internal states, this is abstracted away in for loops
-    let mut persons_iter  = persons.iter();
+    let mut persons_iter = persons.iter();
 
     // after this line the first item in the iterator is consumed, move into the first_person variable
     let first_person = persons_iter.next();
-    
+
     println!("First person = {:?}", first_person);
     println!("Persons iter = {:?}", persons_iter);
 
@@ -79,7 +76,7 @@ fn main() {
         println!("Person = {:?}", person);
     }
 
-    // note the values we get from calling next are immutable references to 
+    // note the values we get from calling next are immutable references to
     // the value in the sequence the iterators were generated from or for
 
     // if you want to get a mutable reference to the item in the sequence in the iterators
@@ -101,7 +98,7 @@ fn main() {
     // an example if the map method
 
     let ages = vec![1, 2, 3, 4, 5, 6];
-    // iterators adapters are lazy and must always be consumed, 
+    // iterators adapters are lazy and must always be consumed,
     // i consume mine with the collect method
     let double_ages: Vec<i8> = ages.iter().map(|age| age * 2).collect();
 
@@ -112,7 +109,7 @@ fn main() {
     // and the value passed to the closure, is included in the new iterator if
     // the boolean is truthy
 
-    let numbers : Vec<i8> = (1..20).filter(|x| x % 2 == 0).collect();
+    let numbers: Vec<i8> = (1..20).filter(|x| x % 2 == 0).collect();
 
     let first_five = (0..100).take(5).collect::<Vec<_>>();
     println!("First Five = {:?}", first_five);
@@ -120,9 +117,9 @@ fn main() {
     // the collect method converts any iterator into a collection and typically
     // need to specify the type of the collection we want to generate with the collect
     // the collect method can be used directly to convert one collection to another type
-    
+
     println!("Even Numbers = {:?}", numbers);
-    
+
     let steps = vec![1, 2, 3, 4, 5];
     let pairs: Vec<_> = steps.iter().enumerate().collect();
     println!("Pairs = {:?}", pairs);
@@ -131,7 +128,7 @@ fn main() {
     let sum = (0..10).collect::<Vec<i32>>();
     println!("SUm = {sum:?}");
 
-    // another consumer is the find consumer, which takes in a closure and return the first element that 
+    // another consumer is the find consumer, which takes in a closure and return the first element that
     // mtaches the closure logic
 
     let mut first_ten_numbers = 0..11;
@@ -150,16 +147,14 @@ fn main() {
 
     let multiple = (1..11).fold(1, |mul, x| mul * x);
 
-
     println!("Fold in Sum Call = {sum}");
     println!("Fold in Mul Call = {multiple}");
-
 
     // in addition to the iterators adapters the Iterator traits provide methods to
     // directly apply actions to the item in the data source sequence
 
     // for_each
-    steps.iter().for_each(|x: &i32|  {
+    steps.iter().for_each(|x: &i32| {
         println!("Result = {x}");
     });
 
@@ -167,7 +162,7 @@ fn main() {
     let count = steps.iter().count();
     println!("Steps Count = {count}");
 
-    // len 
+    // len
     let len = steps.iter().len();
     println!("Len of Steps = {len}");
 
@@ -179,23 +174,58 @@ fn main() {
 
     fn collection() -> Vec<Book> {
         vec![
-            Book { title: String::from("How to make money"), author: String::from("Ian Rives"), year: 2000 },
-            Book { title: String::from("How to make a name"), author: String::from("Ian Rives"), year: 1920 },
-            Book { title: String::from("How to make it"), author: String::from("Ian Rives"), year: 2012 },
-            Book { title: String::from("How to make Family"), author: String::from("Ian Rives"), year: 1980 },
-            Book { title: String::from("How to make Good Name"), author: String::from("Ian Rives"), year: 1999 },
-            Book { title: String::from("How to make Love"), author: String::from("Ian Rives"), year: 2023 },
-            Book { title: String::from("How to make Joy"), author: String::from("Ian Rives"), year: 2020 },
-            Book { title: String::from("How to make Cars"), author: String::from("Ian Rives"), year: 2015 },
+            Book {
+                title: String::from("How to make money"),
+                author: String::from("Ian Rives"),
+                year: 2000,
+            },
+            Book {
+                title: String::from("How to make a name"),
+                author: String::from("Ian Rives"),
+                year: 1920,
+            },
+            Book {
+                title: String::from("How to make it"),
+                author: String::from("Ian Rives"),
+                year: 2012,
+            },
+            Book {
+                title: String::from("How to make Family"),
+                author: String::from("Ian Rives"),
+                year: 1980,
+            },
+            Book {
+                title: String::from("How to make Good Name"),
+                author: String::from("Ian Rives"),
+                year: 1999,
+            },
+            Book {
+                title: String::from("How to make Love"),
+                author: String::from("Ian Rives"),
+                year: 2023,
+            },
+            Book {
+                title: String::from("How to make Joy"),
+                author: String::from("Ian Rives"),
+                year: 2020,
+            },
+            Book {
+                title: String::from("How to make Cars"),
+                author: String::from("Ian Rives"),
+                year: 2015,
+            },
         ]
     }
 
     let books = collection();
 
-    let max_years = books.iter().map(|book: &Book| {
-        println!("Book year = {}", book.year);
-        book.year
-    }).max();
+    let max_years = books
+        .iter()
+        .map(|book: &Book| {
+            println!("Book year = {}", book.year);
+            book.year
+        })
+        .max();
 
     println!("Years = {:?}", max_years);
 
@@ -204,21 +234,21 @@ fn main() {
     // consumes the item in the collection so after the iteration, the collection is no longer
     // available
 
-    let some_collection = vec![1, 2, 3,  4, 5];
+    let some_collection = vec![1, 2, 3, 4, 5];
     let into_iter = some_collection.into_iter();
-    
+
     for item in into_iter {
         println!("Item = {item}");
     }
-    
-    let some_collection = vec![1, 2, 3,  4, 5];
+
+    let some_collection = vec![1, 2, 3, 4, 5];
     let iter = some_collection.iter();
 
     for item in iter {
         println!("Item = {item}");
     }
 
-    let mut some_collection = vec![1, 2, 3,  4, 5];
+    let mut some_collection = vec![1, 2, 3, 4, 5];
     let iter_mut = some_collection.iter_mut();
 
     for item in iter_mut {
@@ -240,8 +270,8 @@ fn main() {
 
     // when given two iterators we can chain them together to form a new longer iterator
     // this chain iterator might not always be collectable into a single collection type, since
-    // the items in each iterator might be of different types, so the chain works best when you want to maybe iterate 
-    // of the longer list 
+    // the items in each iterator might be of different types, so the chain works best when you want to maybe iterate
+    // of the longer list
     let first_iter = 0..=100;
     let second_iter = 101..=200;
 
@@ -260,14 +290,17 @@ fn main() {
     println!("Pairs: {:#?}", pairs);
 
     // we can use the skip method to skip certain items in an iterator too
-    // the skip methods return an iterator which skips the number of items at the start of the 
+    // the skip methods return an iterator which skips the number of items at the start of the
     // base iterator it was applied on
     let some_iter = 0..5;
-    println!("Did not skip this items: {:?}", some_iter.skip(1).collect::<Vec<_>>());
+    println!(
+        "Did not skip this items: {:?}",
+        some_iter.skip(1).collect::<Vec<_>>()
+    );
 
     // we can also use the take method on iterator, it is similar to skip
     // it instead of discarding the number it items from the start, it only uses those item
-    // just like skip, this also returns an iterator, it is a adapter  method, 
+    // just like skip, this also returns an iterator, it is a adapter  method,
     let first_three_items = (0..1000).take(3);
     println!("First Three Items = {:?}", first_three_items);
 
@@ -278,5 +311,4 @@ fn main() {
     let peek_second_number = peekable.peek();
     println!("First Number = {:?}", first_number.unwrap());
     println!("Peek Second Number = {:?}", peek_second_number.unwrap());
-
-} 
+}
