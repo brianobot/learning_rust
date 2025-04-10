@@ -1,3 +1,5 @@
+#[allow(unused)]
+
 fn main() {
     // to add condition compilation to your project
     // annotate the source code with cfg attributes, 

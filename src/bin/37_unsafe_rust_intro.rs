@@ -77,6 +77,7 @@ fn main() {
     // 3. Access and Modify mutable stable variable
     add_to_counter(3);
     unsafe {
+        #![allow(static_mut_refs)]
         println!("COUNTER: {}", COUNTER);
     }
 
