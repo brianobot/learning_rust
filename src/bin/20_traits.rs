@@ -25,7 +25,7 @@ impl Read for File {
     }
 }
 
-// to implement the Debug trait 
+// to implement the Debug trait
 // the trait must implement the fmt method
 
 impl Display for File {
@@ -36,7 +36,7 @@ impl Display for File {
 
 fn main() {
     /* Traits in Rust are a way to define shared behavior across multiple struct or enum types. They're similar to  interfaces in other languages. A trait is defined with the keyword 'trait' followed by its name and a set of method signatures within curly braces.
-    */
+     */
 
     /// the trait only defines the methods needed (the interface)
     trait LivingThing {
@@ -46,8 +46,8 @@ fn main() {
         fn can_code(&self) -> bool;
 
         // it is possible to define default implementations for the traits function
-        // and this defaults can be used by the types that implement the trait or it can be 
-        // overriden, 
+        // and this defaults can be used by the types that implement the trait or it can be
+        // overriden,
 
         fn summarize(&self) -> String {
             let can_code = &self.can_code();
@@ -55,7 +55,6 @@ fn main() {
             String::from(formatted_string)
         }
     }
-
 
     struct Dog;
 
@@ -120,5 +119,4 @@ fn main() {
 
     let data = file.read();
     println!("Data = {:?}", data);
-
 }

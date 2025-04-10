@@ -6,8 +6,8 @@ fn main() {
     // the data that collection point to is store in the heap, unlike the array and the tuple
     // since collections values are stored on the heap, the amount of data do not need to be known at compile time
 
-    // the three most commonly used collections in rust are 
-    // vector - similar to list in python 
+    // the three most commonly used collections in rust are
+    // vector - similar to list in python
     // string - collection of characters
     // hashmap - key value pair similar to dictionary in python
 
@@ -15,8 +15,8 @@ fn main() {
     // they can only store values of the same type
 
     let vec: Vec<i32> = Vec::new(); // type annotation is needed for the empty state
-    // if instead we were creating the vector with some initial values, we would not have to specify the 
-    // type since rust can infer the type from the values we give to the vector
+                                    // if instead we were creating the vector with some initial values, we would not have to specify the
+                                    // type since rust can infer the type from the values we give to the vector
 
     let v = vec![1, 2, 3, 4]; // rust programs a vec macro that can create a vector with the values we give to it
 
@@ -24,7 +24,7 @@ fn main() {
     // we need to make it mutable
 
     let mut vector = vec![]; // this also creates a new empty vector too
-    // the compiler knew from the data added to the vector, that the support data type for the vector is i32
+                             // the compiler knew from the data added to the vector, that the support data type for the vector is i32
 
     vector.push(5);
     vector.push(4);
@@ -50,7 +50,7 @@ fn main() {
     let ref_first_element = &points[0];
     println!("Reference to the first element = {ref_first_element}");
 
-    // when we use the get method we get a Option, which would contain a reference element in the 
+    // when we use the get method we get a Option, which would contain a reference element in the
     // particular index if it exists or None
     let tenth_element = points.get(10);
     match tenth_element {
@@ -58,14 +58,14 @@ fn main() {
         None => println!("There is no tenth element"),
     }
 
-    // if we hold a reference to an element in the vector and try to add to it 
+    // if we hold a reference to an element in the vector and try to add to it
     // this would not work because of the rule of not having any other references when you have a mutable reference
 
     // points.push(100);
     // println!("Points = {:?}", points);
 
     println!("Reference to the first element  = {ref_first_element}");
-    // this is because the compiler has seen that between the time of creating the immutable reference the 
+    // this is because the compiler has seen that between the time of creating the immutable reference the
     // object actually mutates, this does not completely make sense to me but i accept it logic
 
     // okay the explanation for this is that, since vector store it items next to each other, when a new item is added
@@ -80,7 +80,7 @@ fn main() {
     let mut coord = vec![12, 23, 43, 56, 67, 78, 98, 54, 43];
 
     for i in &mut coord {
-        *i += 50;  // we use the * to dereference the element here
+        *i += 50; // we use the * to dereference the element here
     }
     println!("Coord = {:?}", coord);
 
@@ -98,10 +98,7 @@ fn main() {
         SpreadsheetCell::Text(String::from("Some information")),
     ];
 
-    let sheet = vec![
-        &row,
-        &row,
-    ];
+    let sheet = vec![&row, &row];
 
     println!("Row = {:?}", row);
     println!("Sheet = {:?}", sheet);
@@ -121,7 +118,7 @@ fn main() {
     let s = data.to_string();
 
     println!("s = {s}");
-    
+
     let s = String::from("Initial data goes here");
 
     println!("s = {s}");
@@ -129,7 +126,7 @@ fn main() {
 
     let mut name = String::from("Brian");
     name.push_str(" David Obot"); // this method takes string slice since it does not need to take ownership
-    // of the string passed to it
+                                  // of the string passed to it
 
     // just like the push_str, the push method takes a single character and extends the string by that character
     name.push('.');
@@ -143,7 +140,7 @@ fn main() {
     let s1 = "Hello ".to_string();
     let s2 = "World".to_string();
     let new = s1 + &s2; // after this line, s1 has been moved
-    // the compiler can coerce &String argument into &str
+                        // the compiler can coerce &String argument into &str
     println!("New = {new}");
     println!("S2 = {s2}");
 
@@ -154,13 +151,13 @@ fn main() {
     let s = format!("{s1} {s2}");
 
     println!("S = {s}");
-    
+
     // NOTE: rust does not support String indexing as seen in other programming languages
-    // the simple explanation is that in rust, a byte does not always correspond to a character 
+    // the simple explanation is that in rust, a byte does not always correspond to a character
     // since some characters can be reprensented by more than 1 byte, which would make indexing fail in some cases
 
     let hello = String::from("Здравствуйте"); // this is a valid string with 12 characters
-    // but each character takes 2 bytes each which amount to 24 bytes, now this code below would fail
+                                              // but each character takes 2 bytes each which amount to 24 bytes, now this code below would fail
 
     // let first = &hello[0];
     // so rather than user the [] with a specific number as the index, rust encourages the use of a range to
@@ -172,7 +169,7 @@ fn main() {
 
     println!("S = {s}");
 
-    // if the boundary of the slice is inbetween a character, rust would panic, 
+    // if the boundary of the slice is inbetween a character, rust would panic,
     // some characters take up more than 1 byte remember!!
     // let f = &hello[0..1];
 
@@ -189,6 +186,4 @@ fn main() {
     }
 
     // But be sure to remember that valid Unicode scalar values may be made up of more than 1 byte.
-
-
 }

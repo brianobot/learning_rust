@@ -2,7 +2,7 @@
 
 fn main() {
     // to add condition compilation to your project
-    // annotate the source code with cfg attributes, 
+    // annotate the source code with cfg attributes,
     // cfg works with the target parameter provided to rustc during compilation
 
     #[cfg(target_os = "windows")]

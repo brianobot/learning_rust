@@ -3,7 +3,7 @@ use std::collections::HashMap; // since this is the least use collection, it is 
 fn main() {
     // HASHMAPS ~ less complicated than strings they say
     // they are dictionaries in python, key value pair which allow the keys to be used to access to values
-    // they keys can be anything? 
+    // they keys can be anything?
 
     // just like with other collections types , when creating an empty collection the type must be annotated
     // but again if this values are provide
@@ -24,7 +24,7 @@ fn main() {
 
     let name = String::from("Brian");
     // get returns an Option<&V>, we used to get the owned version Option<V>
-    // we then use unwrap_or to get the value of a default if the value is None 
+    // we then use unwrap_or to get the value of a default if the value is None
     let score = scores.get(&name).copied().unwrap_or(0);
 
     let value = None.unwrap_or(0);
@@ -62,6 +62,5 @@ fn main() {
     scores.entry("Stranger".to_string()).or_insert(5);
     println!("Scores Now = {:?}", scores);
 
-    println!("FINAL SCORES = {:?}", scores)  ;
-
+    println!("FINAL SCORES = {:?}", scores);
 }

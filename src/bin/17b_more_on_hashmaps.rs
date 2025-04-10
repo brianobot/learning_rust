@@ -1,32 +1,25 @@
 // hashmap is not part of the default prelude, so must be imported into the crate for use
-use std::collections::HashMap;
 use std::collections::hash_map::RandomState as Hasher;
-
+use std::collections::HashMap;
 
 fn main() {
     // hashmaps can use type inference to infer the type of the keys, values in the hashmap itself
     let mut book_reviews = HashMap::new();
 
     book_reviews.insert(
-        "Harry Potter And the Half Blood Prince".to_string(), 
-        "Excellent".to_string()
+        "Harry Potter And the Half Blood Prince".to_string(),
+        "Excellent".to_string(),
     );
 
     // when an insertion is done in rust hashmap, the old value is returned in the insertion if the key already exist
     // in the hashmap and the new key is used to update the key
-    let review = book_reviews.insert(
-        "The Alchemist".to_string(), 
-        "Good".to_string()
-    );
+    let review = book_reviews.insert("The Alchemist".to_string(), "Good".to_string());
     println!("First Alchemist Review: {:?}", review);
 
-    let second_review = book_reviews.insert(
-        "The Alchemist".to_string(), 
-        "Excellent".to_string()
-    );
+    let second_review = book_reviews.insert("The Alchemist".to_string(), "Excellent".to_string());
     println!("Second Alchemist Review: {:?}", second_review);
     println!("_________________________");
-    
+
     println!("Book Reviews: {:#?}", book_reviews);
 
     //  key-value pairs can be removed from the hashmap using the remove method
@@ -34,15 +27,9 @@ fn main() {
     println!("🔐🔐🔐 Removed Review: {:?}", removed_review);
 
     // to update the value of a key in an hashmap, just call the insert method again
-    book_reviews.insert(
-        "The Da Vinci Code".to_string(), 
-        "Poor".to_string()
-    );
+    book_reviews.insert("The Da Vinci Code".to_string(), "Poor".to_string());
 
-    book_reviews.insert(
-        "The Da Vinci Code".to_string(), 
-        "Excellent".to_string()
-    );
+    book_reviews.insert("The Da Vinci Code".to_string(), "Excellent".to_string());
 
     // even though the hashmap collection stores Owned string, it can still be queried using &str
     let first_book = book_reviews.get("Harry Potter And the Half Blood Prince");
@@ -53,7 +40,10 @@ fn main() {
         ("Harry Potter And the Half Blood Prince", "Excellent"),
         ("The Alchemist", "Good"),
         ("The Da Vinci Code", "Poor"),
-    ].iter().cloned().collect::<HashMap<&str, &str>>();
+    ]
+    .iter()
+    .cloned()
+    .collect::<HashMap<&str, &str>>();
     println!("Book Reviews: {:#?}", book_reviews);
 
     let book_reviews_2 = HashMap::from([
@@ -66,7 +56,9 @@ fn main() {
     let mut player_stats = HashMap::new();
 
     player_stats.entry("Strength").or_insert(100);
-    player_stats.entry("Dexterity").or_insert_with(random_dexterity);
+    player_stats
+        .entry("Dexterity")
+        .or_insert_with(random_dexterity);
 
     let score = player_stats.entry("Score").or_insert(200);
     *score += 10;
@@ -111,12 +103,8 @@ fn main() {
 
     // try to iterate over an hashmap
     // it is important to point out that when iterating over a hashmap, the order of the keys is arbitrary
-    let scores = HashMap::from([
-        ("Player 1", 100),
-        ("Player 2", 200),
-        ("Player 3", 300),
-    ]);
-    
+    let scores = HashMap::from([("Player 1", 100), ("Player 2", 200), ("Player 3", 300)]);
+
     let mut scores = scores;
     for (player, score) in scores.iter_mut() {
         println!("Player: {}, Score: {}", player, score);
@@ -130,10 +118,7 @@ fn main() {
 
     // is_empty method returns true if the hashmap is empty
     println!("Is Empty: {}", scores.is_empty());
-
-
 }
-
 
 fn random_dexterity() -> i32 {
     50

@@ -19,7 +19,6 @@ fn main() {
 
     let value = with_return_keyword();
     println!("Value = {value}");
-
 }
 
 fn another_function() {
@@ -57,12 +56,10 @@ fn function_with_arg(x: u32) {
 // the function can be applied to, we can instead pass slices to functions
 // that expect sequence , and the arrays and vectors would be treated alike
 
-
 fn with_return_value() -> u32 {
     5
 }
 
-
 fn with_return_keyword() -> f64 {
-    return 64.0
+    return 64.0;
 }

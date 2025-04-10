@@ -17,8 +17,6 @@ fn main() {
     let name = String::from("Brian");
     let age = 24;
 
-    let person = Person {name, age};
+    let person = Person { name, age };
     println!("Person = {:?}", person);
-
-
 }

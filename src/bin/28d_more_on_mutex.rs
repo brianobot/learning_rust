@@ -3,7 +3,6 @@ use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
 
-
 fn main() {
     // mutex is another way to change a value without using the mut keyword
     // it means mutual exclusion, and this means only one process can change it at a time
@@ -32,9 +31,9 @@ fn main() {
     // #[allow(unused_variables)]
     // let changer_1 = my_mutex.lock().unwrap();
     // println!("Just locked the mutex for changer 1");
-    
+
     // println!("About to lock mutex for changer 2");
-    // #[allow(unused_variables)] 
+    // #[allow(unused_variables)]
     // let changer_2 = my_mutex.lock().unwrap();
     // println!("Just locked the mutex for changer 2");
 
@@ -66,7 +65,7 @@ fn main() {
         Err(_msg) => println!("Failed to acquire lock!"),
     };
 
-    // note to use match case or if let to handle the result, as unwrapping it would cause a panic when 
+    // note to use match case or if let to handle the result, as unwrapping it would cause a panic when
     // the lock is not acquired
     println!("M: {:?}", m);
     // dbg!(m); // QUESTION: why can i not use the debugger here for the m mutex?
@@ -77,14 +76,13 @@ fn main() {
     // a mutex is considered poisoned if some thread, panic while holding it data, after this by default
     // all other threads are unable to access it value since it might have been tainted
 
-
     println!("About to Acquire guard 1");
     let _guard1 = m.lock().unwrap();
     println!("Acquired guard 1");
     // println!("About to Acquire gaurd 2");
     // let _guard2 = m.lock().unwrap(); // this would hold up the program since the mutex is currently
     // locked by the first guard
-    // println!("Acquired guard 2"); 
+    // println!("Acquired guard 2");
 
     let mutex = Mutex::new(0);
 
@@ -93,5 +91,4 @@ fn main() {
     data.add_assign(5); // this is equivalent of data += 5
 
     println!("Data: {:?}", data);
-
-} 
+}

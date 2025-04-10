@@ -6,7 +6,7 @@ fn main() {
         if b == 0.0 {
             return Err(String::from("Division by Zero is not allowed"));
         }
-        Ok(a / b) 
+        Ok(a / b)
     }
 
     let result_1 = divide(1.2, 3.2);
@@ -18,5 +18,4 @@ fn main() {
             Err(_) => println!("Encountered error while processing computation"),
         }
     }
-    
 }

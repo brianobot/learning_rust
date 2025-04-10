@@ -1,7 +1,7 @@
-use std::thread;
-use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::Mutex;
+use std::thread;
+use std::time::Duration;
 
 fn main() {
     // a thread is a way to manage an independent flow or execution of part of a program
@@ -17,14 +17,16 @@ fn main() {
             thread::sleep(Duration::from_millis(1));
         }
     });
-    
+
     // there is no parent error propagation between spawned thread and the spawining thread
     // the spawned may outlive the spawning thread unless the spawning thread is the main thread
 
     // a new thread can be configured before it is spawned, it name and stack size can be set
-    let another_handle = thread::Builder::new().name("thread1".to_string()).spawn(move || {
-        println!("Hello, world!");
-    });
+    let another_handle = thread::Builder::new()
+        .name("thread1".to_string())
+        .spawn(move || {
+            println!("Hello, world!");
+        });
 
     let _res = another_handle.unwrap();
     println!("Response from Built Thread: {:?}", _res);
@@ -36,7 +38,6 @@ fn main() {
         }
     });
 
-
     for i in 1..=5 {
         println!("Hi number {i} from the main thread");
         thread::sleep(Duration::from_millis(10));
@@ -45,9 +46,9 @@ fn main() {
     // when the main thread of a rust program completes all spawned threads are shut down immediately
     // whether or not they have finished running, there is also no guarantee in the order of the thread execution
     // and no guarantee that the threaded part would even get the chance to run at all, to ensure this we would employ
-    // the join method 
+    // the join method
 
-    let handle  = thread::spawn(|| {
+    let handle = thread::spawn(|| {
         for i in 0..=200 {
             println!("Hello There number {i} from thread 3");
             thread::sleep(Duration::from_millis(1));
@@ -59,7 +60,7 @@ fn main() {
     // blocking means it is prevented from doing work or from terminating
 
     // when using varaibles from the environment, the thread must move the variable since a borrow would be problematic
-    // since the thread might outlive the environment from whcih the varaible was borrowed from at which point the 
+    // since the thread might outlive the environment from whcih the varaible was borrowed from at which point the
     // variable might be invalid
 
     let data = vec![1, 2, 3, 45];
@@ -67,7 +68,7 @@ fn main() {
     let handle_2 = thread::spawn(move || {
         println!("Data moved from the main thread = {:?}", data);
     }); // at this point the data variable is no longer available in the main thread, since it has been moved
-    // into the handle_2 thread
+        // into the handle_2 thread
 
     handle_2.join().unwrap();
 
@@ -77,14 +78,14 @@ fn main() {
     thread::spawn(move || {
         let val = String::from("Brian David Obot");
         let result = tx.send(val).unwrap(); // the send method would fail is the receiver has dropped
-        // for this reason the send method returns a Result<T, E>
-        // at this point the val variable has been moved out of this scope and would be available 
-        // at whereever is the receiving end of the channel
+                                            // for this reason the send method returns a Result<T, E>
+                                            // at this point the val variable has been moved out of this scope and would be available
+                                            // at whereever is the receiving end of the channel
         println!("Result of Transmission: {:?}", result);
     }); // at this point, the tx variable as been moved into the thread
 
     let received = rx.recv().unwrap(); // the recv method would block the thread until a value is received
-    // once the transmitter closes the recv would return an error since no more value can be received
+                                       // once the transmitter closes the recv would return an error since no more value can be received
     println!("Received = {:?}", received);
 
     // if we do no want to block the thread while checking for messages on the channel
@@ -120,7 +121,6 @@ fn main() {
         tx1.send(val).unwrap();
     });
 
-
     thread::spawn(move || {
         let val = String::from("Messagre from thread 2");
         tx.send(val).unwrap();
@@ -131,7 +131,7 @@ fn main() {
     }
 
     // passing message is not the only way to handle concurrency in rust
-    // we can communicate by sharing memory between threads, 
+    // we can communicate by sharing memory between threads,
     // channels is a single ownership model, where each thread explicitly owns or gives away
     // a piece of data when transmitting it, in the shared memory approach,
 
@@ -142,10 +142,10 @@ fn main() {
     let m = Mutex::new(5);
 
     {
-        let mut num  = m.lock().unwrap();
+        let mut num = m.lock().unwrap();
         // calling lock on the mutex would block the thread until it is the thread's turn to have the lock
         // so lock would essentially wait until the lock available for use, lock methods returns a result
-        // which can contain an error in the case that the previous holder panicked, after the lock is acquired, 
+        // which can contain an error in the case that the previous holder panicked, after the lock is acquired,
         // the returned wrapped value can be treated as a reference to the value contained in the mutex
 
         // more technically, the call to lock returns a MutexGuard smart pointer that implements a Deref to the value wrapped as
@@ -163,4 +163,3 @@ fn main() {
     let current_thread = thread::current();
     println!("Current thread = {:?}", current_thread);
 }
-

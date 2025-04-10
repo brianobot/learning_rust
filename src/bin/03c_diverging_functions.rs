@@ -1,7 +1,7 @@
 #![allow(unreachable_code)]
 
 fn main() {
-    // diverging functions are functions that never return, 
+    // diverging functions are functions that never return,
     // there are annoated with an exclamation for their return type, this is an empty type
 
     void();

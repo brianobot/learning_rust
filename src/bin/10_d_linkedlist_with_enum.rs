@@ -32,7 +32,6 @@ impl List {
     }
 }
 
-
 fn main() {
     let mut list = List::new();
 

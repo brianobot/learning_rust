@@ -15,7 +15,7 @@ fn main() {
     println!("{}", value); // value is still alive at this point
 
     drop(value); // this simulates moving the value out of scope
-    // at this point the value is dropped and it lifetime ends... adios value
+                 // at this point the value is dropped and it lifetime ends... adios value
 
     // this is a valid use of value
     // println!("{}", value);
@@ -31,7 +31,11 @@ fn main() {
 // to fix this, a generic lifetime must be added to the function signature to help
 // the compiler understand the expected lifetime for each of the references used in the function
 fn get_longest<'a>(a: &'a str, b: &'a str) -> &'a str {
-    // this basically means the lifetime 'a is expected to be equal to the 
+    // this basically means the lifetime 'a is expected to be equal to the
     // SHORTEST lifetime for the input parameter
-    if a.len() > b.len() { a } else { b }
+    if a.len() > b.len() {
+        a
+    } else {
+        b
+    }
 }

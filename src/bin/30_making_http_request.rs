@@ -12,9 +12,9 @@ use reqwest::blocking::Client;
 
 fn main() {
     let http_client = Client::new();
-    
+
     let http_result = http_client.get("https://brianobot.github.io");
-    // this does nto actually send the request, it only returns a request builder, 
+    // this does nto actually send the request, it only returns a request builder,
     // to send the request you have to call the send method on the RequestBuilder
 
     let response = http_result.try_clone().unwrap().send();
@@ -34,6 +34,6 @@ fn main() {
         .send()
         .unwrap()
         .bytes();
-    
+
     println!("✅ Post Response = {:?}", post_response);
 }

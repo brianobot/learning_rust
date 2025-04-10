@@ -1,7 +1,7 @@
 fn main() {
     // normally rust can infer types from the values we provide
     // it is important that rust knows the type of all variable at compile time
-    // for cases where many types are possible like in the conversion of string to number 
+    // for cases where many types are possible like in the conversion of string to number
     // as seen in the game with .parse, the type must be annotated
 
     // unit type
@@ -32,7 +32,7 @@ fn main() {
     println!("Age = {age}");
 
     // just like in python, _ can be used as visual seperator to seperate large numbers to make it
-    // easeier to read 
+    // easeier to read
     let large_number: i32 = 100_000_000;
     println!("Large number = {large_number}");
 
@@ -89,16 +89,16 @@ fn main() {
     let tup = (2.3, 1, false, true);
 
     // accessing the tuple values by index using the dot notation
-    println!("Tuple at 0 = {}", tup.0); 
-    println!("Tuple at 1 = {}", tup.1); 
-    println!("Tuple at 2 = {}", tup.2); 
-    println!("Tuple at 3 = {}", tup.3); 
+    println!("Tuple at 0 = {}", tup.0);
+    println!("Tuple at 1 = {}", tup.1);
+    println!("Tuple at 2 = {}", tup.2);
+    println!("Tuple at 3 = {}", tup.3);
 
     // tuples can be destructured and store their values in variables
     let (x, y, z, w) = tup;
     println!("x = {x}, y = {y}, z = {z}, w = {w}");
 
-    // the tuple without any value has a special name, it is called a unit, 
+    // the tuple without any value has a special name, it is called a unit,
     // unit = (), it is what is returned by default , if a function does not return a value
 
     // ARRAYS: fixed length collection of same type elements
@@ -113,5 +113,4 @@ fn main() {
     let _same_value_arr = [3; 5];
 
     // Rust prevents against invalid memory access by panicking and exiting the program
-
 }

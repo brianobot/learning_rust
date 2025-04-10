@@ -1,12 +1,12 @@
-use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
+use std::io;
 
 // the main function is only special in some context, mostly the context of a binary project
 // more on this later
 fn main() {
     println!("Guess the number Game!");
-    // the first argument to the print macros is a double quoted string 
+    // the first argument to the print macros is a double quoted string
     // which may contain placeholders for variables to be included in the string to be printed
     // println!(n) would not work even if n is a string variable, it has to be interpolated with a double quote
     // and a curly braces to capture the variable/value to be printed
@@ -23,7 +23,7 @@ fn main() {
         let mut guess = String::new();
 
         io::stdin()
-            // the &mut guess is a reference to the guess variable, more on that later (according to this book i am reading) 
+            // the &mut guess is a reference to the guess variable, more on that later (according to this book i am reading)
             // References are a complex feature, and one of Rust’s major advantages is how safe and easy it is to use references
             .read_line(&mut guess)
             .expect("Failed to read line");
@@ -33,7 +33,7 @@ fn main() {
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             // the _ in the Err type is a catchall that catches all error
-            // in this example, we’re saying we want to match all Err values, no matter 
+            // in this example, we’re saying we want to match all Err values, no matter
             // what information they have inside them
             Err(_) => continue,
         };
@@ -49,7 +49,7 @@ fn main() {
             Ordering::Equal => {
                 println!("You win!");
                 break;
-            },
+            }
         }
     }
 }
@@ -57,7 +57,7 @@ fn main() {
 // Important take aways from the code snippet above
 
 // - the main function (fn main) is always the first code that runs in every executeable program
-// - use the use statement to bring crates (name for packages in rust) into the scope of the program you 
+// - use the use statement to bring crates (name for packages in rust) into the scope of the program you
 // wish to use them in
 // - fn main is the starting/entry point into every rust program
 // - println stands for print line and is a macro that is why it is prepended by a bang !

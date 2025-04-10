@@ -1,7 +1,4 @@
-fn main() {
-
-}
-
+fn main() {}
 
 /*
 This functions takes in any type that implements the as_ref trait
@@ -10,13 +7,12 @@ pub fn strlen(s: impl AsRef<str>) -> usize {
     s.as_ref().len()
 }
 
-pub fn strlen2<S>(s: S) -> usize 
-where 
+pub fn strlen2<S>(s: S) -> usize
+where
     S: AsRef<str>,
-    {
-        s.as_ref().len()
-    }
-
+{
+    s.as_ref().len()
+}
 
 pub fn foo() {
     strlen("Hello wordl"); // this takes in a &str
@@ -27,11 +23,11 @@ pub fn foo() {
     // signature, so there is a strlen(s: &str) and a strlen(s: String) etc
 
     // Monomorphization is the process of generating concrete implementation for each type that matches a trait
-    // NOTE: it does not generate for all possible types but for those that are demanded in the code, 
-    // that means for type that match the trait but weren't demanded in the code as at compile time, the concrete types are not 
+    // NOTE: it does not generate for all possible types but for those that are demanded in the code,
+    // that means for type that match the trait but weren't demanded in the code as at compile time, the concrete types are not
     // generated.
-    // this process does not just happen for functions, it happens for types too   
-    // One downsize of this is that binary get duplicated for each concrete types 
+    // this process does not just happen for functions, it happens for types too
+    // One downsize of this is that binary get duplicated for each concrete types
 }
 
 pub trait Hei {
@@ -44,37 +40,38 @@ impl Hei for &str {
     }
 }
 
-
 pub fn boo() {
     "J".hei();
 }
 
-pub fn bar(h: &str) { // this is static dispatch before the compiler knows exactly what method call here
+pub fn bar(h: &str) {
+    // this is static dispatch before the compiler knows exactly what method call here
     h.hei();
-} 
+}
 
 // Impl when used in function defintion is syntatic sugar for generic
 // both boo1 and boo2 are equivalent to each other
-pub fn boo1<H: Hei>(s: H) { 
-    s.hei();
-} 
-
-pub fn boo2(s: impl Hei) { // this is a shortcut for the first signature style
+pub fn boo1<H: Hei>(s: H) {
     s.hei();
 }
 
-// the limitation with the simple generic type usage in function is that 
-// per function, a concrete type is actually used at the end of the day, 
+pub fn boo2(s: impl Hei) {
+    // this is a shortcut for the first signature style
+    s.hei();
+}
+
+// the limitation with the simple generic type usage in function is that
+// per function, a concrete type is actually used at the end of the day,
 // so if we needed to access an array of different types that implemented a particular
 // trait, this wouldn't work within the context of a single function
 
 pub fn zoo(_s: /*  &[dyn Hei] */ impl Hei) { // the idea here is to get a slice of types that implements the Hei trait
-    // we do not care about their concrete types, just that they implement Hei, now
-    // since this can be different types, generating a single type instance for each type needed
-    // would not cut it, since within the slice, the first item might be a different type from the rest
-    // for h in s {
-    //     h.hei();
-    // }  
+                                             // we do not care about their concrete types, just that they implement Hei, now
+                                             // since this can be different types, generating a single type instance for each type needed
+                                             // would not cut it, since within the slice, the first item might be a different type from the rest
+                                             // for h in s {
+                                             //     h.hei();
+                                             // }
 }
 
 // to fix the issue about, we have to put the dyn <Trait> behind some kind of pointer time
@@ -90,18 +87,16 @@ pub fn zoo_fixed(s: &[&dyn Hei]) {
 // the following are trait objects
 // - &dyn Hei
 // - Box<dyn Hei>
-// 
+//
 // it is essentially type erasure
 
-
-// unlike static dispatch where the compiler can tell the data type passed in the place of the generic 
-// in the functions calls and actually swap them out for their concrete type during compilation, 
+// unlike static dispatch where the compiler can tell the data type passed in the place of the generic
+// in the functions calls and actually swap them out for their concrete type during compilation,
 // the input for trait objects are not knowable at compile time and are only known at compile time
 
 // now the trait object &dyn <Trait> is a fat/wide pointer because it holds two pointers
 // fats pointers are references that act like pointers but hold additional information about the
-// thing they are pointing to 
-
+// thing they are pointing to
 
 #[allow(unused)]
 pub trait Animal {

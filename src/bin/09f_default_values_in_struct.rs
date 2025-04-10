@@ -2,7 +2,6 @@
 use rand::Error; // i do not need this, i just needed an excuse to use the attribute above
 
 #[allow(dead_code)]
-
 #[derive(Default, Debug)]
 struct S {
     field_1: i32,
@@ -40,11 +39,13 @@ impl Titan {
 
 impl S {
     fn new() -> Self {
-        S { ..Default::default() }
+        S {
+            ..Default::default()
+        }
     }
 }
 
-fn main() { 
+fn main() {
     let s = S::new();
     println!("S = {:?}", s);
 
@@ -65,5 +66,4 @@ fn main() {
     titan.upgrade();
 
     println!("Titan = {:?}", titan);
-
 }

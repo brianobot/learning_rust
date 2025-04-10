@@ -1,7 +1,6 @@
 extern crate chrono; // extern is used to make rust aware of the dependency on an external crate
 use std::time::{Duration, Instant};
 
-
 fn main() {
     let dur1 = Duration::from_secs(15);
     println!("Dur1: {dur1:?}");
@@ -22,6 +21,4 @@ fn main() {
 
     let now = chrono::Utc::now();
     println!("Now = {:?}", now);
-
-
 }

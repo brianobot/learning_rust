@@ -41,9 +41,9 @@ fn main() {
         }
     }
 
-    let player_data = PlayerData { 
-        name: String::from("Brian"), 
-        health: 100 
+    let player_data = PlayerData {
+        name: String::from("Brian"),
+        health: 100,
     };
 
     let is_old = player_data.is_weak();
@@ -64,7 +64,4 @@ fn main() {
     regular_player.intro();
     advance_player.intro();
     npc.intro();
-
-
-
 }

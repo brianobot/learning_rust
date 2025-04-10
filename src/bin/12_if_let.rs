@@ -5,7 +5,6 @@ fn main() {
         _ => (),
     }
 
-
     let config_max = Some(3u8);
     // here destructing is used to extract and bind the value to max
     // if let allows for a condition to check for and destructing to be done
@@ -25,7 +24,7 @@ fn main() {
     // we can include an else block with an if let
     // this else block is equivalent to the _ (match all) arm of the match expression
 
-    // both of the codes above are equivalent, 
+    // both of the codes above are equivalent,
     // if let, let us express cases where we only need to work with the Some Variant
     // of an enum and do nothing with the None variant
 

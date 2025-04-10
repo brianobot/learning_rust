@@ -1,5 +1,5 @@
 fn main() {
-    // tuples can hold multiple values 
+    // tuples can hold multiple values
     let tup: (i32, i32, i32, i32, i32, i32) = (1, 2, 3, 4, 5, 6);
     let state = (1, 4);
 
@@ -8,7 +8,6 @@ fn main() {
     println!("Tup = {:?}", tup);
     println!("Reversed state = {:?}", reverse_state);
 }
-
 
 fn reverse_pair(pair: (i32, i32)) -> (i32, i32) {
     let (first, second) = pair;

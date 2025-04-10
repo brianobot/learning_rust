@@ -4,7 +4,7 @@ fn main() {
 
     // the simplest and most use of generic is for type parameters
     #[allow(dead_code)]
-    fn foo<T>(arg: T)  -> T {
+    fn foo<T>(arg: T) -> T {
         arg
     }
 
@@ -17,7 +17,7 @@ fn main() {
     // the same function has been reused for different datatype, greatly simplying the codebase
 
     /*
-    Using generics, we can write code that can be used with multiple data types without 
+    Using generics, we can write code that can be used with multiple data types without
     having to rewrite the same code for each data type, making life easier and coding less error-prone.
      */
 
@@ -49,16 +49,14 @@ fn main() {
     // now the same way functions allowed us to abstract away a logic to reduce duplication
     // generics allow use to abstract the signature of those function so that they can operate on an abstract type
     // and not a concrete type
-
 }
-
 
 fn largest_number(lst: &Vec<i32>) -> &i32 {
     // 💡 Note that the local variable largest_number is the same as the functions name
     // rust allows this because it knows that the local variable is not the function
     // since it was not used in the calling context, function_name()
     // this feature/characteristic allow for variables within functions to shadow the function
-    // name without brekaing the code, when called from outside the function, 
+    // name without brekaing the code, when called from outside the function,
     // the local variable is not accessible so the function is called instead
 
     let mut largest_number = &lst[0];

@@ -5,8 +5,8 @@ fn main() {
 
     // enum Result<T, E>{
     //      Ok(T),
-    //      Err(E)    
-    // } 
+    //      Err(E)
+    // }
 
     // enum Option<T>{
     //      Some(T),
@@ -17,7 +17,4 @@ fn main() {
     // functions that return a Result would usually take ownership of the data
     // they are operating on, this is because they need to return the type
     // in the Ok variant of the Result type as Result<T, E>
-
-    
-
 }

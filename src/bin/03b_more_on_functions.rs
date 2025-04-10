@@ -1,4 +1,7 @@
-fn apply<F>(f: F) where F: FnOnce() {
+fn apply<F>(f: F)
+where
+    F: FnOnce(),
+{
     f()
 }
 
@@ -10,7 +13,7 @@ fn main() {
 
     // closures are functions that can capture the enclosing environment
     // and trust me, i tried doing so with the regular function and it did not compile
-    let speaker = || { println!("Calling Speaker: {x}") };
+    let speaker = || println!("Calling Speaker: {x}");
     speaker();
 
     // closures use || instead of () for input variables
@@ -32,10 +35,10 @@ fn main() {
 
     println!("Contains 9: {}", contains(9));
     println!("Contains 1: {}", contains(1));
-    
+
     apply(speaker);
 
-    // if a capture variable is dropped within the closure, this forces the compiler to capture 
+    // if a capture variable is dropped within the closure, this forces the compiler to capture
     // by value, since the closure is taking charge of the capture variable
 
     // it should be noted, that normal functions can be used in certain places where closures are required
@@ -45,16 +48,14 @@ fn main() {
     // in this case, the closure must use the move keyword to take ownership of the capture variables to ensure
     // there is no dangling reference if is does capture any enclosing variable that is
 
-    fn create_fn()  -> impl Fn() {
+    fn create_fn() -> impl Fn() {
         let _text = String::from("New");
         move || println!("Creating New Closure for: {}", _text)
     }
 
     let small_fn = create_fn();
     small_fn();
-
 }
-
 
 fn _fizzbuzz_to(range: u32) {
     for i in 1..=range {
@@ -71,7 +72,7 @@ fn _fizzbuzz_to(range: u32) {
 }
 
 // Associated functions and methods
-// Associated functinos are accessed with the :: (double colon) 
+// Associated functinos are accessed with the :: (double colon)
 // while methods are accessed with the . (dot notation)
 
 struct _Box {
@@ -81,25 +82,23 @@ struct _Box {
 
 impl _Box {
     fn _new() -> Self {
-        _Box { width: 0, heigth: 0 }
+        _Box {
+            width: 0,
+            heigth: 0,
+        }
     }
 
-    // &self is usually used in place of the full form self: &Self, where Self point to the type the function is 
+    // &self is usually used in place of the full form self: &Self, where Self point to the type the function is
     // defined on, self gives access to the type fields via dot notation
     fn _area(self: &Self) -> u8 {
         self.width * self.heigth
     }
 
     // the full form of the type is self: &mut Self
-    fn _transmute(&mut self) {
-
-    }
+    fn _transmute(&mut self) {}
 
     // types with self, consume the type they are called on
-    fn _destroy(self) {
-
-    }
+    fn _destroy(self) {}
 
     // mutable objects can call mutable methods
-
 }

@@ -18,20 +18,20 @@ impl Screen {
     }
 }
 
-
 pub struct Button {
     width: u32,
     height: u32,
     label: String,
 }
 
-
 impl Draw for Button {
     fn draw(&self) {
-        println!("Drawing Button height: {}, width: {}, label: {}", self.height, self.width, self.label);
+        println!(
+            "Drawing Button height: {}, width: {}, label: {}",
+            self.height, self.width, self.label
+        );
     }
 }
-
 
 fn main() {
     let screen = Screen {

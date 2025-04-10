@@ -5,9 +5,8 @@ enum Coin {
     Quarter,
 }
 
-
 fn main() {
-    // match allows us to compare a value against a series of patterns and runs 
+    // match allows us to compare a value against a series of patterns and runs
     // codes based on which pattern was matched
 
     let dime = Coin::Dime;
@@ -31,7 +30,7 @@ fn main() {
 
      */
 
-    // we can bind values from pattern which we can then use in the arm 
+    // we can bind values from pattern which we can then use in the arm
     // expression for further processing
 
     // we can handle Option<T> using the match expression too
@@ -125,7 +124,6 @@ fn main() {
         println!("Rerolling");
     }
 }
-
 
 fn value_in_cent(coin: Coin) -> i32 {
     match coin {

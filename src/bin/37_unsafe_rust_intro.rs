@@ -10,14 +10,12 @@ things that can be done in unsafe rust
 - access fields of union
 
 
-NOTE: unsafe does not turn off the borrow checker 
+NOTE: unsafe does not turn off the borrow checker
 */
 #![allow(unused)]
 
-
 static HELLO_WORD: &str = "Hello, World!";
 static mut COUNTER: u32 = 0;
-
 
 fn add_to_counter(inc: u32) {
     unsafe {
@@ -30,7 +28,7 @@ fn main() {
 
     // 1.
     // this is an immutable raw pointer that points to a i32 value
-    // the asterisk is not not 
+    // the asterisk is not not
     let r1 = &num as *const i32;
     // this is a mutable raw pointer that points to a i32 value
     let r2 = &mut num as *mut i32;
@@ -63,12 +61,10 @@ fn main() {
     // we can have safe functions that have unsafe implementations in them but can be called and used as regular
     // safe functions
 
-
     // Extern functions to call external code
     extern "C" {
         fn abs(input: i32) -> i32;
     }
-
 
     unsafe {
         println!("Absolute value of -3 according to C: {}", abs(-3));
@@ -94,8 +90,6 @@ fn main() {
         silver: i32,
         gold: i32,
     }
-
-
 
     let win = Win { silver: 30 };
 

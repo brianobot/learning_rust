@@ -1,6 +1,5 @@
 use std::default::Default;
 
-
 #[allow(unused)]
 #[derive(Default, Debug)]
 struct SomeOption {
@@ -15,8 +14,6 @@ Some Notes
 - the default field for an enum can not be non-unit or non-exhastive variant
 - the Default trait is not dyn compatabile
 */
-
-
 
 fn main() {
     let some_option: SomeOption = Default::default();

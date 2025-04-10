@@ -3,17 +3,19 @@
 // However, structs with private fields can be created using
 // public constructors
 
-
 mod module_one {
     fn intro(person: &Person) -> String {
-        return format!("Hello! My Name is {} {}", &person.first_name, &person.last_name);
+        return format!(
+            "Hello! My Name is {} {}",
+            &person.first_name, &person.last_name
+        );
     }
 
     #[derive(Debug, Default)]
     pub struct Person {
         pub first_name: String,
         pub last_name: String,
-        _age: u8
+        _age: u8,
     }
 
     impl Person {
@@ -45,9 +47,8 @@ fn main() {
 
     // self can be used to refer to the current module
     // super can be used to refer to the parent scope
-    let greeting  = person.greet();
+    let greeting = person.greet();
     println!("Greeting: {}", greeting);
 
     println!("Current Module: {:?}", module_path!());
-
 }

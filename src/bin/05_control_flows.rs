@@ -1,4 +1,3 @@
-
 fn main() {
     // if statement is as expected and as it functions in other programming languages
     // the if blocks are themselves expressions as you see the do not end in a semicolon
@@ -37,16 +36,16 @@ fn main() {
         println!("Number is not Zero, One or Two");
     }
 
-    // just like in most programming languages only one arm is tried at most, 
+    // just like in most programming languages only one arm is tried at most,
     // so even if subsequent arm's condition evaluate to true, only the first arm
     // that evaluate to true would be processed
 
     // if can be used in a let statement as shown below
     let condition = true;
     let answer = if condition { 5 } else { 0 }; // remember number are themselves expressions
-    // when using the if else arm to assign value to a variable
-    // both expression must evaluate to the same data type,
-    // trying to assign different datatypes would lead to the compiler producing an error
+                                                // when using the if else arm to assign value to a variable
+                                                // both expression must evaluate to the same data type,
+                                                // trying to assign different datatypes would lead to the compiler producing an error
 
     println!("The value of answer is {answer}");
 
@@ -59,15 +58,17 @@ fn main() {
     let mut count = 0;
     loop {
         println!("Count = {count}");
-        
-        if count >= limit { break }
+
+        if count >= limit {
+            break;
+        }
 
         count = count + 1;
 
         // continue is used to skip the remaining part of the loop and go to the
         // next interation
     }
-    
+
     // when breaking out of a loop, you can pass a value after the break statment to be received by the caller of the loop
     let mut counter = 0;
     let result = loop {
@@ -78,7 +79,6 @@ fn main() {
         }
 
         counter += 1;
-        
     }; // notice how this loop has a semi-colon, because it is a statment becuase of the let infront
 
     println!("The result is {result}");
@@ -115,10 +115,11 @@ fn main() {
     while is_active {
         println!("Loop is active ... {counter}");
 
-        if counter % 5 == 0 { is_active = false }
+        if counter % 5 == 0 {
+            is_active = false
+        }
 
         counter += 1;
-
     }
 
     // For loop, exactly like python only that is uses curly braces for it block
@@ -157,7 +158,7 @@ fn main() {
 
             if outer_count > 54 {
                 println!("About to end outer loop");
-                break 'outer;   
+                break 'outer;
             }
         }
     }
@@ -166,5 +167,4 @@ fn main() {
     println!("Number: {}", number);
     // assert_eq!(number, 10);
     // assert_eq!(number, 12);
-
 }

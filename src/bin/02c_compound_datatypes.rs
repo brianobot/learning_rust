@@ -1,4 +1,3 @@
-
 fn main() {
     // arrays, tuples, slice, slice string
 
@@ -9,13 +8,17 @@ fn main() {
     // rust arrays are different from c arrays, they are stored on the stack
     // and there is no pointer arithmetic needed for accessing the array items
     let mut numbers: [i32; 5] = [1, 2, 3, 4, 5];
-    
+
     let _other_numbers = [2u8, 3, 4, 5, 2];
     // i declared the first element to be a u8 and rust knows that an array is homogenous
     // so it makes the other elements u8 too, this could have also be achieved using a type annotation
     let _other_other_numbers: [u32; 5] = [1, 2, 3, 4, 5];
 
-    let fruits = [String::from("apple"), String::from("orange"), String::from("paw-paw")];
+    let fruits = [
+        String::from("apple"),
+        String::from("orange"),
+        String::from("paw-paw"),
+    ];
     let vegetables: [&str; 3] = ["carrot", "cucumber", "tomatoe"];
     let human = ("Alice", 30, false);
     let more_mature_tuple = ("Okon", 23, true, [1, 2, 3, 4, 5]);
@@ -32,7 +35,7 @@ fn main() {
 
     numbers[0] = 0;
     // notice how the spaces inside the square bracket does not matter
-    zeros[ zeros.len() -  1 ] = 1;
+    zeros[zeros.len() - 1] = 1;
 
     // tuples can contain hetergeneous datatypes
     let data = (1, 2, 3, true, "apple");

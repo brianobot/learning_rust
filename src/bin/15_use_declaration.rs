@@ -16,14 +16,14 @@ fn main() {
     println!("x = {x}");
 
     let word = String::from("Information");
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}"); 
-    println!("Word = {word}");  
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
+    println!("Word = {word}");
     // the repeated call to the macro with the same argument here is possible because
     // println marcos does not take ownership of its arguments, but only take references to them
 }

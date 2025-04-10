@@ -14,7 +14,7 @@ struct Unit;
 struct Pair(i32, i32);
 
 // Struct with 2 fields
-struct Point{
+struct Point {
     x: u32,
     y: u32,
 }
@@ -24,7 +24,6 @@ struct Rectangle {
     bottom_left: Point,
     top_right: Point,
 }
-
 
 fn rect_area(rect: &Rectangle) -> u32 {
     let width = rect.top_right.x - rect.bottom_left.x;
@@ -46,7 +45,7 @@ fn square(point: Point, width: u32) -> Rectangle {
 fn main() {
     // there are 3 types of structures that can be created in rust
     // - Tuple structs (typically named tuples)
-    // - C like structs 
+    // - C like structs
     // - Unit Structs (without fields)
 
     let name = String::from("Brian");
@@ -57,16 +56,15 @@ fn main() {
     dbg!(brian);
 
     let first_square = Rectangle {
-        bottom_left: Point{x: 0, y: 0},
-        top_right: Point{x: 2, y: 2},
+        bottom_left: Point { x: 0, y: 0 },
+        top_right: Point { x: 2, y: 2 },
     };
 
     let square_area = rect_area(&first_square);
     println!("Area of Square: {square_area}");
 
-    let another_square = square(Point{x: 0, y: 0}, 2);
+    let another_square = square(Point { x: 0, y: 0 }, 2);
     let another_square_area = rect_area(&another_square);
 
     println!("Area of another square: {another_square_area}");
-    
 }
