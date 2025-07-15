@@ -115,4 +115,34 @@ fn main() {
     // other methods
     // - trim(): removes leading and trailing whitespace
     // - trim_matches(&str): removes leading or trailing matches of &str
+
+    // Regular expression with Strings
+    // in order to use the regular expression, the regex crate must be added to the project
+    use regex::Regex;
+
+    // matching patterns
+    let pattern = Regex::new(r"^\d{4}-\d{2}-\d{2}$").unwrap();
+    let date = "2025-04-10";
+
+    if pattern.is_match(date) {
+        println!("The dae is in the correct format.");
+    } else {
+        println!("The date is in an incorrect format.");
+    }
+
+    // capturing groups
+    let pattern = Regex::new(r"(\w+)@(\w+).(\w+)").unwrap();
+    let email = "brianobot9@gmail.com";
+
+    if let Some(captures) = pattern.captures(email) {
+        println!("User: {:?}", &captures[1]);
+        println!("Domain: {:?}", &captures[2]);
+        println!("TLD: {:?}", &captures[3]);
+    }
+
+    let pattern = Regex::new(r"\d+").unwrap();
+    let text = "My phone number is 123456.";
+    let result = pattern.replace_all(text, "[REDACTED]");
+
+    println!("Result: {}", result);
 }
