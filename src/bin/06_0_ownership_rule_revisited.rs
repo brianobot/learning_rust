@@ -10,8 +10,8 @@ fn main() {
     // the scope of a variable is the range within a program where an item is valid
     let string_value = "hello";
 
-
-    { // greeting is not valid at this point
+    {
+        // greeting is not valid at this point
         let greetings = "Hello there!"; // greetings is valid at this point
 
         // greetings is still valid at this point
@@ -24,6 +24,4 @@ fn main() {
 
     // a similar mental construct for the scope and validity of the owner name
     // can be implied as seen for the owne string_value above
-
-    
 }

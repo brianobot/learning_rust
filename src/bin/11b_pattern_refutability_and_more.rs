@@ -43,8 +43,7 @@ fn main() {
     match data {
         (first, .., last) => {
             println!("First: {first}, last: {last}")
-        }
-        // _ => println!("Strange Case"),
+        } // _ => println!("Strange Case"),
     }
 
     // we can use extra conditions with match guards to control the matches arms that are executed
