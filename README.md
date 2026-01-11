@@ -213,3 +213,9 @@ this can be done with the &<variable_name> syntax, creating reference is called 
 ## Contributing
 
 I welcome contributions from anyone! If you have any improvements or additional exercises you'd like to share, please feel free to fork this repository and submit a pull request.
+
+## What's Next
+I have a seperate learning Repository for Rust too, I prepared this one while reading from the Comprehensive Rust Github Page.
+Most of the contents are a overlap, but use both might fill in gaps that I filled in when revisiting the topics present there
+
+Link to Repository: [Personal Comprehensive Rust Learning Link](https://github.com/brianobot/comprehensive_rust_seminar)
