@@ -11,6 +11,10 @@ fn main() {
     // when used in a format string for printing
     let x = ();
     println!("X = {x:?}");
+    
+    // Notes that the numeric types spell out their size in bits and the type of number used
+    // u8 -> unsigned 8 bits integer
+    // i16 -> signed 16 bits integer ...etcg
 
     let some_value = 123u16;
     println!("Some Value = {:?}", some_value);
