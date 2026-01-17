@@ -3,6 +3,10 @@ use std::vec;
 fn main() {
     let mut data = vec![0; 5]; // Create a vector of 5 elements, all initialized to 0
     println!("{:?}", data);
+    
+    // vectors can also be created by repeating a certain value
+    let another_vector = vec![0; 10 * 10];
+    println!("✅ Another Vector: {another_vector:?}");
 
     // you can push elements to the vector
     data.push(1);
