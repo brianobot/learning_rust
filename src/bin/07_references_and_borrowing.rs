@@ -31,6 +31,11 @@ fn main() {
     // to get the actual value, we dereference using *r
     // a reference does not automatically free any resource when it goes out of scope
     // but rust references are never null, there is no way to produce a null reference in safe rust
+    // 
+    // they are two types of references in rust
+    // &T - Shared references which are read only
+    // &mut T - Mutable, Exclusive Reference, you can read and modify the value the reference points to, but you can't have other references
+    // to the same value while this exists
 }
 
 // remember the return type of the function must always be annotated in the function definition
