@@ -33,4 +33,11 @@ fn main() {
     
     // Rust represents a single Unicode character as a 32-Bit value
     
+    // tuples are an ordered sequence of items which can hold multiple types 
+    // tuples only allow constants as indices
+    // you can do this
+    // let tuple = (1, 2, 3, 4);
+    // let tuple.i or tuple[i] this is not correct
+    // but this is correct tuple.1, 
+    // Rust often use tuples to return multiple types from a function
 }
