@@ -31,4 +31,6 @@ fn main() {
     let int_form = is_old_enough as i32;
     println!("Int Form: {int_form}");
     
+    // Rust represents a single Unicode character as a 32-Bit value
+    
 }
