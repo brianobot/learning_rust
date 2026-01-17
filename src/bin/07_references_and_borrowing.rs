@@ -23,6 +23,14 @@ fn main() {
     /*
        Users of an immutable reference don’t expect the value to suddenly change out from under them! However, multiple immutable references are allowed because no one who is just reading the data has the ability to affect anyone else’s reading of the data.
     */
+    
+    let _some = &String::from("Brian"); // this is pronouced ref String
+    // this is a reference of type String
+    // think of a reference to a i32 as a single machine word holding the address of the i32
+    // we say a reference to the value is borrowed, let r = &32;
+    // to get the actual value, we dereference using *r
+    // a reference does not automatically free any resource when it goes out of scope
+    // but rust references are never null, there is no way to produce a null reference in safe rust
 }
 
 // remember the return type of the function must always be annotated in the function definition
