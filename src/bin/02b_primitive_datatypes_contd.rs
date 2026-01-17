@@ -19,4 +19,19 @@ fn main() {
     // char type
     let x = 'x';
     println!("X = {x}");
+    
+    // Rust is very strict about the use of bool expression
+    // unlike in python where empty datatypes can be used as false bool indications
+    // where rust expect a bool, a bool expression must be used
+    // instead of if X { ... } 
+    // if x.is_empty() { ... } or if x == 0 { ... }
+    // 
+    // booleans can be converted to integers types with the as operator
+    let is_old_enough = true;
+    let int_form = is_old_enough as i32;
+    println!("Int Form: {int_form}");
+    
+    // Rust represents a single Unicode character as a 32-Bit value
+    
+    
 }
