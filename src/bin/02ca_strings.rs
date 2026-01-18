@@ -69,5 +69,14 @@ fn main() {
     #[allow(unused_imports)]
     use std::ffi::{CString, CStr}; // when working with C libraries and null terminated strings
     
+    type Bytes = Vec<String>;
     
+    fn decode(data: &Bytes) -> String {
+        data.join(" ")
+    }
+    
+    let data = vec!["Brian".to_string(), "Is".to_string(), "a".to_string(), "programmer".to_string()];
+    let decoded_msg = decode(&data);
+    
+    println!("Decoded Data: {decoded_msg}");
 }

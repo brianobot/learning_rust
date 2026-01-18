@@ -54,4 +54,45 @@ fn main() {
     // if the elements of an array implement the copy trait, then the array also implements the copy trait
     // when we pass types that implement the copy trait to a function, they are no moved, but copied,
     // and the others still keep ownership of them
+    // 
+    // the ownership rule only applies at compile time to ensure that the program is valid
+    // 
+    // just as variables owns their values
+    // struct owns their fields, and vectors, arrays and tuples owns their elements too
+    #[derive(Debug)]
+    struct Person {
+        name: String,
+        age: u32
+    }
+    
+    // the composer variable owns the Vec<Person>
+    // the Vec<Person> Owns each person inside of it
+    // Each person Struct owns the name and the age field
+    // Each Name field owns the buffer stored on the heap for the String
+    let mut composers = Vec::new();
+    composers.push(Person { name: String::from("J.Cole"), age: 45 });
+    composers.push(Person { name: String::from("Drake"), age: 45 });
+    composers.push(Person { name: String::from("A$AP Rocky"), age: 45 });
+    composers.push(Person { name: String::from("Post Malone"), age: 45 });
+    composers.push(Person { name: String::from("Fela Kuti"), age: 45 });
+    
+    dbg!(composers);
+    
+    // More on Moves
+    // assigning a value to a variable
+    // passing a value to a function
+    // returning a value from a function 
+    // all these actions move a value, the source relinquishes ownership of the value
+    // and become uninitialized, the desination now becomes the owner of the value and manages it lifetime
+    let s = vec!["ramen".to_string(), "noddles".to_string(), "cake".to_string()];
+    println!("S: {s:?}");
+    
+    let t = s;
+    println!("T: {t:?}");
+    
+    let u = t;
+    println!("U: {u:?}");
+    
+    // building a tuple moves values into the tuple
+    
 }
