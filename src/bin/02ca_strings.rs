@@ -32,4 +32,6 @@ fn main() {
     
     // a &str pronouced stir is a reference to a run of UTF-8 text owned by someone else
     // you can think of a &str as nothing more than a &[u8] that is guarantee to hold UTF-8 text
+    // &str can not be modified
+    // a string literal is a &str created and stored in the code of the program and last for the execution of the program
 }
