@@ -211,4 +211,15 @@ fn main() {
     // as in the case for insert and remove method shown above
     first_100_numbers.retain(|x| x % 2 == 0);
     println!("First even numbers = {:?}", first_100_numbers);
+    
+    let languages = vec!["Lisp", "Scheme", "C", "C++", "Fortran"];
+    for l in languages {
+        if (l.len() & 1) == 0 {
+            println!("{l}: Functional");
+        } else {
+            println!("{l}: Imperative");
+        }
+    }
+    
+    // Vectors are not built into rust, they are implemented as an ordinary type in rust
 }
