@@ -24,4 +24,12 @@ fn main() {
     // it is possible to have raw byte strings like so
     let raw_bytes = br"rief342";
     println!("Raw Bytes String: {raw_bytes:?}");
+    
+    // A String is a resizable buffer that holds well formed UTF-8 text
+    // a String is actually a Vector with a guarantee that each item is a valid UTF-8 text
+    let noodles = "noodles".to_string();
+    let oodles = &noodles[1..];
+    
+    // a &str pronouced stir is a reference to a run of UTF-8 text owned by someone else
+    // you can think of a &str as nothing more than a &[u8] that is guarantee to hold UTF-8 text
 }
