@@ -34,4 +34,40 @@ fn main() {
     // you can think of a &str as nothing more than a &[u8] that is guarantee to hold UTF-8 text
     // &str can not be modified
     // a string literal is a &str created and stored in the code of the program and last for the execution of the program
+    // let mut s = "Hello";
+    // s[0usize] = 'c'; // this would not work
+    // 
+    // the len method on String and &str return the length in bytes not characters
+    // if you really want the length in chars, use .chars().count() methods chain
+    
+    // ways to create a string
+    // from &str
+    let _name = "Brian David Obot".to_string();
+    
+    // to_owned: does the same thign, would be explained later
+    let _nick_name = "Brian".to_owned();
+    
+    // format!() macro works like the println! macro but returns a String and it automatically adds a new line character
+    // vectors of strings, slices, arrays have two methods that return a string from parts
+    // concat() and join(sep)
+    // 
+    let name = "Prian";
+    let corrected_name = name.replace("P", "B");
+    println!("Old Name: {name}");
+    println!("Corrected Name: {}", corrected_name);
+    
+    // string have methods like contains, 
+    let contains_peanuts = "peanut".contains("nut");
+    println!("Contains Nut: {contains_peanuts}");
+    
+    // other string-like types
+    #[allow(unused_imports)]
+    use std::path::{PathBuf, Path}; // use this when working with filenames
+    // use Vec<u8> or &[u8] when working with binary data that isn't utf-8 encoded
+    #[allow(unused_imports)]
+    use std::ffi::{OsString, OsStr};// use this when working with environment variables
+    #[allow(unused_imports)]
+    use std::ffi::{CString, CStr}; // when working with C libraries and null terminated strings
+    
+    
 }
