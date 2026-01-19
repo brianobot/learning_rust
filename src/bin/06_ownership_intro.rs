@@ -94,5 +94,14 @@ fn main() {
     println!("U: {u:?}");
     
     // building a tuple moves values into the tuple
-    
+    // moving a variable in a loop is bad, since after the first iteration the variable would be uninitialized
+    // 
+    // let x = vec![1, 2, 3];
+    // while true {
+    //   f(x)
+    // }
+    //  this can only work if we keep giving it a new value at the end of each iteration
+    // 
+    // Notes: a moves always leaves the source uninitialized
 }
+    
