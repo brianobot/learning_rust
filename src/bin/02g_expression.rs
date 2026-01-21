@@ -119,6 +119,8 @@ fn main() {
         println!("");
         temp += 2;
     }
+    println!("");
+    
     // a break can have a label and a value but both are optional
     // break - empty break
     // break 'label
@@ -128,4 +130,9 @@ fn main() {
     
     // labels can be used with continue
     // returning without a value is shorthand for return ();
+    // 
+    let value= 10i32;
+    let r = &value;
+    
+    println!("R: {}", r.abs())
 }
