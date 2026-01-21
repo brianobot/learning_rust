@@ -93,4 +93,39 @@ fn main() {
     };
     
     println!("Loop Produced the value {value}");
+    // for loops consume values that they iterate over by default
+    // 
+    let strings = vec!["boy", "girl", "child", "toy"];
+    for s in strings {
+        println!("s = {s}");
+    } // the 
+    
+    // println!("Strings: {strings:?}");// trying to access the vector here is an error
+    
+    // break can be used to break a loop
+    // continue is used to jump to the next iteration of a loop
+    // 
+    // a loop can be labelled with a lifetime
+    let mut temp = 10;
+    'search: 
+    loop {
+        println!("Temp: {temp}");
+        for i in 0..temp {
+            print!("{i}");
+            if i == 35 {
+                break 'search;
+            }
+        }
+        println!("");
+        temp += 2;
+    }
+    // a break can have a label and a value but both are optional
+    // break - empty break
+    // break 'label
+    // break 'label value
+    // break value
+    // 
+    
+    // labels can be used with continue
+    // returning without a value is shorthand for return ();
 }
