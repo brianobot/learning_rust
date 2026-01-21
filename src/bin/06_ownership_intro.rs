@@ -134,5 +134,16 @@ fn main() {
     
     // using a copy trait on a type indicates that the implementor wishes to commit to none heap allocated field
     // 
+    // we can use Rc in Rust to get a similar assignment experience as is in python
+    use std::rc::Rc;
+    
+    let s = Rc::new("Bomboclat".to_string());
+    let t = s.clone();
+    let u = t.clone();
+    
+    // you can use any of the usual string methods on the Rc directly
+    // a value own by a Rc is immutable
+    // 
+    let rc_1 = Rc
 }
     

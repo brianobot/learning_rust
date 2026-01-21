@@ -36,6 +36,9 @@ fn main() {
     // &T - Shared references which are read only
     // &mut T - Mutable, Exclusive Reference, you can read and modify the value the reference points to, but you can't have other references
     // to the same value while this exists
+    // 
+    // Pointers like Box, Rc etc are owning pointers, in that when the go out of scope their referent are dropped
+    // the regular references are non owning pointers
 }
 
 // remember the return type of the function must always be annotated in the function definition
