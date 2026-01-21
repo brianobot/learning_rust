@@ -61,7 +61,7 @@ fn main() {
     // struct owns their fields, and vectors, arrays and tuples owns their elements too
     #[derive(Debug)]
     struct Person {
-        name: String,
+        name: Option<String>,
         age: u32
     }
     
@@ -70,13 +70,13 @@ fn main() {
     // Each person Struct owns the name and the age field
     // Each Name field owns the buffer stored on the heap for the String
     let mut composers = Vec::new();
-    composers.push(Person { name: String::from("J.Cole"), age: 45 });
-    composers.push(Person { name: String::from("Drake"), age: 45 });
-    composers.push(Person { name: String::from("A$AP Rocky"), age: 45 });
-    composers.push(Person { name: String::from("Post Malone"), age: 45 });
-    composers.push(Person { name: String::from("Fela Kuti"), age: 45 });
+    composers.push(Person { name: Some(String::from("J.Cole")), age: 45 });
+    // composers.push(Person { name: Some(String::from("Drake")), age: 45 });
+    // composers.push(Person { name: Some(String::from("A$AP Rocky")), age: 45 });
+    // composers.push(Person { name: Some(String::from("Post Malone")), age: 45 });
+    // composers.push(Person { name: Some(String::from("Fela Kuti")), age: 45 });
     
-    dbg!(composers);
+    // dbg!(composers);
     
     // More on Moves
     // assigning a value to a variable
@@ -103,5 +103,47 @@ fn main() {
     //  this can only work if we keep giving it a new value at the end of each iteration
     // 
     // Notes: a moves always leaves the source uninitialized
+    // Rust does not allow for partial moves of Vector items
+    // 
+    // let v = vec![1, 2, 3, 4];
+    // 
+    // let third = v[2]; this would lead to an error since rust can not move out the third element and have a partially initialized vector
+    // when we pass a vector a loop, it is moved into the loop
+    // 
+    let first_name = composers[0].name.take();
+    println!("First Name: {first_name:?}");
+    
+    dbg!(composers);
+    
+    // As a Rule of Thumb any types that needs to do some thing special when it's dropped should be a copy
+    // a vector needs to drop it elements, a file type needs to close it file handler
+    // By default struct and enums are not Copy
+    // you can make your own struct Copy by deriving Copy and Clone Trait for them
+    // provided all it's field implement the Copy trait
+    // Notice how when implementing Copy, Clone is also implemented, this is intentional
+    #[derive(Debug, Copy, Clone)]
+    struct Label {
+        number: u32
+    }
+    
+    let label_1 = Label { number: 1 };
+    let label_2 = label_1;
+    
+    println!("Label 1: {label_1:?}");
+    println!("Label 2: {label_2:?}");
+    
+    // using a copy trait on a type indicates that the implementor wishes to commit to none heap allocated field
+    // 
+    // we can use Rc in Rust to get a similar assignment experience as is in python
+    use std::rc::Rc;
+    
+    let s = Rc::new("Bomboclat".to_string());
+    let t = s.clone();
+    let u = t.clone();
+    
+    // you can use any of the usual string methods on the Rc directly
+    // a value own by a Rc is immutable
+    // 
+    let rc_1 = Rc
 }
     
