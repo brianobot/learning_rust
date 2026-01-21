@@ -97,6 +97,14 @@ fn main() {
     // assert_eq!(*s.r, 10);
     // when you get a shared reference to a value
     // the shared reference makes the referent read only, it basically locks down the referent
+    let v = vec![1, 2 , 3, 4, 5, 6];
+    let r = &v;
+    
+    // provided you don't try to use the reference after the v has been moved, this code compiles
+    let aside = v;
+    println!("Aside: {aside:?}");
+    
+    
 }
 
 
