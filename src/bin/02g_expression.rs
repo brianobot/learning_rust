@@ -72,7 +72,25 @@ fn main() {
         println!("Value is Not Available");
     }
     
+    
     // if let is a syntactic sugar for match, match expression can do everything if let can do
     
+    // loops: they are 4 types of loops in rust
+    // 1: while condition { ... }
+    // 2: while let pattern { ... }
+    // 3: loop { ... }
+    // 4: for pattern in iterable { ... }
     // 
+    // loops are expressions in rust, but the value of a while loop or a for loop is always ()
+    let mut start = 10u8;
+    let value = loop {
+        println!("Current Value = {start}");
+        start += 1;
+        
+        if start % 24 == 0 {
+            break start; // you can use break to return values from a loop in rust
+        }
+    };
+    
+    println!("Loop Produced the value {value}");
 }
