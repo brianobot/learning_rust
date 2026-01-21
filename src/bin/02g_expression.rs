@@ -72,7 +72,60 @@ fn main() {
         println!("Value is Not Available");
     }
     
+    
     // if let is a syntactic sugar for match, match expression can do everything if let can do
     
+    // loops: they are 4 types of loops in rust
+    // 1: while condition { ... }
+    // 2: while let pattern { ... }
+    // 3: loop { ... }
+    // 4: for pattern in iterable { ... }
     // 
+    // loops are expressions in rust, but the value of a while loop or a for loop is always ()
+    let mut start = 10u8;
+    let value = loop {
+        println!("Current Value = {start}");
+        start += 1;
+        
+        if start % 24 == 0 {
+            break start; // you can use break to return values from a loop in rust
+        }
+    };
+    
+    println!("Loop Produced the value {value}");
+    // for loops consume values that they iterate over by default
+    // 
+    let strings = vec!["boy", "girl", "child", "toy"];
+    for s in strings {
+        println!("s = {s}");
+    } // the 
+    
+    // println!("Strings: {strings:?}");// trying to access the vector here is an error
+    
+    // break can be used to break a loop
+    // continue is used to jump to the next iteration of a loop
+    // 
+    // a loop can be labelled with a lifetime
+    let mut temp = 10;
+    'search: 
+    loop {
+        println!("Temp: {temp}");
+        for i in 0..temp {
+            print!("{i}");
+            if i == 35 {
+                break 'search;
+            }
+        }
+        println!("");
+        temp += 2;
+    }
+    // a break can have a label and a value but both are optional
+    // break - empty break
+    // break 'label
+    // break 'label value
+    // break value
+    // 
+    
+    // labels can be used with continue
+    // returning without a value is shorthand for return ();
 }
