@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     // panics represent something that should never happen
     // if you compile a rust program with the flag -C panic=abort
     // rust does not unwind the stack when a panic is met, it just aborts, this reduces the binary sizes of compile programs
@@ -45,6 +45,9 @@ fn main() {
     }
     
     // you can propagate errors in the main function or any function that does not return a Result type
+    // how ever you can change the signature of main to return a result type and then you can propagate errors in it
+    // 
+    Ok(())
 }
 
 #[allow(dead_code)]
