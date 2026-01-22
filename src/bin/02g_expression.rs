@@ -152,6 +152,14 @@ fn main() {
     quicksort(&mut chaos);
     println!("Calm = {chaos:?}");
     
+    // Integers divions round towards zero
+    // there is no Unary operator +
+    // % can be used on floating point numbers too
+    let x = 1234.567 % 10.0;
+    println!("X = {x}");
+    
+    // values that implement the Deref allows the usuage of the Pointer to be much like using the underlying value
+    // usong Box<ChessBoard> is mostly just like using a plain ChessBoard
     
     
 }
