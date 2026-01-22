@@ -3,7 +3,7 @@ use std::vec;
 fn main() {
     let mut data = vec![0; 5]; // Create a vector of 5 elements, all initialized to 0
     println!("{:?}", data);
-    
+
     // vectors can also be created by repeating a certain value
     let another_vector = vec![0; 10 * 10];
     println!("✅ Another Vector: {another_vector:?}");
@@ -211,7 +211,7 @@ fn main() {
     // as in the case for insert and remove method shown above
     first_100_numbers.retain(|x| x % 2 == 0);
     println!("First even numbers = {:?}", first_100_numbers);
-    
+
     let languages = vec!["Lisp", "Scheme", "C", "C++", "Fortran"];
     for l in languages {
         if (l.len() & 1) == 0 {
@@ -220,6 +220,6 @@ fn main() {
             println!("{l}: Imperative");
         }
     }
-    
+
     // Vectors are not built into rust, they are implemented as an ordinary type in rust
 }
