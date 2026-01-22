@@ -61,7 +61,7 @@ fn main() {
 
     let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
     println!("List = {:?}", list);
-    
+
     // the simplest way to allocate a value on the heap is with the box
     let _heap_allocated = Box::new(String::from("Brian"));
     // when _heap_allocated goes out of scope the memory is freed

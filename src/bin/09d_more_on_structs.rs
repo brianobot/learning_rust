@@ -23,12 +23,18 @@ fn main() {
     // structs can be initialized with the values from another struct by using the ..EXPR expression
     // where EXPR can be another struct
 
-    let person_1 = Person { name: String::from("Brian"), age: 25 };
-    let person_2 = Person { name: String::from("David"), ..person_1.clone() };
+    let person_1 = Person {
+        name: String::from("Brian"),
+        age: 25,
+    };
+    let person_2 = Person {
+        name: String::from("David"),
+        ..person_1.clone()
+    };
     let person_3 = Person { ..person_1.clone() };
 
     // you must note that the ownership rules applies strongly here too
-    // if the field be extracted from the parent struct does not implement Copy, 
+    // if the field be extracted from the parent struct does not implement Copy,
     // it would moved into the new struct the parent struct field would become invalid
     // so if you wish to use the parent struct after this process, you must clone the field
     // of implement Clone trait for that field type
