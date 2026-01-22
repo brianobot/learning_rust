@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use std::{cmp::Ordering, fmt::Debug};
 
 
 
@@ -134,5 +134,53 @@ fn main() {
     let value= 10i32;
     let r = &value;
     
-    println!("R: {}", r.abs())
+    println!("R: {}", r.abs());
+    
+    // the .. operator produces 4 different types of range types based on it use
+    // .. RangeFull
+    // a.. RangeFrom
+    // ..b RangeTo
+    // a..b Range
+    // 
+    // there is 2 more
+    // ..=b RangeToInclusive
+    // a..=b RangeInclusive
+    // 
+    // only ranges that include a start value are iterable, since the iteration must start from somewhere
+    let mut chaos = vec![2, 4, 1, 3, 5, 6];
+    println!("Chaos = {chaos:?}");
+    quicksort(&mut chaos);
+    println!("Calm = {chaos:?}");
+    
+    
+    
+}
+
+
+fn partition<T: Ord>(slice: &mut [T]) -> usize {
+    let slice_len = slice.len();
+    let pivot_index = slice_len - 1;
+    let mut i = -1isize;
+    
+    for j in 0..pivot_index {
+        if slice[j] <= slice[pivot_index] {
+            i = i + 1isize;
+            slice.swap(i as usize, j);
+        }
+    }
+    
+    // this moves the pivot to the correct place
+    i += 1;
+    slice.swap(i as usize, pivot_index);
+    i as usize
+} 
+
+fn quicksort<T: Ord + Debug>(slice: &mut [T]) {
+    if slice.len() <= 1 {
+        return;
+    }
+    
+    let pivot_index = partition(slice);
+    quicksort(&mut slice[..pivot_index]);
+    quicksort(&mut slice[pivot_index..]);
 }
