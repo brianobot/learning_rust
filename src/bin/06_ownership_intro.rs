@@ -62,6 +62,7 @@ fn main() {
     #[derive(Debug)]
     struct Person {
         name: Option<String>,
+        #[allow(dead_code)]
         age: u32,
     }
 
@@ -130,6 +131,7 @@ fn main() {
     // Notice how when implementing Copy, Clone is also implemented, this is intentional
     #[derive(Debug, Copy, Clone)]
     struct Label {
+        #[allow(dead_code)]
         number: u32,
     }
 
@@ -146,7 +148,7 @@ fn main() {
 
     let s = Rc::new("Bomboclat".to_string());
     let t = s.clone();
-    let u = t.clone();
+    let _u = t.clone();
 
     // you can use any of the usual string methods on the Rc directly
     // a value own by a Rc is immutable

@@ -23,6 +23,7 @@ fn main() {
     //
     // for tuple that contain a single value they must be either type annoated as tuples
     // or a trailing comma must be used in their literal form to seperate it from simple parenthetic expression
+    #[allow(unused_parens)]
     let _wrong_single_value = ("Brian"); //
     let _correct_single_value = ("Brian",);
 }

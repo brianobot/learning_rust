@@ -26,7 +26,9 @@ fn main() {
     // A String is a resizable buffer that holds well formed UTF-8 text
     // a String is actually a Vector with a guarantee that each item is a valid UTF-8 text
     let noodles = "noodles".to_string();
-    let oodles = &noodles[1..];
+    let _oodles = &noodles[1..];
+    
+    println!("_oodles: {_oodles}");
 
     // a &str pronouced stir is a reference to a run of UTF-8 text owned by someone else
     // you can think of a &str as nothing more than a &[u8] that is guarantee to hold UTF-8 text

@@ -62,13 +62,13 @@ fn main() {
     // safe functions
 
     // Extern functions to call external code
-    extern "C" {
-        fn abs(input: i32) -> i32;
-    }
-
-    unsafe {
-        println!("Absolute value of -3 according to C: {}", abs(-3));
-    }
+    // extern "C" {
+    //     fn abs(input: i32) -> i32;
+    // }
+  
+    // unsafe {
+    //     println!("Absolute value of -3 according to C: {}", abs(-3));
+    // }
 
     // 3. Access and Modify mutable stable variable
     add_to_counter(3);

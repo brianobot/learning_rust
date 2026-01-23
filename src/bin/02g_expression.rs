@@ -1,4 +1,4 @@
-use std::{cmp::Ordering, fmt::Debug};
+use std::{fmt::Debug};
 
 fn main() {
     // Rust is an expression language
@@ -47,7 +47,7 @@ fn main() {
 
     // a block can contain item declaration such as Struct, functions or use
     // any block may contain a function
-    //
+    #[allow(dead_code)]
     fn show_files() -> std::io::Result<()> {
         #[allow(dead_code)]
         let mut _v = vec![1, 2, 3];
