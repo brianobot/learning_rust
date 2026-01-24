@@ -20,3 +20,4 @@ path = "src/error_handling_process/0_result_type.rs"
 [[bin]]
 name = "Result_type_part_2"
 path = "src/error_handling_process/1_error_handling_with_try_catch_and_map_error.rs"
+

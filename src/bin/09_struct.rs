@@ -50,7 +50,7 @@ struct Color(i32, i32, i32);
 // tuple structs are similar to tuples, in that they can destructured just like regular tuples
 // and you can use a dot notation followed by the index of the field
 struct _Point(f64, f64, f64); // i used the userscore infront, because rust would not allow me to compile
-                              // if i am not using the value defined, this way it ignores that error when compiling
+// if i am not using the value defined, this way it ignores that error when compiling
 
 // you can also defined unit like struct without any fields
 // so this are terminated with semi-colon unlike normal struct expressions

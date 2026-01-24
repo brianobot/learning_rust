@@ -52,7 +52,7 @@ fn main() {
     let world = "World!";
 
     let greeting = hello + " " + world; // hello is moved so it can not be used again
-                                        // world is a string slice and is not moved here since it is a reference
+    // world is a string slice and is not moved here since it is a reference
     println!("Greeting: {greeting}");
 
     // using the format macro

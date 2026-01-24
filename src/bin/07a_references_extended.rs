@@ -39,14 +39,14 @@ fn main() {
     // the . operator can also implictly borrow a reference to it left operand when needed
     let mut v = vec![1, 2, 3, 4];
     v.sort(); // here the sort method needs a &mut to the object so .sort borrows mut v as &mut v
-              // which is equivalent to (&mut v).sort()
-              // this means that outside the . operator, you have to explicitly borrow with &
-              // and dereference with *
-              //
-              // assigning to reference simply makes the reference to point to the new value
-              // it does not affect the referent
-              //
-              // References to References
+    // which is equivalent to (&mut v).sort()
+    // this means that outside the . operator, you have to explicitly borrow with &
+    // and dereference with *
+    //
+    // assigning to reference simply makes the reference to point to the new value
+    // it does not affect the referent
+    //
+    // References to References
     struct Point(i32, i32);
 
     let point = Point(10, 20);
@@ -84,8 +84,8 @@ fn main() {
             let x = 1;
             _r = &x; // at this point r is assigned and it valid
         } // x is dropped here and r is uninitialized here
-          // assert_eq!(*r, 1); // tryin to access r here is a violation of everything Rust stands for
-          // because the value bein referred to have been dropped at the end of the inner block
+        // assert_eq!(*r, 1); // tryin to access r here is a violation of everything Rust stands for
+        // because the value bein referred to have been dropped at the end of the inner block
     }
 
     // lifetimes in functions signature helps rust access the relationship between the references passed into the function

@@ -43,9 +43,9 @@ fn main() {
     // if can be used in a let statement as shown below
     let condition = true;
     let answer = if condition { 5 } else { 0 }; // remember number are themselves expressions
-                                                // when using the if else arm to assign value to a variable
-                                                // both expression must evaluate to the same data type,
-                                                // trying to assign different datatypes would lead to the compiler producing an error
+    // when using the if else arm to assign value to a variable
+    // both expression must evaluate to the same data type,
+    // trying to assign different datatypes would lead to the compiler producing an error
 
     println!("The value of answer is {answer}");
 

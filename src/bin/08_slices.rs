@@ -30,7 +30,7 @@ fn main() {
 
     // string literals &str
     let s = "Hello world"; // the create an immutable string literals whose value is stored in the compiled binary
-                           // this is possible because it content is known at compile time
+    // this is possible because it content is known at compile time
     println!("the value of s = {s}");
 
     // in a nutshell

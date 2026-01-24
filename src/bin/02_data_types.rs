@@ -29,8 +29,8 @@ fn main() {
     // we can use byte literal to store
     // only Chars can appear in byte literal
     let _literal = b'A'; // this stores the ASCII value for the character A as a U8
-                         // you can mix underscore and type suffix to better indicate the type of an integer
-                         //
+    // you can mix underscore and type suffix to better indicate the type of an integer
+    //
     let _rating = 24_u8; // the underscore is ignore and only needed to make it easier to read
     let _score = 25__u16;
 

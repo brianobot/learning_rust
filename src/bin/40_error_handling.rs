@@ -37,16 +37,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Some_value = {some_value:?}");
     println!("Error Value = {err_value:?}");
     println!("Fallback = {fallback:?}");
-    
-    // if you want to return multiple types of errors from your functions 
+
+    // if you want to return multiple types of errors from your functions
     // you can use the generic error trait which all errors implement
     fn multiple_errors() -> Result<String, Box<dyn std::error::Error>> {
         Ok("Multiple".to_string())
     }
-    
+
     // you can propagate errors in the main function or any function that does not return a Result type
     // how ever you can change the signature of main to return a result type and then you can propagate errors in it
-    // 
+    //
     Ok(())
 }
 
