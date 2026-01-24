@@ -15,8 +15,8 @@ fn main() {
     // they can only store values of the same type
 
     let vec: Vec<i32> = Vec::new(); // type annotation is needed for the empty state
-                                    // if instead we were creating the vector with some initial values, we would not have to specify the
-                                    // type since rust can infer the type from the values we give to the vector
+    // if instead we were creating the vector with some initial values, we would not have to specify the
+    // type since rust can infer the type from the values we give to the vector
 
     let v = vec![1, 2, 3, 4]; // rust programs a vec macro that can create a vector with the values we give to it
 
@@ -24,7 +24,7 @@ fn main() {
     // we need to make it mutable
 
     let mut vector = vec![]; // this also creates a new empty vector too
-                             // the compiler knew from the data added to the vector, that the support data type for the vector is i32
+    // the compiler knew from the data added to the vector, that the support data type for the vector is i32
 
     vector.push(5);
     vector.push(4);
@@ -126,7 +126,7 @@ fn main() {
 
     let mut name = String::from("Brian");
     name.push_str(" David Obot"); // this method takes string slice since it does not need to take ownership
-                                  // of the string passed to it
+    // of the string passed to it
 
     // just like the push_str, the push method takes a single character and extends the string by that character
     name.push('.');
@@ -140,7 +140,7 @@ fn main() {
     let s1 = "Hello ".to_string();
     let s2 = "World".to_string();
     let new = s1 + &s2; // after this line, s1 has been moved
-                        // the compiler can coerce &String argument into &str
+    // the compiler can coerce &String argument into &str
     println!("New = {new}");
     println!("S2 = {s2}");
 
@@ -157,7 +157,7 @@ fn main() {
     // since some characters can be reprensented by more than 1 byte, which would make indexing fail in some cases
 
     let hello = String::from("Здравствуйте"); // this is a valid string with 12 characters
-                                              // but each character takes 2 bytes each which amount to 24 bytes, now this code below would fail
+    // but each character takes 2 bytes each which amount to 24 bytes, now this code below would fail
 
     // let first = &hello[0];
     // so rather than user the [] with a specific number as the index, rust encourages the use of a range to

@@ -6,7 +6,7 @@ fn main() {
     let s1 = String::from("Hello");
 
     let len = calculate_len(&s1); // the ampersand represents references
-                                  // they allow you to refer to some value without taking ownership
+    // they allow you to refer to some value without taking ownership
 
     // the action of creating a reference is called BORROWING!
 
@@ -25,20 +25,20 @@ fn main() {
     */
 
     let _some = &String::from("Brian"); // this is pronouced ref String
-                                        // this is a reference of type String
-                                        // think of a reference to a i32 as a single machine word holding the address of the i32
-                                        // we say a reference to the value is borrowed, let r = &32;
-                                        // to get the actual value, we dereference using *r
-                                        // a reference does not automatically free any resource when it goes out of scope
-                                        // but rust references are never null, there is no way to produce a null reference in safe rust
-                                        //
-                                        // they are two types of references in rust
-                                        // &T - Shared references which are read only
-                                        // &mut T - Mutable, Exclusive Reference, you can read and modify the value the reference points to, but you can't have other references
-                                        // to the same value while this exists
-                                        //
-                                        // Pointers like Box, Rc etc are owning pointers, in that when the go out of scope their referent are dropped
-                                        // the regular references are non owning pointers
+    // this is a reference of type String
+    // think of a reference to a i32 as a single machine word holding the address of the i32
+    // we say a reference to the value is borrowed, let r = &32;
+    // to get the actual value, we dereference using *r
+    // a reference does not automatically free any resource when it goes out of scope
+    // but rust references are never null, there is no way to produce a null reference in safe rust
+    //
+    // they are two types of references in rust
+    // &T - Shared references which are read only
+    // &mut T - Mutable, Exclusive Reference, you can read and modify the value the reference points to, but you can't have other references
+    // to the same value while this exists
+    //
+    // Pointers like Box, Rc etc are owning pointers, in that when the go out of scope their referent are dropped
+    // the regular references are non owning pointers
 }
 
 // remember the return type of the function must always be annotated in the function definition

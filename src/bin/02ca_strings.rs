@@ -10,8 +10,8 @@ fn main() {
     // if you want to include double quotes in your strings, you can use pounds signs with raw strings
     let raw = r###"Some Raw Information: "" "###;
     println!("Raw: {raw}"); // notice how the pounds signs count at the start must match that at the end
-                            // the number of pounds sign used does not matter
-                            //
+    // the number of pounds sign used does not matter
+    //
     let another_raw = r#"Some Information " iN the middle of the sea"#;
     println!("ANother Raw: {another_raw}");
 
@@ -27,7 +27,7 @@ fn main() {
     // a String is actually a Vector with a guarantee that each item is a valid UTF-8 text
     let noodles = "noodles".to_string();
     let _oodles = &noodles[1..];
-    
+
     println!("_oodles: {_oodles}");
 
     // a &str pronouced stir is a reference to a run of UTF-8 text owned by someone else
@@ -63,7 +63,7 @@ fn main() {
     // other string-like types
     #[allow(unused_imports)]
     use std::path::{Path, PathBuf}; // use this when working with filenames
-                                    // use Vec<u8> or &[u8] when working with binary data that isn't utf-8 encoded
+    // use Vec<u8> or &[u8] when working with binary data that isn't utf-8 encoded
     #[allow(unused_imports)]
     use std::ffi::{CStr, CString};
     #[allow(unused_imports)]

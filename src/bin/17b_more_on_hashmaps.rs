@@ -1,6 +1,6 @@
 // hashmap is not part of the default prelude, so must be imported into the crate for use
-use std::collections::hash_map::RandomState as Hasher;
 use std::collections::HashMap;
+use std::collections::hash_map::RandomState as Hasher;
 
 fn main() {
     // hashmaps can use type inference to infer the type of the keys, values in the hashmap itself

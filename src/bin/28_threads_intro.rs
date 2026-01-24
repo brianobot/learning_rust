@@ -1,5 +1,5 @@
-use std::sync::mpsc;
 use std::sync::Mutex;
+use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
@@ -68,7 +68,7 @@ fn main() {
     let handle_2 = thread::spawn(move || {
         println!("Data moved from the main thread = {:?}", data);
     }); // at this point the data variable is no longer available in the main thread, since it has been moved
-        // into the handle_2 thread
+    // into the handle_2 thread
 
     handle_2.join().unwrap();
 
@@ -78,14 +78,14 @@ fn main() {
     thread::spawn(move || {
         let val = String::from("Brian David Obot");
         let result = tx.send(val).unwrap(); // the send method would fail is the receiver has dropped
-                                            // for this reason the send method returns a Result<T, E>
-                                            // at this point the val variable has been moved out of this scope and would be available
-                                            // at whereever is the receiving end of the channel
+        // for this reason the send method returns a Result<T, E>
+        // at this point the val variable has been moved out of this scope and would be available
+        // at whereever is the receiving end of the channel
         println!("Result of Transmission: {:?}", result);
     }); // at this point, the tx variable as been moved into the thread
 
     let received = rx.recv().unwrap(); // the recv method would block the thread until a value is received
-                                       // once the transmitter closes the recv would return an error since no more value can be received
+    // once the transmitter closes the recv would return an error since no more value can be received
     println!("Received = {:?}", received);
 
     // if we do no want to block the thread while checking for messages on the channel

@@ -66,12 +66,12 @@ pub fn boo2(s: impl Hei) {
 // trait, this wouldn't work within the context of a single function
 
 pub fn zoo(_s: /*  &[dyn Hei] */ impl Hei) { // the idea here is to get a slice of types that implements the Hei trait
-                                             // we do not care about their concrete types, just that they implement Hei, now
-                                             // since this can be different types, generating a single type instance for each type needed
-                                             // would not cut it, since within the slice, the first item might be a different type from the rest
-                                             // for h in s {
-                                             //     h.hei();
-                                             // }
+    // we do not care about their concrete types, just that they implement Hei, now
+    // since this can be different types, generating a single type instance for each type needed
+    // would not cut it, since within the slice, the first item might be a different type from the rest
+    // for h in s {
+    //     h.hei();
+    // }
 }
 
 // to fix the issue about, we have to put the dyn <Trait> behind some kind of pointer time
