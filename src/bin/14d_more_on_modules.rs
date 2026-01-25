@@ -84,6 +84,7 @@ fn main() {
     use std::prelude::v1::*; // this contains a few dozen common used trait and types
 
     mod kitchen {
+        #[allow(dead_code)]
         pub struct Cooker(pub String);
     }
 
