@@ -125,4 +125,16 @@ fn main() {
     
     let mut char_queue = GQueue::new();
     char_queue.push('c');
+    
+    // a Cell<T> is a struct that contains a single privaet value of type T
+    // the only thing special about a cell is that you can get and set the field even though you don't have mit access to 
+    // Cell itself
+    // 
+    // Cell::new(value)
+    // Cell.get() -> returna copy of the value in the cell
+    // Cell.set(value) -> Stores the given value in the cell, dropping the prviode stored value
+    // 
+    // RefCell<T> is just like cell but can be used with type T which are not Copiable 
+    // instead of get() which returns a copt of the value in the Cell
+    // we use .borrow() which returns a shared referenced to the value stored in the ref_cell
 }
