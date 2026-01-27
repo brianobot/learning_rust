@@ -155,5 +155,71 @@ fn main() -> Result<(), String> {
     // Guard expressins: x if x * x <= r2
 
     
+    // apart from enums other types can be matched too, 
+    let value = 1;
+    match value { // the match value is moved or copied into the variable name
+        0 => {}, 
+        1 => println!("A Value is One"),
+        n => println!("a Value is {n}"),
+    }
+    
+    // this works because i32 implements Copy trait so it is copied instead
+    println!("After Match Expression: {value}");
+    
+    // when matching a large struct and you only care for a small subset of the fields use .. to show you want to ignore the rest
+    #[derive(Debug, Default)]
+    #[allow(dead_code)]
+    struct Account {
+        id: String,
+        email: String,
+        fullname: String,
+        date_created: String,
+        date_updated: String,
+        emergency_contact: String
+    }
+    
+    let possible_account = Some(Account{id: "001".to_string(), ..Default::default() });
+    match possible_account {
+        Some(Account { id, ..}) => println!("Found Account with id: {id}"),
+        None => println!("Account Not Found"),
+    }
+    
+    // slice are similar to array pattern only that slices are variable lengths
+    
+    println!("{}", "-".repeat(100));
+    let next_char = "Brian".to_string().chars().into_iter().next();
+    match next_char.unwrap() {
+        '0'..='9' => println!("Found a Number"),
+        'a'..'z' => println!("Found a Small Letter"),
+        'A'..='Z' => println!("Found a Capital Letter"),
+        _ => println!("Found Something Else"),
+    }
+    
+    // for @ matches a pattern and then binds that pattern to a variable 
+    match next_char.unwrap() {
+        ch @ '0'..='9' => println!("Found a Number: [{ch}]"),
+        ch @ 'a'..'z' => println!("Found a Small Letter: [{ch}]"),
+        ch @ 'A'..='Z' => println!("Found a Capital Letter: [{ch}]"),
+        _ => println!("Found Something Else"),
+    }
+    
+    // patterns are also allowed in place of an identifier
+    // such as variable declaration
+    // function argument
+    // iteration over keys and values
+    // 
+    // these patterns are alwaus guaranteed to match and they are called irrefutable patterns
+    // other patterns with no guarantees are not allowed in these contexts
+    let account = Account { id: "002".to_string(), ..Default::default() };
+    
+    let Account { id, email, ..} = account;
+    println!("ID: {id}");
+    println!("Email: {email}");
+    
+    let another_account = Account { id: "003".to_string(), ..Default::default() };
+    let ref value @ Account { ref id, ref fullname , ..} =  another_account;
+    
+    println!("Value = {:?}", value);
+    
     Ok(())
 }
