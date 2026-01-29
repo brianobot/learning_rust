@@ -41,7 +41,27 @@ fn main() -> std::io::Result<()> {
     println!("Data = {:?}", data);
     // when using a trait method, the trait itself must be in scope 
     // otherwise the methods would be hidden
+    // the reason Clone and Iterator work is because they are included in the rust standard prelude
     
+    // dyn Write is known as a trait object
+    // 
+    // Rust doesn't permit variables of type dyn Write
+    let mut buf: Vec<u8> = vec![];
+    // let writer: dyn Write = buf; // this does not work, because the size of write must be known
+    // but a value implementing Write could be any size
+    let _writer: &mut dyn Write = &mut buf; // a reference to a trait type is called a trait object
+    
+    // Rust will automatically converts types that implements a references of types that implement a certain trait
+    // to their trait object when they are used in places that require a trait object
+    // 
+    // imagine a type 
+    // let file = File::new(...), let assume File implements a Write trait
+    // if you pass file to a function that requires a &mut dyn Write
+    // &mut file is converted to the trait object &mut dyn Write
+    // 
+    // this conversion is neccesary because for rust to be able to call a method on a trait object
+    // it needs access to the vtable for that trait object, so when you pass a reference to a concrete that
+    // rust takes that and adds the address of the appropriate vtable to a new created trait object so it can call the correcrt method
     
     std::io::Result::Ok(())
 }
