@@ -240,11 +240,10 @@ fn main() -> Result<(), String> {
     println!("Value = {:?}", value);
 
     impl<T: PartialOrd> BinaryTree<T> {
-        
         fn new() -> Self {
             Self::Empty
         }
-        
+
         fn add(&mut self, value: T) {
             match *self {
                 BinaryTree::Empty => {
@@ -264,11 +263,9 @@ fn main() -> Result<(), String> {
             }
         }
     }
-    
+
     let mut root = BinaryTree::new();
     root.add(32.12);
-    
-    
-    
+
     Ok(())
 }
