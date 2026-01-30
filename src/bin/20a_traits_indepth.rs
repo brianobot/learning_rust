@@ -1,4 +1,6 @@
+#![allow(dead_code)]
 use std::io::{Error, Write};
+
 
 #[allow(dead_code)]
 // this can be read as a mutable reference to any value that implements the Write trait
@@ -118,6 +120,112 @@ fn main() -> std::io::Result<()> {
     // type aliases can be generic too
     // 
     // Which to use: Generic functions or functions that take trait objects
+    // use trait objects when you need you need a collection of values of mixed types
+    // 
+    trait Vegetable {
+        
+    }
+    
+    #[allow(dead_code)]
+    struct Salad<V: Vegetable> {
+        veggies: Vec<V>
+    }
+    
+    // in the same above, all Salad in the Salad would be of the same type
+    
+    #[allow(dead_code)]
+    struct Salad2 {
+        veggies: Vec<Box<dyn Vegetable>>
+    }
+    
+    // this version can contain any veggie as far as they match the trait object declared here
+    // each Box<dyn Vegetable> can contain any value, but the items in the Vec are all the same
+    // Box, which is a fat pointer to some type, in this case, to a trait object type
+    
+    // another reason to use trait object is too save binary size
+    // because generic would generate a a version of the funciton for each type it is used for
+    // 
+    // advantanges of generic over trait objects
+    // 1. generic are faster and can be optimized since rust knowns what function or trait methods to use
+    // 2. not all trait can supoprt trait objects
+    // 3. generic can specify multiple bounds on multiple trait, but trait object can onlt be used with one trait except with subtrait
+    
+    // Defining Trait
+    // when defining a trait you specify the signature of the trait methods and you can provide default implementation
+    // by adding a body to those method signature
+    // when implementing a trait, you can only specify things that were listed in the trait declartion
+    // if you need other methods, define them in your value impl block, those values would be visible to the trait methods
+    
+    #[allow(dead_code)]
+    trait Visible {
+        fn draw(&self);
+        fn hit_test(&self, point: (i32, i32)) -> bool;
+    }
+    
+    #[allow(dead_code)]
+    struct Broom {
+        pos: (i32, i32),
+    }
+    
+    #[allow(dead_code)]
+    impl Broom {
+        fn outline(&self) -> (i32, i32) {
+            self.pos
+        }
+    }
+    
+    impl Visible for Broom {
+        fn draw(&self) {
+            // notice how the method of the value is available here
+            let _bound = self.outline();
+            // draw the bounds
+        }
+
+        fn hit_test(&self, (x, y): (i32, i32)) -> bool {
+            let bound = self.outline();
+            x == bound.0 && y == bound.1
+        }
+    }
+    
+    // when implementing a trait for a value, you can skip the default method
+    // and only implement those without a default implementation
+    // 
+    // you can implement any trait on any tupe
+    // as long as either the trait or the type is introduced in the current crate
+    // 
+    trait IsEmoji {
+        fn is_emoji(&self) -> bool;
+    }
+    
+    impl IsEmoji for char {
+        fn is_emoji(&self) -> bool {
+            *self == '😂'
+        }
+    }
+    
+    assert_eq!('😂'.is_emoji(), true);
+    
+    
+    // Notes: Trait methods are only visible when the trait is in scope
+    // An extension trait is a trait used for an existing type like char, str etc
+    // 
+    // you can define a generic trait like so
+    
+    struct HtmlDocument(String);
+    
+    trait WriteHtml {
+        fn write_html(&mut self, html: &HtmlDocument) -> std::io::Result<()>;
+    }
+    
+    impl<W: Write> WriteHtml for W {
+        fn write_html(&mut self, _html: &HtmlDocument) -> std::io::Result<()> {
+            std::io::Result::Ok(())
+        }
+    }
+    
+    // The line impl<W: Write> WriteHtml for W means “for
+    // every type W that implements Write, here’s an
+    // implementation of WriteHtml for W.”
     
     std::io::Result::Ok(())
 }
