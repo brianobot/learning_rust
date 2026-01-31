@@ -192,6 +192,8 @@ fn main() -> std::io::Result<()> {
     // 
     // you can implement any trait on any tupe
     // as long as either the trait or the type is introduced in the current crate
+    // you can't implement trait you don't own on types you didn;t defined
+    // this is called the orphan rule and it help rust ensure each trait implementation is unique
     // 
     trait IsEmoji {
         fn is_emoji(&self) -> bool;
@@ -226,6 +228,29 @@ fn main() -> std::io::Result<()> {
     // The line impl<W: Write> WriteHtml for W means “for
     // every type W that implements Write, here’s an
     // implementation of WriteHtml for W.”
+    
+    
+    // SUbtraits allow use to declare that some trait are an extension of another trait
+    enum Direction {
+        Forward,
+        Backeward,
+        Upward,
+        Right,
+        Left,
+        Null,
+    }
+    
+    trait Creature: Visible {
+        fn position(&self) -> (i32, i32);
+        fn facing(&self) -> Direction;
+    }
+    
+    // this means that every type that implement creature must also implement visible
+    // creature is a subtrait of visible and visible is a supertrait of creature
+    // technically a subtrait is a trait which a bound on another trait
+    // trait Creature where Self: Visible {
+    //     ...
+    // }
     
     std::io::Result::Ok(())
 }
