@@ -251,6 +251,23 @@ fn main() -> std::io::Result<()> {
     // trait Creature where Self: Visible {
     //     ...
     // }
+    // 
+    // fully qualified method call can be used in place of regular method calls
+    // it's important to know that methods call are just a special kind of function call where the value
+    // it is called on is passed as the first argument to the method 
+    
+    "hello".to_string();
+    ToString::to_string("hello");
+    str::to_string("hello"); // all of these are equivalent 
+    
+    // strangely enough it can be beneficial to use qualified method call in some cases
+    // case 1: clashing method names from different traits
+    // case 2: unknown type when calling the method
+    
+    let zero = 0;
+    let result = i64::abs(zero);
+    
+    println!("Result: {result:?}");
     
     std::io::Result::Ok(())
 }
