@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 use std::io::{Error, Write};
 
-
 #[allow(dead_code)]
 // this can be read as a mutable reference to any value that implements the Write trait
 fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
@@ -111,69 +110,67 @@ fn main() -> std::io::Result<()> {
     {
         ()
     }
-    
+
     // this type of bounds is permitted any where bounds are permitted
     // when declaring a generic function that have lifetimes, the lifetimes comes first
-    // 
+    //
     // an individual methof can be generic even if the type if's defnined on is not generic
-    
+
     // type aliases can be generic too
-    // 
+    //
     // Which to use: Generic functions or functions that take trait objects
     // use trait objects when you need you need a collection of values of mixed types
-    // 
-    trait Vegetable {
-        
-    }
-    
+    //
+    trait Vegetable {}
+
     #[allow(dead_code)]
     struct Salad<V: Vegetable> {
-        veggies: Vec<V>
+        veggies: Vec<V>,
     }
-    
+
     // in the same above, all Salad in the Salad would be of the same type
-    
+
     #[allow(dead_code)]
     struct Salad2 {
-        veggies: Vec<Box<dyn Vegetable>>
+        veggies: Vec<Box<dyn Vegetable>>,
     }
-    
+
     // this version can contain any veggie as far as they match the trait object declared here
     // each Box<dyn Vegetable> can contain any value, but the items in the Vec are all the same
     // Box, which is a fat pointer to some type, in this case, to a trait object type
-    
+
     // another reason to use trait object is too save binary size
     // because generic would generate a a version of the funciton for each type it is used for
-    // 
+    //
     // advantanges of generic over trait objects
     // 1. generic are faster and can be optimized since rust knowns what function or trait methods to use
     // 2. not all trait can supoprt trait objects
     // 3. generic can specify multiple bounds on multiple trait, but trait object can onlt be used with one trait except with subtrait
-    
+
     // Defining Trait
     // when defining a trait you specify the signature of the trait methods and you can provide default implementation
     // by adding a body to those method signature
     // when implementing a trait, you can only specify things that were listed in the trait declartion
     // if you need other methods, define them in your value impl block, those values would be visible to the trait methods
-    
+
     #[allow(dead_code)]
     trait Visible {
         fn draw(&self);
         fn hit_test(&self, point: (i32, i32)) -> bool;
     }
-    
+
     #[allow(dead_code)]
     struct Broom {
         pos: (i32, i32),
     }
-    
+
     #[allow(dead_code)]
     impl Broom {
         fn outline(&self) -> (i32, i32) {
             self.pos
         }
     }
-    
+
     impl Visible for Broom {
         fn draw(&self) {
             // notice how the method of the value is available here
@@ -186,50 +183,48 @@ fn main() -> std::io::Result<()> {
             x == bound.0 && y == bound.1
         }
     }
-    
+
     // when implementing a trait for a value, you can skip the default method
     // and only implement those without a default implementation
-    // 
+    //
     // you can implement any trait on any tupe
     // as long as either the trait or the type is introduced in the current crate
     // you can't implement trait you don't own on types you didn;t defined
     // this is called the orphan rule and it help rust ensure each trait implementation is unique
-    // 
+    //
     trait IsEmoji {
         fn is_emoji(&self) -> bool;
     }
-    
+
     impl IsEmoji for char {
         fn is_emoji(&self) -> bool {
             *self == '😂'
         }
     }
-    
+
     assert_eq!('😂'.is_emoji(), true);
-    
-    
+
     // Notes: Trait methods are only visible when the trait is in scope
     // An extension trait is a trait used for an existing type like char, str etc
-    // 
+    //
     // you can define a generic trait like so
-    
+
     struct HtmlDocument(String);
-    
+
     trait WriteHtml {
         fn write_html(&mut self, html: &HtmlDocument) -> std::io::Result<()>;
     }
-    
+
     impl<W: Write> WriteHtml for W {
         fn write_html(&mut self, _html: &HtmlDocument) -> std::io::Result<()> {
             std::io::Result::Ok(())
         }
     }
-    
+
     // The line impl<W: Write> WriteHtml for W means “for
     // every type W that implements Write, here’s an
     // implementation of WriteHtml for W.”
-    
-    
+
     // SUbtraits allow use to declare that some trait are an extension of another trait
     enum Direction {
         Forward,
@@ -239,35 +234,101 @@ fn main() -> std::io::Result<()> {
         Left,
         Null,
     }
-    
+
     trait Creature: Visible {
         fn position(&self) -> (i32, i32);
         fn facing(&self) -> Direction;
     }
-    
+
     // this means that every type that implement creature must also implement visible
     // creature is a subtrait of visible and visible is a supertrait of creature
     // technically a subtrait is a trait which a bound on another trait
     // trait Creature where Self: Visible {
     //     ...
     // }
-    // 
+    //
     // fully qualified method call can be used in place of regular method calls
     // it's important to know that methods call are just a special kind of function call where the value
-    // it is called on is passed as the first argument to the method 
-    
+    // it is called on is passed as the first argument to the method
+
     "hello".to_string();
     ToString::to_string("hello");
     str::to_string("hello"); // all of these are equivalent 
-    
+
     // strangely enough it can be beneficial to use qualified method call in some cases
     // case 1: clashing method names from different traits
     // case 2: unknown type when calling the method
-    
+
     let zero = 0;
     let result = i64::abs(zero);
-    
+
     println!("Result: {result:?}");
-    
+
+    // traits that show relationship
+    // the key skill is the section below is the ability to read traits and method signature
+    // and figuure out what they say about the types involved
+
+    pub trait SampleIterator {
+        type Item; // associated type
+
+        fn next(&mut self) -> Option<Self::Item>;
+    }
+
+    // generic code can use associated type
+    fn collect_to_vector<T: Iterator>(iter: T) -> Vec<T::Item> {
+        let mut vector = Vec::new();
+        for value in iter {
+            vector.push(value)
+        }
+        vector
+    }
+
+    let result = collect_to_vector(vec![1, 2, 3, 4, 5].into_iter());
+    println!("Vector: {result:?}");
+
+    fn dump<I>(iter: I)
+    where
+        I: Iterator,
+        I::Item: Debug,
+    {
+        for (index, value) in iter.enumerate() {
+            println!("{index}: {value:?}");
+        }
+    }
+
+    // remember that concept of subtrait, we can write subtraits like this
+    // Iterator<Item=String>, this is basically Iterator whose produced values are String
+    // this can be used anywhere a regular trait is used
+
+    fn str_dump<I: Iterator<Item = String>>(iter: I) {
+        for (index, value) in iter.enumerate() {
+            println!("{index}: {value:?}");
+        }
+    }
+
+    fn dyn_str_dump(iter: &mut dyn Iterator<Item = String>) {
+        for (index, value) in iter.enumerate() {
+            println!("{index}: {value:?}");
+        }
+    }
+
+    str_dump(vec!["".to_string(); 100].into_iter());
+
+    // generics traits
+    trait SpecialMul<RHS = Self> {
+        // the RHS means that SpecialMul is a genereic trait that defaults to the type of the
+        // implementator if a type is not provided
+        type Output;
+
+        fn special_mul(&self, rhs: &RHS) -> Self::Output;
+    }
+
+    // in rust, the expression
+    // lhs * rhs is shorthand for Mul::mul(lhs, rhs)
+    // so overloading the * operator is as simple as implementing the Mul trait
+    //
+    // type erasure can be achieved using a impl trait type declaration
+    // this basically means any type that implements this trait without worrying about dynamic dispatch like &dyn Trait (trait object) does
+
     std::io::Result::Ok(())
 }
