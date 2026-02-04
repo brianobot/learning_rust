@@ -39,7 +39,13 @@ fn main() -> std::io::Result<()> {
     // the reason Clone and Iterator work is because they are included in the rust standard prelude
 
     // dyn Write is known as a trait object
-    //
+    // trait objects can be created by using a reference or some sort of fat pointer 
+    // followed by the keyword dyn and the name of the trait 
+    // 
+    // example: &dyn Write -> this is a trait object to the Write Trait
+    //          Box<dyn Read> -> This is a trait object to the Read trait
+    // 
+    // we can use trait object in place of a generic or concrete type
     // Rust doesn't permit variables of type dyn Write
     let mut buf: Vec<u8> = vec![];
     // let writer: dyn Write = buf; // this does not work, because the size of write must be known
@@ -329,6 +335,43 @@ fn main() -> std::io::Result<()> {
     //
     // type erasure can be achieved using a impl trait type declaration
     // this basically means any type that implements this trait without worrying about dynamic dispatch like &dyn Trait (trait object) does
+
+    
+    trait GenericStuffs<T> {
+        fn talk(&self) -> T;
+    }
+    
+    struct MyType;
+    
+    
+    impl GenericStuffs<u32> for MyType {
+        fn talk(&self) -> u32 {
+            u32::default()
+        }
+    }
+    
+    impl GenericStuffs<String> for MyType {
+        fn talk(&self) -> String {
+            String::default()
+        }
+    }
+    
+    let my_type = MyType;
+    let value: u32 = my_type.talk();
+    println!("Value = {value}");
+    
+    fn f(a: &dyn Debug, b: &dyn Debug) {
+        println!("a = {a:?}, b = {b:?}");
+    }
+    
+    f(&10, &10.2);
+    
+    fn g(a: Box<dyn Debug>, b: Box<dyn Debug>) {
+        println!("a = {a:?}, b = {b:?}");
+    }
+    
+    g(Box::new(10), Box::new(13.4));
+    
 
     std::io::Result::Ok(())
 }
