@@ -45,6 +45,7 @@ fn main() -> std::io::Result<()> {
     // example: &dyn Write -> this is a trait object to the Write Trait
     //          Box<dyn Read> -> This is a trait object to the Read trait
     // 
+    // we can use trait object in place of a generic or concrete type
     // Rust doesn't permit variables of type dyn Write
     let mut buf: Vec<u8> = vec![];
     // let writer: dyn Write = buf; // this does not work, because the size of write must be known
@@ -371,6 +372,6 @@ fn main() -> std::io::Result<()> {
     
     g(Box::new(10), Box::new(13.4));
     
-    
+
     std::io::Result::Ok(())
 }
