@@ -1,3 +1,6 @@
+#![allow(unused_variables)]
+#![allow(clippy::almost_complete_range)]
+
 fn main() -> Result<(), String> {
     // Rust enums are useful when a value might be either one thing or another
     // C-Style Enums
@@ -75,7 +78,7 @@ fn main() -> Result<(), String> {
                     format!("{} {} ago", 1, time_unit.plural().trim_end_matches("s"))
                 }
                 RoughTime::InThePast(time_unit, n) => format!("{} {} ago", n, time_unit.plural()),
-                RoughTime::JustNow => format!("Just now!"),
+                RoughTime::JustNow => "Just now!".to_string(),
                 RoughTime::InTheFuture(time_unit, 1) => {
                     format!("{} {} ahead", 1, time_unit.plural().trim_end_matches("s"))
                 }
@@ -111,6 +114,7 @@ fn main() -> Result<(), String> {
         Number(f64),
         String(String),
         Array(Vec<Json>),
+        #[allow(clippy::box_collection)]
         Object(Box<HashMap<String, Json>>),
     }
 
@@ -194,6 +198,8 @@ fn main() -> Result<(), String> {
     // slice are similar to array pattern only that slices are variable lengths
 
     println!("{}", "-".repeat(100));
+
+    #[allow(clippy::useless_conversion)]
     let next_char = "Brian".to_string().chars().into_iter().next();
     match next_char.unwrap() {
         '0'..='9' => println!("Found a Number"),
@@ -230,6 +236,13 @@ fn main() -> Result<(), String> {
         id: "003".to_string(),
         ..Default::default()
     };
+    println!("Another Account: {another_account:?}");
+    println!(
+        "Another Account fields: id: {}, fullname: {}",
+        another_account.id, another_account.fullname
+    );
+
+    #[allow(unused_assignments)]
     let ref value @ Account {
         ref id,
         ref fullname,

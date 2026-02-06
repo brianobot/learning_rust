@@ -1,4 +1,6 @@
 #![allow(dead_code)]
+#![allow(clippy::unused_unit)]
+
 use std::io::{Error, Write};
 
 #[allow(dead_code)]
@@ -31,6 +33,7 @@ fn main() -> std::io::Result<()> {
     // generics used trait in bounds to specify what type of arguments can be applied to them
     //
     let mut data = vec![1, 2, 3, 4];
+    #[allow(clippy::unused_io_amount)]
     data.write(&[5, 6, 7]).unwrap();
 
     println!("Data = {:?}", data);
@@ -39,12 +42,12 @@ fn main() -> std::io::Result<()> {
     // the reason Clone and Iterator work is because they are included in the rust standard prelude
 
     // dyn Write is known as a trait object
-    // trait objects can be created by using a reference or some sort of fat pointer 
-    // followed by the keyword dyn and the name of the trait 
-    // 
+    // trait objects can be created by using a reference or some sort of fat pointer
+    // followed by the keyword dyn and the name of the trait
+    //
     // example: &dyn Write -> this is a trait object to the Write Trait
     //          Box<dyn Read> -> This is a trait object to the Read trait
-    // 
+    //
     // we can use trait object in place of a generic or concrete type
     // Rust doesn't permit variables of type dyn Write
     let mut buf: Vec<u8> = vec![];
@@ -88,17 +91,20 @@ fn main() -> std::io::Result<()> {
     use std::fmt::Debug;
 
     // when declaring a generic function you can specify the abilities need from the generic parameter by adding trait bounds
-    fn top_three<T: Debug>(values: &Vec<T>) {
+    fn top_three<T: Debug>(values: &[T]) {
         let line_len = 30;
         println!("{}", "-".repeat(line_len));
         println!("First Three Items: ");
         println!("{}", "-".repeat(line_len));
+
+        #[allow(clippy::needless_range_loop)]
         for i in 0..3 {
             println!("   value = {:?}", values[i]);
         }
         println!("{}", "-".repeat(line_len));
     }
 
+    #[allow(clippy::useless_vec)]
     top_three::<f64>(&vec![1., 2., 3., 4., 5., 0.6]);
 
     // generic functions can have multiple type parameters
@@ -109,7 +115,7 @@ fn main() -> std::io::Result<()> {
     // rust provides another way to express the bounds
     //
     #[allow(dead_code)]
-    fn run_query_2<T, M, X, P>(_data: &T, _input: &mut M, (_x, _y): (X, P)) -> ()
+    fn run_query_2<T, M, X, P>(_data: &T, _input: &mut M, (_x, _y): (X, P))
     where
         T: Write,
         M: Debug,
@@ -208,7 +214,7 @@ fn main() -> std::io::Result<()> {
         }
     }
 
-    assert_eq!('😂'.is_emoji(), true);
+    assert!('😂'.is_emoji());
 
     // Notes: Trait methods are only visible when the trait is in scope
     // An extension trait is a trait used for an existing type like char, str etc
@@ -336,42 +342,39 @@ fn main() -> std::io::Result<()> {
     // type erasure can be achieved using a impl trait type declaration
     // this basically means any type that implements this trait without worrying about dynamic dispatch like &dyn Trait (trait object) does
 
-    
     trait GenericStuffs<T> {
         fn talk(&self) -> T;
     }
-    
+
     struct MyType;
-    
-    
+
     impl GenericStuffs<u32> for MyType {
         fn talk(&self) -> u32 {
             u32::default()
         }
     }
-    
+
     impl GenericStuffs<String> for MyType {
         fn talk(&self) -> String {
             String::default()
         }
     }
-    
+
     let my_type = MyType;
     let value: u32 = my_type.talk();
     println!("Value = {value}");
-    
+
     fn f(a: &dyn Debug, b: &dyn Debug) {
         println!("a = {a:?}, b = {b:?}");
     }
-    
+
     f(&10, &10.2);
-    
+
     fn g(a: Box<dyn Debug>, b: Box<dyn Debug>) {
         println!("a = {a:?}, b = {b:?}");
     }
-    
+
     g(Box::new(10), Box::new(13.4));
-    
 
     std::io::Result::Ok(())
 }

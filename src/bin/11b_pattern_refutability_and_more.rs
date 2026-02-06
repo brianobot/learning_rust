@@ -1,3 +1,5 @@
+#![allow(clippy::match_single_binding)]
+
 fn main() {
     // patterns comes in two form,
     // - refutable: pattern than can fail to match for some possible values

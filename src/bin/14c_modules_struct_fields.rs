@@ -5,10 +5,10 @@
 
 mod module_one {
     fn intro(person: &Person) -> String {
-        return format!(
+        format!(
             "Hello! My Name is {} {}",
             &person.first_name, &person.last_name
-        );
+        )
     }
 
     #[derive(Debug, Default)]

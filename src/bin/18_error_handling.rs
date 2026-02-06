@@ -1,3 +1,5 @@
+#![allow(clippy::useless_vec)]
+
 fn main() {
     // rust has two groups of errors
     // recoverable and unrecoverable errors
@@ -25,5 +27,6 @@ fn main() {
     // the expect method is a friendly version of the unwrap method
     // it takes a error message that is shown when the program panics
     // let _some_value = [1, 2, 3].iter().nth(100).unwrap();
-    let _some_value = [1, 2, 3].iter().nth(100).expect("100th Element not found!");
+    // let _some_value = [1, 2, 3].iter().nth(100).expect("100th Element not found!");
+    let _some_value = [1, 2, 3].get(100).expect("100th Element not found!");
 }

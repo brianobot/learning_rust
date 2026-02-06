@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push)]
+
 // RESEARCH ON FILE NOT INCLUDED IN CRATE HEIRACHY WARNING
 fn main() {
     // create a varible to hold a string
@@ -70,6 +72,7 @@ fn main() {
     // the Vec<Person> Owns each person inside of it
     // Each person Struct owns the name and the age field
     // Each Name field owns the buffer stored on the heap for the String
+    #[allow(clippy::vec_init_then_push)]
     let mut composers = Vec::new();
     composers.push(Person {
         name: Some(String::from("J.Cole")),

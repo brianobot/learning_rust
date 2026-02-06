@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#![allow(clippy::upper_case_acronyms)]
 
 fn main() {
     // enums variant can hold any type and amount of associate data
@@ -11,15 +12,15 @@ fn main() {
 
     impl PlayerData {
         fn is_weak(&self) -> bool {
-            return &self.health < &30;
+            self.health < 30
         }
 
         fn is_strong(&self) -> bool {
-            return &self.health > &70;
+            self.health > 70
         }
 
         fn is_dead(&self) -> bool {
-            return &self.health == &0;
+            self.health == 0
         }
     }
 

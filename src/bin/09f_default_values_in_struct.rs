@@ -17,6 +17,7 @@ enum Titan {
     Einstein,
 }
 
+#[allow(clippy::derivable_impls)]
 impl Default for Titan {
     fn default() -> Self {
         Titan::Brian

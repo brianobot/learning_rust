@@ -50,6 +50,7 @@ fn main() {
     #[allow(dead_code)]
     fn show_files() -> std::io::Result<()> {
         #[allow(dead_code)]
+        #[allow(clippy::useless_vec)]
         let mut _v = vec![1, 2, 3];
 
         // perfectly valid rust code
@@ -89,7 +90,7 @@ fn main() {
         println!("Current Value = {start}");
         start += 1;
 
-        if start % 24 == 0 {
+        if start.is_multiple_of(24) {
             break start; // you can use break to return values from a loop in rust
         }
     };
@@ -117,10 +118,10 @@ fn main() {
                 break 'search;
             }
         }
-        println!("");
+        println!(" ");
         temp += 2;
     }
-    println!("");
+    println!(" ");
 
     // a break can have a label and a value but both are optional
     // break - empty break
@@ -170,7 +171,7 @@ fn partition<T: Ord>(slice: &mut [T]) -> usize {
 
     for j in 0..pivot_index {
         if slice[j] <= slice[pivot_index] {
-            i = i + 1isize;
+            i += 1isize;
             slice.swap(i as usize, j);
         }
     }

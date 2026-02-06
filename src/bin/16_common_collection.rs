@@ -1,4 +1,5 @@
-#[allow(unused)]
+#![allow(unused)]
+#![allow(clippy::vec_init_then_push)]
 
 fn main() {
     // rust standard libraries contain a number of useful data structures called collections
@@ -18,11 +19,13 @@ fn main() {
     // if instead we were creating the vector with some initial values, we would not have to specify the
     // type since rust can infer the type from the values we give to the vector
 
+    #[allow(clippy::useless_vec)]
     let v = vec![1, 2, 3, 4]; // rust programs a vec macro that can create a vector with the values we give to it
 
     // just like any other variable in rust, if we need to change the value of the vector
     // we need to make it mutable
 
+    #[allow(clippy::vec_init_then_push)]
     let mut vector = vec![]; // this also creates a new empty vector too
     // the compiler knew from the data added to the vector, that the support data type for the vector is i32
 

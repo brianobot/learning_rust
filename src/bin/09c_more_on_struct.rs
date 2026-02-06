@@ -38,7 +38,7 @@ fn square(point: Point, width: u32) -> Rectangle {
     };
     Rectangle {
         bottom_left: point,
-        top_right: top_right,
+        top_right,
     }
 }
 

@@ -1,3 +1,5 @@
+#![allow(clippy::unnecessary_operation)]
+
 // Nested Modules
 mod plant_structures {
     pub mod roots {}

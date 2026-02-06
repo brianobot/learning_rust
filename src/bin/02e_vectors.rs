@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push)]
+
 use std::vec;
 
 fn main() {
@@ -14,6 +16,7 @@ fn main() {
 
     // you can pop elements from the vector
     let last_value = data.pop();
+    #[allow(clippy::unnecessary_unwrap)]
     if last_value.is_some() {
         println!("Popped value: {}", last_value.unwrap());
     }
@@ -98,6 +101,7 @@ fn main() {
     // we can emulate the behaviour of storing different types in a vector
     // by storying an enum that can hold different types
 
+    #[allow(clippy::enum_variant_names)]
     #[derive(Debug)]
     enum FieldType {
         SmallIntegerField(i8),
@@ -119,13 +123,14 @@ fn main() {
         }
     }
 
+    #[allow(clippy::vec_init_then_push)]
     let mut columns: Vec<FieldType> = Vec::new();
 
     columns.push(FieldType::IntergerField(10));
     columns.push(FieldType::SmallIntegerField(10));
     columns.push(FieldType::BigIntergerField(10000000));
     columns.push(FieldType::StringField("Hello".to_string()));
-    columns.push(FieldType::FloatField(3.14));
+    columns.push(FieldType::FloatField(3.146565));
 
     println!("Columns = {:?}", columns);
 
@@ -145,6 +150,7 @@ fn main() {
     println!("Reversed data = {:?}", data);
 
     let mut names = vec!["John", "Doe", "Jane", "Doe", "Alice", "Bob"];
+    #[allow(clippy::unnecessary_sort_by)]
     names.sort_by(|a, b| a.len().cmp(&b.len()));
     println!("Sorted names = {:?}", names);
 
@@ -174,6 +180,7 @@ fn main() {
     );
 
     // an example to convert an vector of &str types to a vector String types
+    #[allow(clippy::useless_vec)]
     let names = vec!["james", "paul", "okon", "obot", "abasifreke"]
         .iter_mut()
         .map(|x| x.to_string())

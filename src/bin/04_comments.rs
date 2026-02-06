@@ -1,4 +1,4 @@
-#[allow(dead_code)]
+#![allow(dead_code)]
 
 fn main() {
     // usually you would find them used above the line which they are referring to

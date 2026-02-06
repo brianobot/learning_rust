@@ -1,3 +1,5 @@
+#![allow(clippy::unnecessary_literal_unwrap)]
+
 use std::collections::HashMap; // since this is the least use collection, it is not included in the prelude
 
 fn main() {

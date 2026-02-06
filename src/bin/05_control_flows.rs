@@ -5,7 +5,7 @@ fn main() {
 
     // if it also important to note that the condtion to be use in an if block must evaluate to a bool
     // unlike languages like ruby, and javascript, rust will not try to convert non-boolean to boolean
-    if condition == true {
+    if condition {
         // blocks of codes associated with an if statements are sometimes called arms
         // like the arms in the match statment we saw in the game
         println!("Well Well Well, Isn't today Amazing");
@@ -63,7 +63,7 @@ fn main() {
             break;
         }
 
-        count = count + 1;
+        count += 1;
 
         // continue is used to skip the remaining part of the loop and go to the
         // next interation
@@ -136,6 +136,7 @@ fn main() {
     }
     println!("Lift Off...");
 
+    #[allow(clippy::never_loop)]
     loop {
         println!("Some information..");
         break;

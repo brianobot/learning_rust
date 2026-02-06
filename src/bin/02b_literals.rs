@@ -1,3 +1,5 @@
+#![allow(clippy::nonminimal_bool)]
+
 fn main() {
     // integers 1
     // floats 1.23

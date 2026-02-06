@@ -22,7 +22,7 @@ fn main() {
         name: String::from("Paul"),
         age: 34,
     };
-    println!("");
+    println!(" ");
     println!("person: {:?}", paul);
-    println!("");
+    println!(" ");
 }

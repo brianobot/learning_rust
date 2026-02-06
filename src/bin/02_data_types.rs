@@ -32,13 +32,13 @@ fn main() {
     // you can mix underscore and type suffix to better indicate the type of an integer
     //
     let _rating = 24_u8; // the underscore is ignore and only needed to make it easier to read
-    let _score = 25__u16;
+    let _score = 25_u16;
 
     let some_value = 123u16;
     println!("Some Value = {:?}", some_value);
 
     // floating point type
-    let _rating = 5__f32; // again the underscore is ignored
+    let _rating = 5_f32; // again the underscore is ignored
     let _average = 32f64;
 
     // the floating point type has associated constant to meet IEEE specs

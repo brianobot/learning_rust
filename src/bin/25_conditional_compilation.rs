@@ -1,4 +1,4 @@
-#[allow(unused)]
+#![allow(unused)]
 
 fn main() {
     // to add condition compilation to your project

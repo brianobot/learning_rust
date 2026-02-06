@@ -1,3 +1,5 @@
+#![allow(clippy::let_unit_value)]
+
 use std::sync::Mutex;
 use std::sync::mpsc;
 use std::thread;
@@ -77,11 +79,11 @@ fn main() {
 
     thread::spawn(move || {
         let val = String::from("Brian David Obot");
-        let result = tx.send(val).unwrap(); // the send method would fail is the receiver has dropped
+        let _result = tx.send(val).unwrap(); // the send method would fail is the receiver has dropped
         // for this reason the send method returns a Result<T, E>
         // at this point the val variable has been moved out of this scope and would be available
         // at whereever is the receiving end of the channel
-        println!("Result of Transmission: {:?}", result);
+        println!("Result of Transmission: {:?}", ());
     }); // at this point, the tx variable as been moved into the thread
 
     let received = rx.recv().unwrap(); // the recv method would block the thread until a value is received

@@ -139,8 +139,8 @@ fn build_user(username: String, email: String) -> User {
         // we can simplify this by using a field init shorthand syntax like
         // email, instead of email: email,
         // username, instead of username: username,
-        email: email,
-        username: username,
+        email,
+        username,
         sign_in_count: 1,
         active: true,
     }

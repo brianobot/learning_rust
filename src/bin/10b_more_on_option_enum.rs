@@ -1,3 +1,4 @@
+#![allow(clippy::unnecessary_literal_unwrap)]
 // in this rust crate, i will take a dive into the world of the rust standard Option Enum type
 
 fn main() {
@@ -47,6 +48,7 @@ fn main() {
     }
 
     // .expect: returns the wrapped value in the Some variant or returns the message provided in the call
+
     let twleve = Some(12);
     let _none: Option<i8> = None;
     let value = twleve.expect("Could not get the value from the Variant");
@@ -76,7 +78,9 @@ fn main() {
 
     // there is also a map_or_else, does the same thing, but takes two predicate, computers the second predicate for None variant
     // map_or_else is a special kind of map_or where the default is a predicate (function)
+    #[allow(clippy::unnecessary_option_map_or_else)]
     let new_some_on_else = some.map_or_else(|| "12", |x| x);
+    #[allow(clippy::unnecessary_option_map_or_else)]
     let new_none_on_else = none.map_or_else(|| "12", |x| x);
     println!("New some on else: {}", new_some_on_else);
     println!("New None on else: {}", new_none_on_else);

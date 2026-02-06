@@ -1,4 +1,5 @@
 #![allow(unreachable_code)]
+#![allow(clippy::diverging_sub_expression)]
 
 fn main() {
     // diverging functions are functions that never return,

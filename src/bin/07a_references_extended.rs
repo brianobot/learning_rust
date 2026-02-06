@@ -37,6 +37,7 @@ fn main() {
     // well that's because, the . operator implicity dereferences references when neccesary
     // and in this case, the println! macro triggered a dot operation somewhere to get this behaviour
     // the . operator can also implictly borrow a reference to it left operand when needed
+    #[allow(clippy::useless_vec)]
     let mut v = vec![1, 2, 3, 4];
     v.sort(); // here the sort method needs a &mut to the object so .sort borrows mut v as &mut v
     // which is equivalent to (&mut v).sort()

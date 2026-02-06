@@ -27,7 +27,7 @@ impl List {
     fn stringify(&self) -> String {
         match *self {
             Cons(head, ref tail) => format!("{}, {}", head, tail.stringify()),
-            Nil => format!("Nil"),
+            Nil => "Nil".to_string(),
         }
     }
 }
