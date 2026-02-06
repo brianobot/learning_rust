@@ -86,6 +86,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     let _b = a[0];
 
     println!("A = {a:?}");
+    // not all operators can be overloaded in python
+    // & is always a reference
+    // && || are limited to boolean values
+    // .., ..= always create a range struct
+    // = is the assignment operator, which copies or moves a value
 
     Ok(())
 }
