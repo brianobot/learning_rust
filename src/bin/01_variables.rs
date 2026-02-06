@@ -23,7 +23,7 @@ fn main() {
     // causes the compiler to produce an error message, so only use mut if you indeed need to mutate
     // the variable in question
     println!("The value of y is {y}");
-    y = y + 10;
+    y += 10;
     println!("The new value of y is {y}");
 
     // CONSTANTS are not allowed to be made mutable, they are always immutable
@@ -73,7 +73,7 @@ fn main() {
 
     timeout = 12.10;
 
-    timeout -= 1 as f32;
+    timeout -= 1f32;
 
     println!("Timeout = {timeout}");
 
@@ -134,7 +134,8 @@ fn main() {
     x += 10;
     println!("X = {x}");
 
-    let ass_val = x = 10;
+    #[allow(clippy::let_unit_value)]
+    let _ass_val = x = 10;
     println!("X = {}", x);
-    println!("Assigment value = {:?}", ass_val);
+    println!("Assigment value = {:?}", ());
 }

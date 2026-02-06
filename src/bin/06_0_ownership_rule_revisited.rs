@@ -1,4 +1,5 @@
-#[allow(unused_variables)]
+#![allow(unused_variables)]
+
 // THis is a revisit of the ownership rule in Rust
 /*
 - Each value in Rust has an owner

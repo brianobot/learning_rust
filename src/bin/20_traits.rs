@@ -52,7 +52,7 @@ fn main() {
         fn summarize(&self) -> String {
             let can_code = &self.can_code();
             let formatted_string = format!("I a living thing and i can code == {can_code}");
-            String::from(formatted_string)
+            formatted_string
         }
     }
 

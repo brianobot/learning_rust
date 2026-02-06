@@ -1,3 +1,4 @@
+#![allow(clippy::missing_safety_doc)]
 /*
 Rust offers the ability to write unsafe codes
 

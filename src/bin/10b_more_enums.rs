@@ -1,5 +1,6 @@
 // An attribute to hide warnings for unused code.
 #![allow(dead_code)]
+#![allow(clippy::upper_case_acronyms)]
 
 #[derive(Debug, Clone)]
 enum Color {

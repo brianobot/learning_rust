@@ -1,3 +1,5 @@
+#![allow(clippy::let_unit_value)]
+
 // Try is used to propagate error
 // Result is the main process for handling error, Result reprsent a state of success
 // of failure, and the ? operator can be applied on any expression that returns a Result, also the ? operator
@@ -15,6 +17,7 @@ fn calculate() -> Result<(), ()> {
 }
 
 fn main() {
+    #[allow(clippy::let_unit_value)]
     let value = calculate().unwrap();
     println!("Value = {:?}", value);
 }

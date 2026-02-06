@@ -30,6 +30,7 @@ fn main() {
     // the by value captures usually occurs for type that are non_copy
     // to force closure to capture a variable by value, use the keyword move before the pipes
 
+    #[allow(clippy::useless_vec)]
     let haystack = vec![1, 2, 3, 4];
     let contains = move |needle: i32| haystack.contains(&needle);
 
@@ -90,6 +91,7 @@ impl _Box {
 
     // &self is usually used in place of the full form self: &Self, where Self point to the type the function is
     // defined on, self gives access to the type fields via dot notation
+    #[allow(clippy::needless_arbitrary_self_type)]
     fn _area(self: &Self) -> u8 {
         self.width * self.heigth
     }

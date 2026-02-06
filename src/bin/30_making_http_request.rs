@@ -7,7 +7,6 @@
 // 3. isahc: a fast http client written in rust
 
 // reqwest can be used in a synchronous and asynchronous pattern
-use reqwest;
 use reqwest::blocking::Client;
 
 fn main() {

@@ -42,6 +42,8 @@ fn main() {
     // array element can be safely accessed with get method, this returns an Option
     // and can be matched as showned below
     let fifth_element = empty_array.get(5);
+
+    #[allow(clippy::manual_unwrap_or)]
     let value = match fifth_element {
         Some(value) => value,
         // since the value of value in the Some variant was a reference to an i32

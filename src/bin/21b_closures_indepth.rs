@@ -1,3 +1,5 @@
+#![allow(clippy::redundant_closure_call)]
+
 fn main() {
     let y = 12u8;
     let adder = |x| x + y;

@@ -1,4 +1,5 @@
-#![allow(dead_code)]
+#![allow(dead_code, clippy::useless_vec)]
+#![allow(renamed_and_removed_lints)]
 
 // iterators is something you can call the next method on repeatedly and it gives us a sequence of things
 // technically this means iterators implement the Iterator trait which in turns implement the
@@ -142,10 +143,13 @@ fn main() {
     // the structure of the fold call is as follows
     // .fold(base, |accumulator, x| <logic to accumulate accumulator>)
 
-    let sum = (0..10).fold(0, |sum, x| sum + x);
+    // let sum = (0..10).fold(0, |sum, x| sum + x);
+    let sum = (0..10).sum::<i32>();
     // there is beauty in high and low places - Brian
 
-    let multiple = (1..11).fold(1, |mul, x| mul * x);
+    #[allow(dead_code)]
+    // let multiple = (1..11).fold(1, |mul, x| mul * x); // commented out becuase the linter won't let me rest
+    let multiple = (1..11).product::<i32>();
 
     println!("Fold in Sum Call = {sum}");
     println!("Fold in Mul Call = {multiple}");
@@ -158,7 +162,8 @@ fn main() {
         println!("Result = {x}");
     });
 
-    // count
+    // coun
+    #[allow(clippy::iter_count)]
     let count = steps.iter().count();
     println!("Steps Count = {count}");
 
@@ -263,8 +268,9 @@ fn main() {
         println!("NUM: {}", num);
     }
 
-    let zeroth_element = numbers.iter().nth(0);
-    let oneth_element = numbers.iter().nth(1);
+    #[allow(clippy::get_first)]
+    let zeroth_element = numbers.get(0);
+    let oneth_element = numbers.get(2);
     println!("Zeroth Element: {}", *zeroth_element.unwrap_or(&0));
     println!("Oneth  Element: {}", *oneth_element.unwrap_or(&0));
 

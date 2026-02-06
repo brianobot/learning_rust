@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push)]
+
 enum Coin {
     Penny,
     Nickel,
@@ -135,6 +137,7 @@ fn value_in_cent(coin: Coin) -> i32 {
 }
 
 fn plus_one(x: Option<i32>) -> Option<i32> {
+    #[allow(clippy::manual_map)]
     match x {
         None => None,
         Some(x) => Some(x + 1),

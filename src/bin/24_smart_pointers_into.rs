@@ -1,4 +1,6 @@
 #![allow(dead_code)]
+#![allow(clippy::toplevel_ref_arg)]
+#![allow(clippy::match_single_binding)]
 
 #[derive(Debug)]
 enum List {
@@ -26,6 +28,7 @@ fn main() {
         val => println!("Value gotten = {}", val),
     }
 
+    #[allow(clippy::match_single_binding)]
     match value {
         // we can make a call the ref as so too
         ref v => println!("Reference gotten = {:?}", v),

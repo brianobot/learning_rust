@@ -61,5 +61,5 @@ fn with_return_value() -> u32 {
 }
 
 fn with_return_keyword() -> f64 {
-    return 64.0;
+    64.0
 }
