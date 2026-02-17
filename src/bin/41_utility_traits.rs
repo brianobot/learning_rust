@@ -8,6 +8,8 @@
 // - Marker traits: traits used to expression contraits on generic types that can be caputured in any other trivial way, Size and Copy
 // - Public Vocabulary Trait: they are not magival to the compiler but using them mirrors convetional solutions for common problems, Default, AsRed, AsMut, Borrow and BorrowMut
 
+use std::fmt::Debug;
+
 fn main() {
     // Traits, Description
     // Drop: Clean up code rust runs automatically when a value is dropped
@@ -129,4 +131,67 @@ fn main() {
 
     let my_box = MyBox(10);
     assert_eq!(10, *my_box); // *(my_box.deref())
+
+    #[derive(Debug)]
+    struct Selector<T> {
+        elements: Vec<T>,
+        current: usize,
+    }
+
+    impl<T> std::ops::Deref for Selector<T> {
+        type Target = T;
+
+        fn deref(&self) -> &Self::Target {
+            &self.elements[self.current]
+        }
+    }
+
+    impl<T> std::ops::DerefMut for Selector<T> {
+        fn deref_mut(&mut self) -> &mut Self::Target {
+            &mut self.elements[self.current]
+        }
+    }
+
+    #[allow(unused_mut)]
+    let mut s: Selector<i32> = Selector {
+        elements: vec![1, 2, 3, 4],
+        current: 2,
+    };
+
+    assert_eq!(*s, 3);
+    // assert!(12i32.is_positive());
+    assert!(s.is_positive());
+
+    // you can spell out coercion using the as keyword in rust
+    fn spell(number: &i32) {
+        println!("Spelling: {number}");
+    }
+
+    // since the spell function takes a reference to i32, we can coerce s to that
+    spell(&s as &i32);
+    #[allow(clippy::explicit_auto_deref)]
+    spell(&*s); //both are valid
+
+    // Default: the default trait allows types to specify their default via a default method
+    impl<T: Default> Default for Selector<T> {
+        fn default() -> Self {
+            Self {
+                elements: Vec::default(),
+                current: usize::default(),
+            }
+        }
+    }
+
+    let default_selector = Selector::<i32>::default();
+    println!("Default Selector: {default_selector:?}");
+
+    // all of rust collection types implement default that return empty collections
+    let samples = vec![2, 3, 45, 6, 23, 23, 5, 6, 34, 2, 4, 6];
+    let (x_men, impure): (Vec<i32>, Vec<i32>) = samples.iter().partition(|&n| n & 1 == 0);
+
+    println!("X-Men: {x_men:?}");
+    println!("Impure: {impure:?}");
+
+    // if a type implements Default, then the standard library implements defaults for Arc<T>, Rc<T>, Box<T> etc
+    //
 }
