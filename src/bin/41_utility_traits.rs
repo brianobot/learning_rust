@@ -8,6 +8,8 @@
 // - Marker traits: traits used to expression contraits on generic types that can be caputured in any other trivial way, Size and Copy
 // - Public Vocabulary Trait: they are not magival to the compiler but using them mirrors convetional solutions for common problems, Default, AsRed, AsMut, Borrow and BorrowMut
 
+use std::fmt::Debug;
+
 fn main() {
     // Traits, Description
     // Drop: Clean up code rust runs automatically when a value is dropped
@@ -129,4 +131,112 @@ fn main() {
 
     let my_box = MyBox(10);
     assert_eq!(10, *my_box); // *(my_box.deref())
+
+    #[derive(Debug)]
+    struct Selector<T> {
+        elements: Vec<T>,
+        current: usize,
+    }
+
+    impl<T> std::ops::Deref for Selector<T> {
+        type Target = T;
+
+        fn deref(&self) -> &Self::Target {
+            &self.elements[self.current]
+        }
+    }
+
+    impl<T> std::ops::DerefMut for Selector<T> {
+        fn deref_mut(&mut self) -> &mut Self::Target {
+            &mut self.elements[self.current]
+        }
+    }
+
+    #[allow(unused_mut)]
+    let mut s: Selector<i32> = Selector {
+        elements: vec![1, 2, 3, 4],
+        current: 2,
+    };
+
+    assert_eq!(*s, 3);
+    // assert!(12i32.is_positive());
+    assert!(s.is_positive());
+
+    // you can spell out coercion using the as keyword in rust
+    fn spell(number: &i32) {
+        println!("Spelling: {number}");
+    }
+
+    // since the spell function takes a reference to i32, we can coerce s to that
+    spell(&s as &i32);
+    #[allow(clippy::explicit_auto_deref)]
+    spell(&*s); //both are valid
+
+    // Default: the default trait allows types to specify their default via a default method
+    impl<T: Default> Default for Selector<T> {
+        fn default() -> Self {
+            Self {
+                elements: Vec::default(),
+                current: usize::default(),
+            }
+        }
+    }
+
+    let default_selector = Selector::<i32>::default();
+    println!("Default Selector: {default_selector:?}");
+
+    // all of rust collection types implement default that return empty collections
+    let samples = vec![2, 3, 45, 6, 23, 23, 5, 6, 34, 2, 4, 6];
+    let (x_men, impure): (Vec<i32>, Vec<i32>) = samples.iter().partition(|&n| n & 1 == 0);
+
+    println!("X-Men: {x_men:?}");
+    println!("Impure: {impure:?}");
+
+    // if a type implements Default, then the standard library implements defaults for Arc<T>, Rc<T>, Box<T> etc
+
+    // when a type implements AsRef<T>, it means you can borrow &T from it efficiently
+    // this can support some nice functionality by taking a generic type that implements a particular AsRef<> and
+    // then calling the as_ref method of that type to use the reference you actually want
+
+    // for example the the std library fs open method has this signature
+    // std::fs::File::open;
+    // pub fn open<P>(path: P) -> io::Result<File>
+    // where
+    // P: AsRef<Path>,
+    //
+    // in the body of the function, you really just want to get the reference to Path, so no matter what is passed in
+    // calling as_ref on it returns the reference to path, but this the function to allow different types
+    // making it look like an operator overloaded function
+    //
+    // any types U that implements the AsRef<T> get an automatic implementation for it's &U also implementing AsRef<T>
+    // this serves as a conversion trait, you should avoid defining a trait for conversion like as AsFoo, when you
+    // use the AsRef<Foo> trait to get a reference to the Foo type for any type
+
+    // Unlike AsRef<T> and AsRefMut<T>, the as From<T> and Into<T> take ownership of the implementor and returns a new type
+    /*
+     * trait From<T>: Sized {
+     *    fn from(other, T) -> Self;
+     * }
+     *
+     * trait Into<T>: Sized {
+     *    fn into(self) -> T;
+     * }
+     *
+     * the compiler autoimplementes the conversion of every type to itself
+     * for example every T implements a From<T> and an Into<T>
+     */
+
+    // you generally use into to make function arguments more flexible in the options they accept
+    /*
+     * use std::net::Ipv4Addr;
+     *      fn ping<A>(address: A) -> std::io::Result<bool>
+     *     where A: Into<Ipv4Addr>
+     * {
+     *      let ipv4_address = address.into();
+     *     ...
+     * }
+     *
+     *
+     */
+    // we have TryFrom and TryInto as equivalent versions of From and Into which can fail and therefore return Result<T, Error>
 }
