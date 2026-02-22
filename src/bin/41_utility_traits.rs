@@ -8,7 +8,7 @@
 // - Marker traits: traits used to expression contraits on generic types that can be caputured in any other trivial way, Size and Copy
 // - Public Vocabulary Trait: they are not magival to the compiler but using them mirrors convetional solutions for common problems, Default, AsRed, AsMut, Borrow and BorrowMut
 
-use std::fmt::Debug;
+use std::{borrow::Borrow, fmt::Debug};
 
 fn main() {
     // Traits, Description
@@ -239,4 +239,42 @@ fn main() {
      *
      */
     // we have TryFrom and TryInto as equivalent versions of From and Into which can fail and therefore return Result<T, Error>
+    //
+    println!("###########################################");
+    struct FakeHashMap<K, V> {
+        keys: Vec<K>,
+        values: Vec<V>,
+    }
+
+    impl<K, V> FakeHashMap<K, V> {
+        fn new() -> Self {
+            Self {
+                keys: Vec::new(),
+                values: Vec::new(),
+            }
+        }
+
+        fn insert(&mut self, key: K, value: V) {
+            self.keys.push(key);
+            self.values.push(value);
+        }
+
+        fn get<Q>(&self, key: Q) -> Option<&V>
+        where
+            K: PartialEq,
+            Q: Borrow<K> + PartialEq,
+        {
+            let index = self.keys.iter().position(|item| item == key.borrow());
+
+            match index {
+                Some(idx) => Some(&self.values[idx]),
+                None => None,
+            }
+        }
+    }
+
+    let mut fmh = FakeHashMap::new();
+    fmh.insert("String", "value");
+    let value = fmh.get("String");
+    println!("Value = {value:?}");
 }
