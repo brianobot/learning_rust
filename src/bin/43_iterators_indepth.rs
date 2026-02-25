@@ -231,6 +231,30 @@ fn main() -> std::io::Result<()> {
     // inspect: use to debug an iterator pipeline
     // chain: appends one iterator to another, but both iterators have to have the same Associated Item type
     // a chain iterator is reversible is both iterators are reversible too
+    //
+    // zip: combines 2 iterators producing pairs of values from each iterator like a zipper
+    // the zip iterator ends when either of the iterator ends
+    //
+    // by_ref: allows borrowing of iterators so they can be used with adapters and not consumed
+    // cloned: takes an iterator that produces refereces and returns an iterator that produce values cloned from those references
+    // cycle: repeats a sequence produced by an iterator endlessly
+    // count: return the item count in a iterator
+    let items = (0..100).count();
+    println!("Item Count = {items}");
+
+    let count = (0..100).len();
+    println!("Count Len: {count}");
+
+    // sum, product return the Sum and Product of the item in an iterator, if you need your type to support this
+    // you must implement the std::iter::Sum and std::iter::Product on those types
+    //
+    // max, min
+    let max = (0..1000).max().unwrap();
+    let min = (0..2030).min().unwrap();
+
+    println!("Max = {max}, Min = {min}");
+
+    // max_by and min_by
 
     Ok(())
 }
