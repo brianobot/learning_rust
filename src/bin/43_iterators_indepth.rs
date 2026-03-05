@@ -255,6 +255,72 @@ fn main() -> std::io::Result<()> {
     println!("Max = {max}, Min = {min}");
 
     // max_by and min_by
+    // any, all: applies a closure to an iterator and returns true is any/all the element return true for the closure
+
+    // building collections with the collect method
+    // When any type implements the FromIterator<T> trait, a collection of that type can be derived from an iterator
+    // with the collect method
+    //
+
+    #[allow(unused_doc_comments)]
+    /**
+     *
+     * trait FromIterator<A>: Sized {
+     *      fn from_iter<T: IntoIterator<Item=A>>(iter: T) -> Self;
+     * }
+     */
+    #[allow(clippy::useless_vec)]
+    let numbers = vec![1, 2, 3, 4, 5, 6];
+    let names = vec!["Brian".to_string(), "Obot".to_string(), "David".to_string()];
+    let _numbers_iter = numbers.iter();
+    let names_iter = names.iter();
+
+    let _collection = names_iter.collect::<Vec<&String>>();
+    println!("Names: {names:?}");
+
+    // Extend traits allow types to add Iterable items to itself
+    let mut cars = vec!["Benz", "Toyota", "Nissan"];
+    cars.extend(&["Jeep", "Tesla", "Honda"]);
+    println!("Cars: {cars:?}");
+
+    // All standard collection implement the Extend trait and so they have the extend method, so does String
+    // Array and slices which have fixed length do not
+
+    // partition method divivdes an iterator items among two collection, using a closure to decide where each item belongs
+    let things = ["doorknob", "mushroom", "noddle", "giraffe", "grapefruit"];
+    let (living, nonliving): (Vec<&str>, Vec<&str>) = things
+        .iter()
+        .partition(|thing| thing.as_bytes()[0] & 1 != 0);
+
+    println!("Living Things: {living:?}");
+    println!("None Living Things: {nonliving:?}");
+
+    // like collect, partition makes any type of collection you specify in the type annotation
+
+    struct F32Range {
+        start: f32,
+        end: f32,
+    }
+
+    impl Iterator for F32Range {
+        type Item = f32;
+
+        fn next(&mut self) -> Option<Self::Item> {
+            if self.start >= self.end {
+                return None;
+            }
+            let result = Some(self.start);
+            self.start += 0.1;
+            result
+        }
+    }
+
+    for i in (F32Range {
+        start: 1.0,
+        end: 10.0,
+    }) {
+        println!("I: {i}");
+    }
 
     Ok(())
 }
