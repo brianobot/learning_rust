@@ -85,4 +85,18 @@ fn main() {
     // Random elements
     // .choose(&mut rng)
     // .shuffle(&mut rng)
+    //
+    // VecDeque: Allow for efficiently adding and removing elements from the front and end of the vector
+    // .push_front(value)
+    // .push_back(value)
+    // .pop_front()
+    // .pop_back()
+    // .front(), .back() : similar to first and last in normal Vectors
+    // .front_mut(), back_mut(): similar to first_mut and last_mut for normal vectors
+    //
+    // you can convert to and from vecdeque to normal vectors using the following methods
+    // Vec::from(deque)
+    // VecDeque::from(vec)
+
+    // BinaryHeap
 }
