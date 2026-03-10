@@ -99,4 +99,22 @@ fn main() {
     // VecDeque::from(vec)
 
     // BinaryHeap
+    use std::collections::BinaryHeap;
+
+    let mut heap = BinaryHeap::new();
+    heap.push(2);
+    heap.push(32);
+    heap.push(23);
+
+    let greatest = heap.pop().unwrap();
+
+    println!("Heap: {heap:?} former greatest: {greatest}");
+    // we can create binary heap from another collections as so
+    let heap = BinaryHeap::from(vec![1, 2, 3, 4, 5, 6, 7]);
+    println!("Heap: {heap:?}");
+    // binary heap can hold any type that implements the Ord trait
+    // this makes BinaryHeap useful for a task queue, you can define a task struct that implements the Ord trait
+    // and then pass those into a binaryheap which would also put the one with the higest priority at the top
+    //
+    // Binary heap is itereable and has an iter method, but the iterator produce the elements in an arbitary order
 }
