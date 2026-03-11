@@ -1,3 +1,5 @@
+use std::collections::{BTreeMap, HashMap};
+
 fn main() {
     // Common collection types in Rust
     // Vec<T>: Growable array
@@ -117,4 +119,46 @@ fn main() {
     // and then pass those into a binaryheap which would also put the one with the higest priority at the top
     //
     // Binary heap is itereable and has an iter method, but the iterator produce the elements in an arbitary order
+    //
+    // Map is a collection of key-value pair (entries), the keys are unique but stored in a way to ensure efficient access by key
+    // a map is a look up table
+    let mut hashmap = HashMap::new();
+    let mut btreemap = BTreeMap::new();
+
+    hashmap.insert(String::from("Brian"), 20);
+    hashmap.insert(String::from("James"), 14);
+    hashmap.insert(String::from("Paul"), 12);
+
+    btreemap.insert(String::from("Brian"), 20);
+    btreemap.insert(String::from("James"), 2);
+    btreemap.insert(String::from("Okon"), 15);
+
+    for (key, value) in &hashmap {
+        println!("Key: {key} - Value: {value}");
+    }
+
+    // maps can be queried using square brackets too, they implement the Index trait
+    // this is similar to the dictionary indexing in python, and unlike get this panics if the key
+    // does not exist in the map
+    // the key used for the map methods do not have to be the exact types as the keys in the maps
+    // so long as they can be borrowed as the key in the map, they can be used
+    //
+    let nana = hashmap.entry("Nana".to_string());
+    println!("Nana: {nana:?}");
+
+    // Entries provide 3 methods to deal with vacant entries
+    // entry.or_insert(value)
+    // entry.or_default()
+    // entry.or_insert_with(default_fn)
+    //
+    let nana_score = nana.or_insert(10);
+    *nana_score = 12;
+
+    println!("Scores: {hashmap:?}");
+    // when iterating over a map you
+    // - can consume the map
+    // - iterate over references to the entries
+    // - iterator over reference to the key and and mutable reference to the value
+    //
+    // there is no way to get mutable reference to the key
 }
