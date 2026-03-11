@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 
 fn main() {
     // Common collection types in Rust
@@ -161,4 +161,27 @@ fn main() {
     // - iterator over reference to the key and and mutable reference to the value
     //
     // there is no way to get mutable reference to the key
+    //
+
+    // Sets are collection of memebers arranges for fast memebership test
+    let mut hashset = HashSet::new();
+    let mut btreeset = BTreeSet::new();
+
+    hashset.insert(1);
+    hashset.insert(3);
+    hashset.insert(4);
+    hashset.insert(5);
+    hashset.insert(6);
+    hashset.insert(7);
+    btreeset.insert(1);
+    btreeset.insert(2);
+    btreeset.insert(3);
+    btreeset.insert(4);
+    btreeset.insert(5);
+    btreeset.insert(6);
+
+    println!("Hashset: {hashset:?}");
+    println!("BtreeSet: {btreeset:?}");
+
+    // you can no iterate over a set by mutable reference
 }
