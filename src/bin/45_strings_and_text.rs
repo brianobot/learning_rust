@@ -1,4 +1,3 @@
-
 fn main() {
     // Rust treats strings as UTF-8 Encoded by default
     let s = "你好 Rust";
@@ -31,4 +30,3 @@ fn main() {
     // .is_ascii_alphabetic() ...
     //
 }
-
