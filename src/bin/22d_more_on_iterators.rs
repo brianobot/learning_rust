@@ -1,6 +1,5 @@
 fn main() {
     let v = vec![1, 2, 3, 4, 5, 6];
-
     let v_iter = v.iter();
 
     for item in v_iter {
