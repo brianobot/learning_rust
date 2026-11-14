@@ -1,5 +1,10 @@
+// Some Notes:
+// clones are expensive, since the data in the heap for the strings must be copied into another heap location
+// borrowed strings &str are fixed sized references to the underlying str data
+
 fn main() {
     let speech = "\"Ouch!\" said the well.\n";
+    // All Strings are the same size because they are simply the size of the Fat pointer pointing to some region in the heap memory
 
     println!("Speech: {speech}");
 

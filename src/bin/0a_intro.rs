@@ -12,4 +12,14 @@ fn main() {
     the current directory the user must explicity specify the current directory
     as the path to check for the script
      */
+
+    let name = String::from("Brian");
+    println!("Outer {name}");
+
+    {
+        let name = String::from("Hello");
+        println!("Inner {name}");
+    }
+
+    println!("Outer {name}");
 }
